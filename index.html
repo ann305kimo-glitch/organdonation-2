@@ -570,6 +570,21 @@
                 display: flex !important;
             }
         }
+
+        .journey-step h2 .journey-sub-title {
+            font-size: 1.45rem; /* 第二行小標題的字體大小，可依需求調整 */
+            font-weight: 500;   /* 字體粗細，讓視覺層次更分明 */
+            display: inline-block;
+            margin-top: 8px;    /* 與第一行標題保持的間距 */
+            line-height: 1.4;
+        }
+        /* 針對手機版同步調整 */
+        @media(max-width: 960px) {
+            .journey-step h2 .journey-sub-title {
+                font-size: 1.1rem !important; /* 手機版對應縮小 */
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -744,21 +759,21 @@
         <div class="journey-container">
             <div class="journey-step" data-aos="fade-up">
                 <div class="journey-img"><img src="images/journey-1.jpg" alt="醫師篇"></div>
-                <h2>器官移植後，故事才開始！<br>手術數小時、照護數十年，為何留不住移植醫師？</h2>
+                <h2>器官移植後，故事才開始！<br><span class="journey-sub-title">手術數小時、照護數十年，為何留不住移植醫師？</span></h2>
                 <p>當病人終於等到救命器官，對移植團隊而言，真正的挑戰才剛開始。從半夜奔波取器官、數小時的高風險手術，到術後長達數十年的追蹤照護，移植醫療是一場沒有終點的馬拉松。<br>然而，移植醫學學會今年僅招募到3名新會員，創近10年新低；部分醫院則面臨新血不進、中生代流失、資深醫師苦撐的接班斷層。當救命技術後繼無人，器官移植還能只靠醫師的熱忱與犧牲支撐嗎？</p>
                 <a href="#" class="btn-readmore-light">閱讀更多</a>
             </div>
 
             <div class="journey-step" data-aos="fade-up">
                 <div class="journey-img"><img src="images/journey-2.jpg" alt="協調師篇"></div>
-                <h2>沒有協調師，器捐很難成案！<br>24小時待命、全台僅129人，關鍵人力為何愈來愈少？</h2>
+                <h2>沒有協調師，器捐很難成案！<br><span class="journey-sub-title">24小時待命、全台僅129人，關鍵人力為何愈來愈少？</span></h2>
                 <p>器官捐贈能否順利完成，器捐協調師是不可或缺的關鍵。從陪伴家屬、安排腦死判定、協調醫療團隊，到器官評估、配對與摘取作業，甚至最後的感恩致謝，都由協調師串聯完成。<br>這份工作不只需要高度專業，一次值班更長達7天，一通電話就得立即出勤。然而，全台器捐協調師已從137人減至129人，多家移植中心長期招募仍補不到人。當器捐成案的關鍵人力持續流失，制度該如何補上缺口？</p>
                 <a href="#" class="btn-readmore-light">閱讀更多</a>
             </div>
 
             <div class="journey-step" data-aos="fade-up">
                 <div class="journey-img"><img src="images/journey-3.jpg" alt="文化觀念篇"></div>
-                <h2>放手不是放棄！<br>捐與不捐都是愛，器捐家屬如何面對最難的告別？</h2>
+                <h2>放手不是放棄！<br><span class="journey-sub-title">捐與不捐都是愛，器捐家屬如何面對最難的告別？</span></h2>
                 <p>近7成民眾表達器官捐贈意願，但臨床上真正面臨至親離世時，同意捐贈的家屬約僅2～3成。躺在病床上的是相伴數十年的家人，家屬不只捨不得對方「再痛一次」，更可能擔心簽下同意書，就等於親手選擇放棄。<br>從20歲驟逝的男大生，到97歲溫柔告別的黃奶奶，兩個家庭的故事顯示，生前談論器捐意願，能減輕家屬在最後關頭代替摯愛決定的壓力。器捐不只可能延續他人的生命，也可能幫助留下來的人安放悲傷；但無論捐或不捐，決定的起點都是對家人的愛。</p>
                 <a href="#" class="btn-readmore-light">閱讀更多</a>
             </div>
