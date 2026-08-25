@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大愛，為何走不遠？ | 康健雜誌深度專題</title>
+    <!-- 引入 AOS 動畫庫樣式 -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- 引入 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #005b8f; 
+            --text-color: #111111;
+            --bg-color: #f7f9fa;
+            --accent-color: #e67e22;
+            --border-color: #eaeaea;
+            --medical-dark: #1a2a3a;
+            --coordinator-teal: #2c5f6b;
+            --family-warm: #bc5e33;
+        }
+
+        body, html { 
+            margin: 0; 
+            padding: 0; 
+            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+            background: var(--bg-color); 
+            color: var(--text-color); 
+            overflow-x: hidden;
+            line-height: 2;
+        }
+
+        h1, h2, .hero-overlay h1, .chart-minimal-title, .journey-step h2 {
+            font-family: "Noto Serif TC", "Source Han Serif", "微軟正黑體", serif;
+        }
+
+        .big-quote {
+            font-family: "Noto Serif TC", "Source Han Serif", "微軟正黑體", serif;
+        }
+        .story-container, .story-container p {
+            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+        }
+
+        .data-table, .btn-readmore-light, .chart-wrapper-clean div, .journey-step p {
+            font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
+        }
+
+        .tight-1, .tight-2 {
+            letter-spacing: -2px !important;
+        }
+
+        .mobile-title { display: none; }
+        .desktop-title { display: inline; }
+
+        .mobile-hero-block { display: none; }
+        .desktop-hero-block { display: block; }
+
+        /* 1. 全版沉浸式首屏 */
+        .desktop-bg { display: block; }
+        .mobile-bg { display: none; }
+        @media(max-width: 768px) {
+            .desktop-bg { display: none !important; }
+            .mobile-bg { display: block !important; object-fit: cover !important; width: 100% !important; height: 100% !important; }
+        }
+
+        .section-hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.2) 100%);
+            z-index: 1;
+        }
+        .section-hero { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            overflow: hidden; 
+            text-align: center;
+            background: #0b0b0b;
+        }
+        .bg-img { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            opacity: 0.85; 
+            filter: brightness(0.95);
+        }
+        .hero-overlay { 
+            z-index: 2; 
+            padding: 0 20px; 
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            position: relative;
+            top: -35px;
+        }
+        h1 { 
+            font-size: 5.3rem; 
+            margin: 0; 
+            letter-spacing: 6px; 
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 4px 25px rgba(0,0,0,0.4);
+            position: relative;
+            left: 14px;
+        }
+        .subtitle { 
+            font-size: 2.3rem; 
+            font-weight: 700; 
+            color: #ffffff; 
+            letter-spacing: 2px;
+            text-shadow: 0 4px 25px rgba(0,0,0,0.5);
+            margin-top: -18px;
+        }
+
+        /* 2. 閱讀內文區塊 */
+        .story-container { 
+            max-width: 720px; 
+            margin: 120px auto; 
+            padding: 0 24px; 
+            font-size: 1.35rem;
+            color: #1a1a1a;
+            background: transparent;
+        }
+        .story-container p {
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+        .big-quote { 
+            position: relative;
+            font-size: 1.7rem; 
+            font-weight: bold;
+            color: var(--primary-color); 
+            margin: 100px auto; 
+            padding: 30px 50px; 
+            line-height: 1.9;
+            text-align: center;
+            border-left: none;
+            max-width: 640px;
+            background: rgba(0, 91, 143, 0.03);
+            border-radius: 12px;
+        }
+        .big-quote::before {
+            content: "“";
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 6rem;
+            color: var(--primary-color);
+            opacity: 0.15;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        .big-quote::after {
+            content: "”";
+            position: absolute;
+            bottom: -50px;
+            right: 20px;
+            font-size: 6rem;
+            color: var(--primary-color);
+            opacity: 0.15;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        /* 3. 質感美學圖表區塊 */
+        .chart-minimal-section {
+            max-width: 760px;
+            margin: 100px auto;
+            padding: 0 24px;
+        }
+        .chart-minimal-title {
+            font-size: 1.45rem;
+            color: #1a202c;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-align: center;
+            border-left: none;
+            padding-left: 0;
+            line-height: 1.4;
+        }
+        .chart-wrapper-clean {
+            position: relative;
+            width: 100%;
+            margin-bottom: 120px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.06);
+            padding: 40px;
+            box-sizing: border-box;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 1.15rem;
+        }
+        .data-table th, .data-table td {
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px;
+            text-align: center;
+        }
+        .data-table th {
+            color: #718096;
+            font-weight: 600;
+            background: #f7fafc;
+        }
+
+        /* ====== 下方三篇文章區域（強制全螢幕滿版背景技法） ====== */
+        .journey-wrapper {
+            background: linear-gradient(180deg, var(--medical-dark) 0%, var(--coordinator-teal) 50%, var(--family-warm) 100%);
+            color: #fff;
+            padding: 100px 20px;
+            margin-top: 80px;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            box-sizing: border-box;
+        }
+        
+        .journey-container {
+            width: 1160px; 
+            max-width: 90%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .journey-container::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            bottom: 20px;
+            left: 420px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .journey-step {
+            position: relative;
+            padding-left: 480px;
+            margin-bottom: 140px;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+            box-sizing: border-box;
+            min-height: 380px;
+        }
+        
+        .journey-step:hover {
+            opacity: 1;
+        }
+
+        .journey-img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        .journey-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .journey-step::before {
+            content: '';
+            position: absolute;
+            left: 414px;
+            top: 15px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(255,255,255,0.8);
+            z-index: 2;
+        }
+
+        .journey-step h2 {
+            color: #fff;
+            border: none;
+            margin-top: 0;
+            font-size: 2.1rem;
+            line-height: 1.35;
+        }
+
+        .journey-step p {
+            color: rgba(255, 255, 255, 1);
+            font-size: 1.15rem;
+            text-align: justify;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-readmore-light {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            border: 1px solid #fff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .btn-readmore-light:hover {
+            background: #fff;
+            color: #333;
+        }
+
+        @media(max-width: 960px) {
+            .journey-container { width: 100% !important; padding: 0 20px !important; box-sizing: border-box !important; }
+            .journey-container::before { display: none !important; }
+            .journey-step { padding-left: 0 !important; margin-bottom: 60px !important; min-height: auto !important; text-align: center; }
+            .journey-img { position: relative !important; left: 0 !important; width: 260px !important; height: 260px !important; margin: 0 auto 25px auto !important; display: block !important; border-radius: 50% !important; }
+            .journey-step::before { display: none !important; }
+            .journey-step h2 { font-size: 1.4rem !important; }
+            .journey-step p { text-align: left !important; }
+        }
+
+        @keyframes slowGrow {
+            0% { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .zoom-circle {
+            animation: slowGrow 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        .zoom-red-dot {
+            animation: slowGrow 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
+            opacity: 0;
+            transform-box: fill-box;
+            transform-origin: center;
+        }
+        .chart2-text {
+            animation: slowGrow 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
+            opacity: 0;
+            transform-origin: left center;
+        }
+        .chart2-lines-only path {
+            opacity: 0;
+            animation: drawDesktopLine 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.8s forwards;
+        }
+        @keyframes drawDesktopLine {
+            0% { stroke-dashoffset: 120; opacity: 1; }
+            100% { stroke-dashoffset: 0; opacity: 1; }
+        }
+
+        .mobile-lines-only path {
+            opacity: 0;
+            animation: drawMobileLine 1.2s cubic-bezier(0.25, 1, 0.5, 1) 1.8s forwards;
+        }
+        @keyframes drawMobileLine {
+            0% { stroke-dashoffset: 30; opacity: 1; }
+            100% { stroke-dashoffset: 0; opacity: 1; }
+        }
+    
+        .chart2-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            padding: 20px 0;
+            margin: 20px 0;
+        }
+        .chart2-circle {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            background: #1a2a3a;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            box-shadow: none;
+            flex-shrink: 0;
+            transition: transform 0.4s ease;
+        }
+        .chart2-line-group {
+            position: relative;
+            margin-left: 40px;
+            display: flex;
+            align-items: center;
+        }
+        .chart2-text {
+            position: absolute;
+            left: 95px;
+            top: 65px;
+            white-space: nowrap;
+        }
+
+        .taiwan-tooltip {
+            position: absolute;
+            top: 100%;
+            margin-top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a2a3a;
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: normal;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            line-height: 1.5;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        .taiwan-tooltip-arrow {
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 6px solid #1a2a3a;
+            border-top: none;
+        }
+
+        @media(max-width: 768px) {
+            .desktop-hero-block { display: none !important; }
+            .m-qmark { margin-left: -5px !important; }
+            .mobile-hero-block { display: block !important; }
+            .hero-overlay {
+                top: 130px !important;
+                padding: 0 15px !important;
+            }
+            .mobile-h1 {
+                font-size: 2.3rem !important;
+                left: 0 !important;
+                letter-spacing: 2px !important;
+                line-height: 1.25 !important;
+                white-space: normal !important;
+            }
+            .mobile-big {
+                font-size: 4.2rem !important;
+                font-weight: 700;
+            }
+            .mobile-sub {
+                font-size: 1.25rem !important;
+                margin-top: 15px !important;
+                letter-spacing: 1px !important;
+                line-height: 1.6 !important;
+            }
+            .chart2-flex {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0;
+            }
+            .chart2-circle {
+                width: 220px;
+                height: 220px;
+            }
+            .chart2-circle .num { font-size: 2.2rem !important; }
+            .chart2-line-group {
+                margin-left: 0;
+                flex-direction: column;
+                align-items: center;
+                height: auto;
+            }
+            .desktop-svg { display: none !important; }
+            .mobile-svg { display: block !important; margin: 0 auto; }
+            .chart2-text {
+                position: static;
+                text-align: center;
+                white-space: normal;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 5px;
+            }
+            .chart2-text div:first-child {
+                font-size: 2.4rem !important;
+            }
+            
+            .taiwan-tooltip {
+                white-space: normal;
+                width: 240px;
+                font-size: 0.85rem;
+                margin-top: 14px;
+            }
+            .data-table th, .data-table td {
+                padding: 12px 6px;
+                font-size: 1rem;
+            }
+        }
+
+        /* 針對手機版圖四外層容器保留足夠高度給下方自訂圖例 */
+        @media(max-width: 768px) {
+            .chart-wrapper-clean:has(#chart4) .chart-canvas-wrapper {
+                height: 380px !important;
+            }
+        }
+
+        .btn-readmore-dark {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 20px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .btn-readmore-dark:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+    
+        /* 手機版圖四自訂圖例樣式 */
+        .custom-chart4-legend {
+            display: none;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        .legend-grid {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+        }
+        .legend-row {
+            display: flex;
+            gap: 32px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 125px;
+            font-size: 13px;
+            color: #2d3748;
+        }
+        .legend-box {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        @media(max-width: 768px) {
+            .custom-chart4-legend {
+                display: flex !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="section-hero">
+        <img src="images/hero-bg.jpg" class="bg-img desktop-bg" alt="主視覺">
+        <img src="images/hero-bg-mobile.jpg" class="bg-img mobile-bg" alt="主視覺">
+        <div class="hero-overlay" data-aos="fade-up" data-aos-duration="1200">
+            <!-- 桌面版首屏文字 -->
+            <div class="desktop-hero-block">
+                <h1 class="hero-title">大愛，為何走不遠？</h1>
+                <div class="subtitle">每年逾千人在等待中離世，台灣器捐卡在哪</div>
+            </div>
+            <!-- 手機版首屏文字 -->
+            <div class="mobile-hero-block">
+                <h1 class="hero-title mobile-h1">
+                    <span class="mobile-big">大愛</span><br>為何走不<span class="m-qmark">遠？</span>
+                </h1>
+                <div class="subtitle mobile-sub">
+                    每年逾千人在等待中離世<br>台灣器捐卡在哪
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="story-container">
+        <p data-aos="fade-up">位在永康街的搖滾牛冰淇淋，曾在2025年獲選為國宴冰淇淋，是不少冰淇淋愛好者心中的口袋名單。</p>
+        <p data-aos="fade-up">這家冰淇淋店老闆楊鈞儀是一名腎臟移植者，29歲接受移植至今已10多年，不但迎來新人生，也擁有自己的事業。</p>
+        <p data-aos="fade-up">但並非每個人都像楊鈞儀一樣幸運，還有許多等待器官的病患始終等不到那通改變命運的電話，甚至甘冒風險遠赴他國移植。</p>
+        <p data-aos="fade-up">為什麼台灣器官器捐成案這麼難？捐贈制度究竟出了什麼問題？每一次成功的器捐，背後是文化、制度、人力、資源等層層綿密交織的成果，《康健》從真實案例故事、到第一線觀察與分析，揭開國內大愛器捐的困境，讓每一份重生大禮，送到對的人手上。</p>
+    </div>
+
+    <div class="story-container">
+        <h2 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px;" data-aos="fade-up">等不到的希望：全台1.1萬人苦等器官，器捐為何這麼難完成？</h2>
+        <p data-aos="fade-up">首起醫師因涉嫌仲介病患赴中國接受器官移植而遭廢止醫師證書的陳堯俐案，再度讓「器官移植旅遊」浮上檯面。但當社會聚焦法律、道德與器官來源爭議時，更根本的問題是：病人為何願意花費數百萬元，冒著生命危險遠赴海外移植？這背後也正凸顯出台灣器官「供給不足」的問題。</p>
+        <p data-aos="fade-up">台灣每年約有3萬～4萬人註記器捐意願，實際完成捐贈的人數卻在疫情後持續下降，2025年接受移植的人數更是10年來新低。從醫院通報、器官評估、協調團隊介入到家屬同意，究竟是哪個環節，讓原本可能實現的善意中斷？</p>
+    </div>
+
+    <div class="chart-minimal-section" data-aos="fade-up">
+        <div class="chart-wrapper-clean">
+            <div class="chart-minimal-title">圖1：近10年移植等候者增近3成，仍有逾1.1萬人等待</div>
+            <div class="chart-canvas-wrapper" style="position: relative; height: 320px; width: 100%;"><canvas id="chart1"></canvas></div>
+            <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
+                <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
+                <p style="margin: 0;">整理：楊雅棠</p>
+            </div>
+        </div>
+
+        <div class="chart-wrapper-clean">
+            <div class="chart-minimal-title">圖2：有器捐意願，為何還是不夠？</div>
+            <div class="chart2-flex">
+                <div class="zoom-circle chart2-circle">
+                    <div class="num" style="font-size: 2.5rem; font-weight: bold; letter-spacing: 1px;">42,746人</div>
+                    <div style="font-size: 1rem; margin-top: 8px; opacity: 0.9;">2025年新增註記器捐意願</div>
+                </div>
+                <div class="chart2-line-group">
+                    <svg class="chart2-line desktop-svg" width="120" height="80" style="overflow: visible;">
+                        <g class="chart2-lines-only">
+                            <path d="M0,40 L60,40 L90,70" fill="none" stroke="#cbd5e0" stroke-width="2" stroke-dasharray="120" stroke-dashoffset="120" />
+                        </g>
+                        <circle class="zoom-red-dot" cx="0" cy="40" r="6" fill="#e74c3c" />
+                    </svg>
+                    <svg class="chart2-line mobile-svg" width="40" height="40" style="overflow: visible; display: none;">
+                        <g class="mobile-lines-only">
+                            <path d="M20,12 L20,38" fill="none" stroke="#cbd5e0" stroke-width="2" stroke-dasharray="30" stroke-dashoffset="30" />
+                        </g>
+                        <circle class="zoom-red-dot" cx="20" cy="6" r="6" fill="#e74c3c" />
+                    </svg>
+                    <div class="chart2-text">
+                        <div style="font-size: 3.0rem; font-weight: 900; color: #e74c3c; letter-spacing: 1px; line-height: 1.1;">318人</div>
+                        <div style="font-size: 1rem; color: #4a5568; margin-top: 2px; font-weight: 500;">2025年實際捐贈者</div>
+                    </div>
+                </div>
+            </div>
+            <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
+                <p style="margin: 0 0 5px 0;">註：器捐意願不等於日後能實際捐贈，仍須符合死亡情境、醫療條件及器官適用性等條件</p>
+                <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
+                <p style="margin: 0;">整理：楊雅棠</p>
+            </div>
+        </div>
+
+        <div class="chart-wrapper-clean">
+            <div class="chart-minimal-title">圖3：捐贈與移植量近10年數據比較</div>
+            <div class="chart-canvas-wrapper" style="position: relative; height: 320px; width: 100%;"><canvas id="chart3"></canvas></div>
+            <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
+                <p style="margin: 0 0 5px 0;">註：一位捐贈人可捐贈不只一項器官，故移植人數較捐贈人數為多</p>
+                <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
+                <p style="margin: 0;">整理：楊雅棠</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="story-container">
+        <p data-aos="fade-up">截至2025年底，全台等待器官移植人數超過1.1萬人。從2023～2024年的數據更可以看到，每年有1000多人因為等不到器官而離開。</p>
+    </div>
+
+    <div class="chart-minimal-section" data-aos="fade-up">
+        <div class="chart-wrapper-clean">
+            <div class="chart-minimal-title">圖4：每年逾千人在移植等候期間離世，腎臟等待者最多</div>
+            <div style="font-size: 1.05rem; color: #4a5568; margin-bottom: 20px; text-align: center; font-weight: 500;">2024年等候器官期間死亡個案數分佈（總計 1,157 人）</div>
+            <div class="chart-canvas-wrapper" style="position: relative; height: 360px; width: 100%;"><canvas id="chart4"></canvas></div>
+            <!-- 手機版自訂左右對齊、整體置中的圖例 -->
+            <div class="custom-chart4-legend">
+                <div class="legend-grid">
+                    <div class="legend-row">
+                        <div class="legend-item"><span class="legend-box" style="background:#eb5757;"></span><span>腎臟 (724人)</span></div>
+                        <div class="legend-item"><span class="legend-box" style="background:rgba(43, 76, 111, 1);"></span><span>肝臟 (304人)</span></div>
+                    </div>
+                    <div class="legend-row">
+                        <div class="legend-item"><span class="legend-box" style="background:rgba(43, 76, 111, 0.75);"></span><span>心臟 (89人)</span></div>
+                        <div class="legend-item"><span class="legend-box" style="background:rgba(43, 76, 111, 0.55);"></span><span>肺臟 (28人)</span></div>
+                    </div>
+                    <div class="legend-row">
+                        <div class="legend-item"><span class="legend-box" style="background:rgba(43, 76, 111, 0.35);"></span><span>胰臟 (9人)</span></div>
+                        <div class="legend-item"><span class="legend-box" style="background:rgba(43, 76, 111, 0.2);"></span><span>小腸 (3人)</span></div>
+                    </div>
+                </div>
+            </div>
+            <div style="font-size: 0.9rem; color: #718096; margin-top: 25px; line-height: 1.6;">
+                <p style="margin: 0 0 5px 0;">資料來源：器官捐贈移植登錄及病人自主推廣中心</p>
+                <p style="margin: 0;">整理：楊雅棠</p>
+            </div>
+        </div>
+
+        <div class="chart-wrapper-clean">
+            <div class="chart-minimal-title">圖5：台灣器捐率全球第46，與領先國家差距懸殊</div>
+            <div style="font-size: 1.1rem; color: #4a5568; margin-bottom: 20px; font-weight: bold; text-align: center;">2024年全球國家百萬人口器官捐贈數</div>
+            <table class="data-table" style="position: relative;">
+                <thead>
+                    <tr><th>排序</th><th>區域</th><th>國家/地區</th><th>數值 (每百萬人口)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>歐洲</td><td>西班牙</td><td>47.96</td></tr>
+                    <tr><td>2</td><td>北美洲</td><td>美國</td><td>43.62</td></tr>
+                    <tr><td>22</td><td>大洋洲</td><td>澳洲</td><td>18.43</td></tr>
+                    <tr><td>30</td><td>大洋洲</td><td>紐西蘭</td><td>12.83</td></tr>
+                    <tr><td>41</td><td>東亞</td><td>南韓</td><td>7.68</td></tr>
+                    <tr><td>45</td><td>東南亞</td><td>泰國</td><td>5.79</td></tr>
+                    <tr style="background-color: #ffebee; color: #e74c3c; font-weight: bold; height: 110px; border-top: 2px solid #e74c3c; border-bottom: 2px solid #e74c3c;">
+                        <td style="vertical-align: middle;">46</td>
+                        <td style="vertical-align: middle;">西太平洋</td>
+                        <td style="vertical-align: middle;">
+                            <div style="position: relative; display: inline-block;">
+                                台灣
+                                <div class="taiwan-tooltip">
+                                    <div class="taiwan-tooltip-arrow"></div>
+                                    每百萬人口5.77名器捐者，僅西班牙約1/8，也落後澳洲、紐西蘭、南韓
+                                </div>
+                            </div>
+                        </td>
+                        <td style="vertical-align: middle;">5.77</td>
+                    </tr>
+                    <tr><td>48</td><td>西太平洋</td><td>新加坡</td><td>4.75</td></tr>
+                    <tr><td>49</td><td>東亞</td><td>中國</td><td>4.65</td></tr>
+                    <tr><td>66</td><td>東亞</td><td>日本</td><td>1.13</td></tr>
+                </tbody>
+            </table>
+            <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
+                <p style="margin: 0 0 5px 0;">註：僅列出全球前兩名及西太平洋與東南亞部分國家</p>
+                <p style="margin: 0 0 5px 0;">資料來源：全球器官捐贈與移植觀察站（GODT）、器官捐贈移植登錄及病人自主推廣中心整理</p>
+                <p style="margin: 0;">整理：楊雅棠</p>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; margin-bottom: 60px; text-align: center;">
+            <a href="#" class="btn-readmore-dark">閱讀更多</a>
+        </div>
+    </div>
+
+    <!-- 下方三篇文章區塊（絕對滿版全幅背景） -->
+    <div class="journey-wrapper">
+        <div class="journey-container">
+            <div class="journey-step" data-aos="fade-up">
+                <div class="journey-img"><img src="images/journey-1.jpg" alt="醫師篇"></div>
+                <h2>器官移植後，故事才開始！<br>手術數小時、照護數十年，為何留不住移植醫師？</h2>
+                <p>當病人終於等到救命器官，對移植團隊而言，真正的挑戰才剛開始。從半夜奔波取器官、數小時的高風險手術，到術後長達數十年的追蹤照護，移植醫療是一場沒有終點的馬拉松。<br>然而，移植醫學學會今年僅招募到3名新會員，創近10年新低；部分醫院則面臨新血不進、中生代流失、資深醫師苦撐的接班斷層。當救命技術後繼無人，器官移植還能只靠醫師的熱忱與犧牲支撐嗎？</p>
+                <a href="#" class="btn-readmore-light">閱讀更多</a>
+            </div>
+
+            <div class="journey-step" data-aos="fade-up">
+                <div class="journey-img"><img src="images/journey-2.jpg" alt="協調師篇"></div>
+                <h2>沒有協調師，器捐很難成案！<br>24小時待命、全台僅129人，關鍵人力為何愈來愈少？</h2>
+                <p>器官捐贈能否順利完成，器捐協調師是不可或缺的關鍵。從陪伴家屬、安排腦死判定、協調醫療團隊，到器官評估、配對與摘取作業，甚至最後的感恩致謝，都由協調師串聯完成。<br>這份工作不只需要高度專業，一次值班更長達7天，一通電話就得立即出勤。然而，全台器捐協調師已從137人減至129人，多家移植中心長期招募仍補不到人。當器捐成案的關鍵人力持續流失，制度該如何補上缺口？</p>
+                <a href="#" class="btn-readmore-light">閱讀更多</a>
+            </div>
+
+            <div class="journey-step" data-aos="fade-up">
+                <div class="journey-img"><img src="images/journey-3.jpg" alt="文化觀念篇"></div>
+                <h2>放手不是放棄！<br>捐與不捐都是愛，器捐家屬如何面對最難的告別？</h2>
+                <p>近7成民眾表達器官捐贈意願，但臨床上真正面臨至親離世時，同意捐贈的家屬約僅2～3成。躺在病床上的是相伴數十年的家人，家屬不只捨不得對方「再痛一次」，更可能擔心簽下同意書，就等於親手選擇放棄。<br>從20歲驟逝的男大生，到97歲溫柔告別的黃奶奶，兩個家庭的故事顯示，生前談論器捐意願，能減輕家屬在最後關頭代替摯愛決定的壓力。器捐不只可能延續他人的生命，也可能幫助留下來的人安放悲傷；但無論捐或不捐，決定的起點都是對家人的愛。</p>
+                <a href="#" class="btn-readmore-light">閱讀更多</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            AOS.init({ once: true, offset: 100 });
+
+            // 通用觀察器函數：當目標元素進入視野時才初始化並觸發圖表
+            const observeChart = (selector, createChartFn) => {
+                const element = document.querySelector(selector);
+                if (!element) return;
+                let created = false;
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !created) {
+                            created = true;
+                            createChartFn();
+                        }
+                    });
+                }, { threshold: 0.3 });
+                observer.observe(element);
+            };
+
+            // 圖1
+            observeChart('#chart1', () => {
+                const chart1Annotations = {
+                    id: 'chart1Annotations',
+                    afterDraw(chart) {
+                        const { ctx, chartArea: { top, bottom, left, right } } = chart;
+                        const points = [
+                            { index: 0, year: '2016年', text: '8,941人', offsetX: 25 },
+                            { index: 9, year: '2025年', text: '11,546人', offsetX: -25 }
+                        ];
+
+                        ctx.save();
+                        points.forEach(p => {
+                            const meta = chart.getDatasetMeta(0);
+                            if (!meta.data[p.index]) return;
+                            const { x: px, y: py } = meta.data[p.index];
+
+                            const boxWidth = 92;
+                            const boxHeight = 52;
+                            let boxX = px + p.offsetX - boxWidth / 2;
+                            if (boxX < 0) boxX = 0;
+                            if (boxX + boxWidth > chart.width) boxX = chart.width - boxWidth;
+                            let boxY = py - boxHeight - 16;
+                            
+                            ctx.fillStyle = '#1a2a3a';
+                            ctx.strokeStyle = '#1a2a3a';
+                            ctx.lineWidth = 2;
+                            
+                            ctx.beginPath();
+                            if (ctx.roundRect) {
+                                ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 6);
+                            } else {
+                                ctx.rect(boxX, boxY, boxWidth, boxHeight);
+                            }
+                            ctx.fill();
+                            ctx.stroke();
+
+                            ctx.beginPath();
+                            ctx.moveTo(px, py - 4);
+                            ctx.lineTo(px - 6, boxY + boxHeight);
+                            ctx.lineTo(px + 6, boxY + boxHeight);
+                            ctx.closePath();
+                            ctx.fillStyle = '#1a2a3a';
+                            ctx.fill();
+
+                            ctx.fillStyle = '#ffffff';
+                            ctx.font = '12px "Microsoft JhengHei", sans-serif';
+                            ctx.textAlign = 'center';
+                            ctx.fillText(p.year, boxX + boxWidth / 2, boxY + 18);
+
+                            ctx.font = 'bold 15px "Microsoft JhengHei", sans-serif';
+                            ctx.fillText(p.text, boxX + boxWidth / 2, boxY + 40);
+                        });
+                        ctx.restore();
+                    }
+                };
+
+                const ctx1 = document.getElementById('chart1').getContext('2d');
+                const gradient1 = ctx1.createLinearGradient(0, 0, 0, 300);
+                gradient1.addColorStop(0, 'rgba(235, 87, 87, 0.5)');
+                gradient1.addColorStop(1, 'rgba(235, 87, 87, 0.0)');
+
+                new Chart(ctx1, {
+                    type: 'line',
+                    plugins: [chart1Annotations],
+                    data: {
+                        labels: ['2016年', '2017年', '2018年', '2019年', '2020年', '2021年', '2022年', '2023年', '2024年', '2025年'],
+                        datasets: [{
+                            label: '等待移植人數',
+                            data: [8941, 9300, 9700, 10100, 10500, 11000, 11400, 11550, 11641, 11546],
+                            borderColor: '#eb5757',
+                            backgroundColor: gradient1,
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.2,
+                            pointBackgroundColor: '#ffffff',
+                            pointBorderColor: '#1a2a3a',
+                            pointBorderWidth: 2,
+                            pointRadius: function(context) {
+                                const index = context.dataIndex;
+                                return (index === 0 || index === 9) ? 6 : 4;
+                            },
+                            pointHoverRadius: 7
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { left: 15, right: 25, top: 85, bottom: 15 } },
+                        plugins: { 
+                            legend: { display: false },
+                            tooltip: {
+                                enabled: true,
+                                filter: function(tooltipItem) {
+                                    return tooltipItem.dataIndex !== 0 && tooltipItem.dataIndex !== 9;
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        return ' 等待人數: ' + context.parsed.y.toLocaleString() + '人';
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#edf2f7' } },
+                            y: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#edf2f7' }, min: 8000, max: 13000 }
+                        }
+                    }
+                });
+            });
+
+            // 圖2 數字與 SVG 動畫
+            const numLeft = document.querySelector('.zoom-circle .num');
+            const numRight = document.querySelector('.chart2-text div:first-child');
+            if (numLeft && numRight) {
+                let animated2 = false;
+                const animateValue = (el, start, end, duration, formatter) => {
+                    let startTimestamp = null;
+                    const step = (timestamp) => {
+                        if (!startTimestamp) startTimestamp = timestamp;
+                        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                        const easeProgress = 1 - Math.pow(1 - progress, 4);
+                        const current = Math.floor(easeProgress * (end - start) + start);
+                        el.textContent = formatter ? formatter(current) : current;
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        } else {
+                            el.textContent = formatter ? formatter(end) : end;
+                        }
+                    };
+                    window.requestAnimationFrame(step);
+                };
+
+                const observer2 = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !animated2) {
+                            animated2 = true;
+                            animateValue(numLeft, 0, 42746, 2200, (v) => v.toLocaleString() + '人');
+                            animateValue(numRight, 0, 318, 2200, (v) => v + '人');
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                const chart2Section = document.querySelector('.chart2-flex');
+                if (chart2Section) {
+                    observer2.observe(chart2Section);
+                }
+            }
+
+            // 圖3
+            observeChart('#chart3', () => {
+                new Chart(document.getElementById('chart3').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                        datasets: [
+                            { label: '捐贈人數', data: [290, 339, 327, 375, 402, 294, 309, 416, 366, 318], backgroundColor: '#3498db', borderRadius: 4 },
+                            { label: '移植人數', data: [1006, 1062, 984, 1179, 1218, 954, 942, 1154, 1034, 882], backgroundColor: '#2ecc71', borderRadius: 4 }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'top', labels: { boxWidth: 12, color: '#718096' } } },
+                        scales: {
+                            x: { ticks: { color: '#a0aec0' }, grid: { display: false } },
+                            y: { ticks: { color: '#a0aec0' }, grid: { color: '#f7fafc' } }
+                        }
+                    }
+                });
+            });
+
+            // 圖4
+            observeChart('#chart4', () => {
+                const chart4CenterTextPlugin = {
+                    id: 'chart4CenterText',
+                    beforeDatasetsDraw(chart) {
+                        if (chart.config.type !== 'doughnut') return;
+                        const { ctx, chartArea: { left, right, top, bottom } } = chart;
+                        const xCenter = (left + right) / 2;
+                        const yCenter = (top + bottom) / 2;
+                        
+                        const isMobile = chart.width < 500;
+                        const kidneyFont = isMobile ? 'bold 1.1rem "Microsoft JhengHei", sans-serif' : 'bold 1.35rem "Microsoft JhengHei", sans-serif';
+                        const numFont = isMobile ? 'bold 1.7rem "Microsoft JhengHei", sans-serif' : 'bold 2.4rem "Microsoft JhengHei", sans-serif';
+                        
+                        const gap1 = isMobile ? -16 : -20;
+                        const gap2 = isMobile ? 12 : 16;
+
+                        ctx.save();
+                        ctx.font = kidneyFont;
+                        ctx.fillStyle = '#4a5568';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('腎臟', xCenter, yCenter + gap1);
+
+                        ctx.font = numFont;
+                        ctx.fillStyle = '#eb5757';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('724人', xCenter, yCenter + gap2);
+                        ctx.restore();
+                    }
+                };
+
+                const ctx4 = document.getElementById('chart4').getContext('2d');
+                new Chart(ctx4, {
+                    type: 'doughnut',
+                    plugins: [chart4CenterTextPlugin],
+                    data: {
+                        labels: ['腎臟', '肝臟', '心臟', '肺臟', '胰臟', '小腸'],
+                        datasets: [{
+                            data: [724, 304, 89, 28, 9, 3],
+                            backgroundColor: [
+                                '#eb5757',                
+                                'rgba(43, 76, 111, 1)',   
+                                'rgba(43, 76, 111, 0.75)', 
+                                'rgba(43, 76, 111, 0.55)', 
+                                'rgba(43, 76, 111, 0.35)', 
+                                'rgba(43, 76, 111, 0.2)'   
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#ffffff',
+                            hoverOffset: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: window.innerWidth >= 768,
+                                position: 'bottom',
+                                align: 'center',
+                                labels: {
+                                    boxWidth: 10,
+                                    padding: 16,
+                                    font: { size: 12, family: '"Microsoft JhengHei", sans-serif' },
+                                    color: '#2d3748'
+                                },
+                                padding: 25
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.parsed || 0;
+                                        const total = 1157;
+                                        const percentage = ((value / total) * 100).toFixed(1);
+                                        return ` ${label}: ${value}人 (${percentage}%)`;
+                                    }
+                                }
+                            }
+                        },
+                        cutout: '48%'
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
