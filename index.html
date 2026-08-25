@@ -6,6 +6,7 @@
     <title>大愛，為何走不遠？ | 康健雜誌深度專題</title>
     <!-- 引入 AOS 動畫庫樣式 -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet">
     <!-- 引入 Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -32,10 +33,12 @@
 
         h1, h2, .hero-overlay h1, .chart-minimal-title, .journey-step h2 {
             font-family: "Noto Serif TC", "Source Han Serif", "微軟正黑體", serif;
+            font-weight: 700;
         }
 
         .big-quote {
             font-family: "Noto Serif TC", "Source Han Serif", "微軟正黑體", serif;
+            font-weight: 600;
         }
         .story-container, .story-container p {
             font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
@@ -51,9 +54,6 @@
 
         .mobile-title { display: none; }
         .desktop-title { display: inline; }
-
-        .mobile-hero-block { display: none; }
-        .desktop-hero-block { display: block; }
 
         /* 1. 全版沉浸式首屏 */
         .desktop-bg { display: block; }
@@ -111,7 +111,7 @@
             letter-spacing: 6px; 
             font-weight: 700;
             color: #fff;
-            text-shadow: 0 4px 25px rgba(0,0,0,0.4);
+            text-shadow: 0 4px 25px rgba(0,0,0,0.85);
             position: relative;
             left: 14px;
         }
@@ -120,7 +120,7 @@
             font-weight: 700; 
             color: #ffffff; 
             letter-spacing: 2px;
-            text-shadow: 0 4px 25px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 25px rgba(0,0,0,0.9);
             margin-top: -18px;
         }
 
@@ -134,8 +134,9 @@
             background: transparent;
         }
         .story-container p {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-align: justify;
+            text-justify: inter-ideograph;
         }
         .big-quote { 
             position: relative;
@@ -159,7 +160,7 @@
             font-size: 6rem;
             color: var(--primary-color);
             opacity: 0.15;
-            font-family: Georgia, serif;
+            font-family: "Noto Serif TC", "Source Han Serif", "微軟正黑體", serif;
             line-height: 1;
         }
         .big-quote::after {
@@ -170,7 +171,7 @@
             font-size: 6rem;
             color: var(--primary-color);
             opacity: 0.15;
-            font-family: Georgia, serif;
+            font-family: "Noto Serif TC", "Source Han Serif", "微軟正黑體", serif;
             line-height: 1;
         }
 
@@ -183,7 +184,7 @@
         .chart-minimal-title {
             font-size: 1.45rem;
             color: #1a202c;
-            margin-bottom: 30px;
+            margin-bottom: 45px;
             font-weight: 700;
             text-align: center;
             border-left: none;
@@ -193,7 +194,7 @@
         .chart-wrapper-clean {
             position: relative;
             width: 100%;
-            margin-bottom: 120px;
+            margin-bottom: 150px;
             background: #ffffff;
             border-radius: 16px;
             box-shadow: 0 12px 35px rgba(0,0,0,0.06);
@@ -308,6 +309,7 @@
             color: rgba(255, 255, 255, 1);
             font-size: 1.15rem;
             text-align: justify;
+            text-justify: inter-ideograph;
             letter-spacing: 0.5px;
         }
 
@@ -334,7 +336,7 @@
             .journey-img { position: relative !important; left: 0 !important; width: 260px !important; height: 260px !important; margin: 0 auto 25px auto !important; display: block !important; border-radius: 50% !important; }
             .journey-step::before { display: none !important; }
             .journey-step h2 { font-size: 1.4rem !important; }
-            .journey-step p { text-align: left !important; }
+            .journey-step p { text-align: justify !important; text-justify: inter-ideograph !important; word-break: break-all; }
         }
 
         @keyframes slowGrow {
@@ -399,6 +401,15 @@
             flex-shrink: 0;
             transition: transform 0.4s ease;
         }
+        .chart2-inner-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .chart2-inner-group .sub-text {
+            margin-top: 10px !important;
+        }
         .chart2-line-group {
             position: relative;
             margin-left: 40px;
@@ -443,30 +454,39 @@
         }
 
         @media(max-width: 768px) {
-            .desktop-hero-block { display: none !important; }
-            .m-qmark { margin-left: -5px !important; }
-            .mobile-hero-block { display: block !important; }
-            .hero-overlay {
-                top: 130px !important;
-                padding: 0 15px !important;
+            .desktop-title-block { display: none !important; }
+            .desktop-subtitle { display: none !important; }
+            .mobile-title-block { 
+                display: block !important; 
+                font-size: 3.1rem !important; /* 大標整組再大一點 */
+                line-height: 1.15 !important;
+                text-align: center !important;
+                position: relative;
+                left: 8px !important; /* 微調向右靠，平衡問號的視覺重心 */
             }
-            .mobile-h1 {
-                font-size: 2.3rem !important;
-                left: 0 !important;
-                letter-spacing: 2px !important;
-                line-height: 1.25 !important;
-                white-space: normal !important;
-            }
-            .mobile-big {
-                font-size: 4.2rem !important;
-                font-weight: 700;
-            }
-            .mobile-sub {
-                font-size: 1.25rem !important;
-                margin-top: 15px !important;
+            .mobile-subtitle { 
+                display: block !important; 
+                font-size: 1.25rem !important; /* 副標維持不變 */
                 letter-spacing: 1px !important;
-                line-height: 1.6 !important;
+                margin-top: 20px !important;
+                line-height: 1.5 !important;
             }
+            .giant-da-ai {
+                font-size: 1.5em !important;
+                font-weight: 700;
+                letter-spacing: 4px;
+            }
+            .rest-title {
+                font-size: 0.9em !important;
+                letter-spacing: 2px;
+            }
+            .near-q {
+                letter-spacing: -3px !important;
+            }
+            .hero-overlay {
+                top: 90px !important; /* 主副標整組再往下移一點 */
+            }
+
             .chart2-flex {
                 flex-direction: column;
                 gap: 10px;
@@ -476,7 +496,11 @@
                 width: 220px;
                 height: 220px;
             }
-            .chart2-circle .num { font-size: 2.2rem !important; }
+            .chart2-circle .num { font-size: 2.0rem !important; }
+            .chart2-circle div:last-child, .chart2-inner-group .sub-text {
+                margin-top: 8px !important;
+                font-size: 0.9rem !important;
+            }
             .chart2-line-group {
                 margin-left: 0;
                 flex-direction: column;
@@ -510,7 +534,6 @@
             }
         }
 
-        /* 針對手機版圖四外層容器保留足夠高度給下方自訂圖例 */
         @media(max-width: 768px) {
             .chart-wrapper-clean:has(#chart4) .chart-canvas-wrapper {
                 height: 380px !important;
@@ -533,7 +556,6 @@
             color: #fff;
         }
     
-        /* 手機版圖四自訂圖例樣式 */
         .custom-chart4-legend {
             display: none;
             justify-content: center;
@@ -571,20 +593,74 @@
             }
         }
 
-        .journey-step h2 .journey-sub-title {
-            font-size: 1.45rem; /* 第二行小標題的字體大小，可依需求調整 */
-            font-weight: 500;   /* 字體粗細，讓視覺層次更分明 */
-            display: inline-block;
-            margin-top: 8px;    /* 與第一行標題保持的間距 */
-            line-height: 1.4;
-        }
-        /* 針對手機版同步調整 */
-        @media(max-width: 960px) {
-            .journey-step h2 .journey-sub-title {
-                font-size: 1.1rem !important; /* 手機版對應縮小 */
+        @media(max-width: 768px) {
+            .chart-wrapper-clean {
+                padding: 36px 24px !important;
+            }
+            .chart-canvas-wrapper {
+                height: 240px !important;
+            }
+            .chart-wrapper-clean:has(#chart4) .chart-canvas-wrapper {
+                height: 280px !important;
+            }
+            .journey-wrapper {
+                padding: 60px 12px !important;
+            }
+            .journey-container {
+                max-width: 100% !important;
+                padding: 0 16px !important;
+            }
+            .journey-step {
+                padding: 0 !important;
+                margin-bottom: 50px !important;
             }
         }
 
+        @media(max-width: 768px) {
+            .story-container {
+                margin: 40px auto !important;
+            }
+            .story-container h2 {
+                line-height: 1.35 !important;
+                margin-bottom: 20px !important;
+                font-size: 1.75rem !important;
+            }
+            .chart-wrapper-clean {
+                margin-bottom: 50px !important;
+                padding: 24px 18px !important;
+            }
+            .chart-minimal-title {
+                margin-bottom: 20px !important;
+            }
+            .custom-chart4-legend {
+                padding: 0 10px;
+                justify-content: flex-start !important;
+                padding-left: 15px;
+            }
+            .story-container p {
+                text-align: justify !important;
+                text-justify: inter-ideograph !important;
+                word-break: break-all;
+            }
+        }
+
+        .taiwan-tooltip {
+            display: none;
+        }
+        #taiwan-tooltip-container.active-tip .taiwan-tooltip {
+            display: block !important;
+        }
+        @media(min-width: 769px) {
+            #taiwan-tooltip-container .taiwan-tooltip {
+                display: block !important;
+            }
+            #taiwan-tooltip-container span[onclick] {
+                display: none !important;
+            }
+        }
+
+        .mobile-title-block { display: none; }
+        .desktop-title-block { display: block; }
     </style>
 </head>
 <body>
@@ -593,20 +669,13 @@
         <img src="images/hero-bg.jpg" class="bg-img desktop-bg" alt="主視覺">
         <img src="images/hero-bg-mobile.jpg" class="bg-img mobile-bg" alt="主視覺">
         <div class="hero-overlay" data-aos="fade-up" data-aos-duration="1200">
-            <!-- 桌面版首屏文字 -->
-            <div class="desktop-hero-block">
-                <h1 class="hero-title">大愛，為何走不遠？</h1>
-                <div class="subtitle">每年逾千人在等待中離世，台灣器捐卡在哪</div>
-            </div>
-            <!-- 手機版首屏文字 -->
-            <div class="mobile-hero-block">
-                <h1 class="hero-title mobile-h1">
-                    <span class="mobile-big">大愛</span><br>為何走不<span class="m-qmark">遠？</span>
-                </h1>
-                <div class="subtitle mobile-sub">
-                    每年逾千人在等待中離世<br>台灣器捐卡在哪
-                </div>
-            </div>
+            <h1 class="hero-title desktop-title-block">大愛，為何走不遠？</h1>
+            <h1 class="hero-title mobile-title-block">
+                <span class="giant-da-ai">大愛</span><br>
+                <span class="rest-title">為何走不<span class="near-q">遠？</span></span>
+            </h1>
+            <div class="subtitle desktop-subtitle">每年逾千人在等待中離世，台灣器捐卡在哪</div>
+            <div class="subtitle mobile-subtitle" style="display: none;">每年逾千人在等待中離世<br>台灣器捐卡在哪</div>
         </div>
     </section>
 
@@ -618,7 +687,7 @@
     </div>
 
     <div class="story-container">
-        <h2 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px;" data-aos="fade-up">等不到的希望：全台1.1萬人苦等器官，器捐為何這麼難完成？</h2>
+        <h2 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 45px; border-bottom: 2px solid #eee; padding-bottom: 10px;" data-aos="fade-up">等不到的希望：全台1.1萬人苦等器官，器捐為何這麼難完成？</h2>
         <p data-aos="fade-up">首起醫師因涉嫌仲介病患赴中國接受器官移植而遭廢止醫師證書的陳堯俐案，再度讓「器官移植旅遊」浮上檯面。但當社會聚焦法律、道德與器官來源爭議時，更根本的問題是：病人為何願意花費數百萬元，冒著生命危險遠赴海外移植？這背後也正凸顯出台灣器官「供給不足」的問題。</p>
         <p data-aos="fade-up">台灣每年約有3萬～4萬人註記器捐意願，實際完成捐贈的人數卻在疫情後持續下降，2025年接受移植的人數更是10年來新低。從醫院通報、器官評估、協調團隊介入到家屬同意，究竟是哪個環節，讓原本可能實現的善意中斷？</p>
     </div>
@@ -637,8 +706,10 @@
             <div class="chart-minimal-title">圖2：有器捐意願，為何還是不夠？</div>
             <div class="chart2-flex">
                 <div class="zoom-circle chart2-circle">
-                    <div class="num" style="font-size: 2.5rem; font-weight: bold; letter-spacing: 1px;">42,746人</div>
-                    <div style="font-size: 1rem; margin-top: 8px; opacity: 0.9;">2025年新增註記器捐意願</div>
+                    <div class="chart2-inner-group">
+                        <div class="num" style="font-size: 2.5rem; font-weight: bold; letter-spacing: 1px; line-height: 1.1;">42,746人</div>
+                        <div class="sub-text" style="font-size: 1rem; margin-top: 10px; opacity: 0.9; line-height: 1.2;">2025年新增註記器捐意願</div>
+                    </div>
                 </div>
                 <div class="chart2-line-group">
                     <svg class="chart2-line desktop-svg" width="120" height="80" style="overflow: visible;">
@@ -727,8 +798,9 @@
                         <td style="vertical-align: middle;">46</td>
                         <td style="vertical-align: middle;">西太平洋</td>
                         <td style="vertical-align: middle;">
-                            <div style="position: relative; display: inline-block;">
-                                台灣
+                            <div style="position: relative; display: inline-block;" id="taiwan-tooltip-container">
+                                <span style="border-bottom: 1px dashed #e74c3c; cursor: pointer;">台灣</span>
+                                <span onclick="document.getElementById('taiwan-tooltip-container').classList.toggle('active-tip')" style="background:#e74c3c; color:#fff; border-radius:50%; width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center; font-size:12px; margin-left:4px; cursor:pointer; vertical-align:middle; box-shadow:0 2px 4px rgba(0,0,0,0.2);">+</span>
                                 <div class="taiwan-tooltip">
                                     <div class="taiwan-tooltip-arrow"></div>
                                     每百萬人口5.77名器捐者，僅西班牙約1/8，也落後澳洲、紐西蘭、南韓
@@ -744,8 +816,7 @@
             </table>
             <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
                 <p style="margin: 0 0 5px 0;">註：僅列出全球前兩名及西太平洋與東南亞部分國家</p>
-                <p style="margin: 0 0 5px 0;">資料來源：全球器官捐贈與移植觀察站（GODT）、器官捐贈移植登錄及病人自主推廣中心整理</p>
-                <p style="margin: 0;">整理：楊雅棠</p>
+                <p style="margin: 0;">資料來源：全球器官捐贈與移植觀察站（GODT）、器官捐贈移植登錄及病人自主推廣中心整理</p>
             </div>
         </div>
 
@@ -759,21 +830,21 @@
         <div class="journey-container">
             <div class="journey-step" data-aos="fade-up">
                 <div class="journey-img"><img src="images/journey-1.jpg" alt="醫師篇"></div>
-                <h2>器官移植後，故事才開始！<br><span class="journey-sub-title">手術數小時、照護數十年，為何留不住移植醫師？</span></h2>
+                <h2>器官移植後，故事才開始！<br>手術數小時、照護數十年，為何留不住移植醫師？</h2>
                 <p>當病人終於等到救命器官，對移植團隊而言，真正的挑戰才剛開始。從半夜奔波取器官、數小時的高風險手術，到術後長達數十年的追蹤照護，移植醫療是一場沒有終點的馬拉松。<br>然而，移植醫學學會今年僅招募到3名新會員，創近10年新低；部分醫院則面臨新血不進、中生代流失、資深醫師苦撐的接班斷層。當救命技術後繼無人，器官移植還能只靠醫師的熱忱與犧牲支撐嗎？</p>
                 <a href="#" class="btn-readmore-light">閱讀更多</a>
             </div>
 
             <div class="journey-step" data-aos="fade-up">
                 <div class="journey-img"><img src="images/journey-2.jpg" alt="協調師篇"></div>
-                <h2>沒有協調師，器捐很難成案！<br><span class="journey-sub-title">24小時待命、全台僅129人，關鍵人力為何愈來愈少？</span></h2>
+                <h2>沒有協調師，器捐很難成案！<br>24小時待命、全台僅129人，關鍵人力為何愈來愈少？</h2>
                 <p>器官捐贈能否順利完成，器捐協調師是不可或缺的關鍵。從陪伴家屬、安排腦死判定、協調醫療團隊，到器官評估、配對與摘取作業，甚至最後的感恩致謝，都由協調師串聯完成。<br>這份工作不只需要高度專業，一次值班更長達7天，一通電話就得立即出勤。然而，全台器捐協調師已從137人減至129人，多家移植中心長期招募仍補不到人。當器捐成案的關鍵人力持續流失，制度該如何補上缺口？</p>
                 <a href="#" class="btn-readmore-light">閱讀更多</a>
             </div>
 
             <div class="journey-step" data-aos="fade-up">
                 <div class="journey-img"><img src="images/journey-3.jpg" alt="文化觀念篇"></div>
-                <h2>放手不是放棄！<br><span class="journey-sub-title">捐與不捐都是愛，器捐家屬如何面對最難的告別？</span></h2>
+                <h2>放手不是放棄！<br>捐與不捐都是愛，器捐家屬如何面對最難的告別？</h2>
                 <p>近7成民眾表達器官捐贈意願，但臨床上真正面臨至親離世時，同意捐贈的家屬約僅2～3成。躺在病床上的是相伴數十年的家人，家屬不只捨不得對方「再痛一次」，更可能擔心簽下同意書，就等於親手選擇放棄。<br>從20歲驟逝的男大生，到97歲溫柔告別的黃奶奶，兩個家庭的故事顯示，生前談論器捐意願，能減輕家屬在最後關頭代替摯愛決定的壓力。器捐不只可能延續他人的生命，也可能幫助留下來的人安放悲傷；但無論捐或不捐，決定的起點都是對家人的愛。</p>
                 <a href="#" class="btn-readmore-light">閱讀更多</a>
             </div>
@@ -785,7 +856,6 @@
         document.addEventListener("DOMContentLoaded", () => {
             AOS.init({ once: true, offset: 100 });
 
-            // 通用觀察器函數：當目標元素進入視野時才初始化並觸發圖表
             const observeChart = (selector, createChartFn) => {
                 const element = document.querySelector(selector);
                 if (!element) return;
@@ -801,7 +871,6 @@
                 observer.observe(element);
             };
 
-            // 圖1
             observeChart('#chart1', () => {
                 const chart1Annotations = {
                     id: 'chart1Annotations',
@@ -912,7 +981,6 @@
                 });
             });
 
-            // 圖2 數字與 SVG 動畫
             const numLeft = document.querySelector('.zoom-circle .num');
             const numRight = document.querySelector('.chart2-text div:first-child');
             if (numLeft && numRight) {
@@ -950,7 +1018,6 @@
                 }
             }
 
-            // 圖3
             observeChart('#chart3', () => {
                 new Chart(document.getElementById('chart3').getContext('2d'), {
                     type: 'bar',
@@ -973,7 +1040,6 @@
                 });
             });
 
-            // 圖4
             observeChart('#chart4', () => {
                 const chart4CenterTextPlugin = {
                     id: 'chart4CenterText',
