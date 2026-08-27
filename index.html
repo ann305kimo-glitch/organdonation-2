@@ -422,6 +422,10 @@
                 padding: 12px 6px;
                 font-size: 1rem;
             }
+            .stats-row {
+                flex-direction: column !important;
+                gap: 25px !important;
+            }
         }
 
         .btn-readmore-dark {
@@ -829,6 +833,7 @@
             font: inherit;
             vertical-align: baseline;
             display: flex;
+            align-items: center;
         }
 
         #ch-header #ch-container {
@@ -837,6 +842,10 @@
             padding-left: 15px;
             margin-right: auto;
             margin-left: auto;
+            height: 80px; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         @media (min-width: 768px) {
@@ -857,14 +866,31 @@
             }
         }
 
-        #ch-header h1 img {
-            height: 48px;
+        /* 完美修正：微調往上提升 (transform: translateY(-13px)) 讓視覺完美置中 */
+        #ch-header h1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            margin: 0;
+        }
+
+        #ch-header h1 img.logo {
+            height: 44px; 
+            width: auto;
+            object-fit: contain;
             filter: none !important;
+            display: block;
+            transform: translateY(-15px); /* 向上微調更多，對齊導覽列中心 */
         }
 
         @media (max-width: 768px) {
-            #ch-header h1 img {
+            #ch-header #ch-container {
+                height: 60px;
+            }
+            #ch-header h1 img.logo {
                 height: 32px;
+                transform: translateY(-7px);
             }
         }
 
@@ -898,35 +924,18 @@
             background-color: #000 !important;
         }
 
-        @media (max-width: 768px) {
-            #ch-header {
-                padding: 8px 0;
-            }
-            #ch-header.scrolled {
-                background-color: #fff !important;
-            }
-        }
-
-        #ch-header #ch-container {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-            justify-content: space-between;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-
         #ch-header ul {
             display: flex !important;
             list-style: none;
+            align-items: center;
+            height: 100%;
         }
 
         #ch-header ul li a {
-            padding: 23px 12px;
-            display: inline-table;
+            padding: 0 12px;
+            height: 100%;
+            display: flex;
+            align-items: center;
             text-decoration: none;
             color: #222;
             -webkit-transition: all .5s;
@@ -938,10 +947,47 @@
         }
 
         @media (max-width: 768px) {
+            #ch-header ul {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 0px;
+                background-color: #fff;
+                -webkit-transition: all 0.5s;
+                transition: all 0.5s;
+                overflow: hidden;
+                z-index: 120;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                opacity: 0;
+            }
+
+            #ch-header ul.opening {
+                height: 100vh;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                background-color: #fff;
+            }
+
+            #ch-header ul li {
+                width: 100vw;
+                text-align: center;
+            }
+
             #ch-header ul li a {
                 font-size: 20px;
                 padding: 15px 20px;
                 color: #222;
+                height: auto;
             }
         }
 
@@ -953,17 +999,15 @@
 
         #ch-header #ch-social-group {
             display: flex !important;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
             justify-content: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
             align-items: center;
+            height: 100%;
         }
 
         @media (max-width: 768px) {
             #ch-header #ch-social-group {
                 margin-top: 15px;
+                height: auto;
             }
         }
 
@@ -976,6 +1020,7 @@
             line-height: 36px;
             color: #979696;
             cursor: pointer;
+            height: auto;
         }
 
         #ch-header .ch-social a:hover {
@@ -1071,44 +1116,6 @@
         @media (max-width: 768px) {
             #ch-header #ch-button-toggle.active span::after {
                 background-color: #000;
-            }
-        }
-
-        @media (max-width: 768px) {
-            #ch-header ul {
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 0px;
-                background-color: #fff;
-                -webkit-transition: all 0.5s;
-                transition: all 0.5s;
-                overflow: hidden;
-                z-index: 120;
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                flex-direction: column;
-                -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                opacity: 0;
-            }
-
-            #ch-header ul.opening {
-                height: 100vh;
-                width: 100%;
-                opacity: 1;
-                visibility: visible;
-                background-color: #fff;
-            }
-
-            #ch-header ul li {
-                width: 100vw;
-                text-align: center;
             }
         }
     </style>
@@ -1270,14 +1277,28 @@
         <div class="chart-wrapper-clean" style="text-align: center;">
             <div class="chart-minimal-title" style="margin-bottom: 30px;">一年超過四萬人簽器捐卡，實際捐贈者僅 0.7%</div>
             
-            <div style="max-width: 520px; margin: 0 auto; text-align: center;">
-                <div style="margin-bottom: 6px;">
+            <!-- 左右並排的兩組數據區塊 -->
+            <div class="stats-row" style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 30px;">
+                <div style="flex: 1; text-align: center;">
                     <div style="font-size: 0.95rem; color: #1a2a3a; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年新增器捐意願登記</div>
-                    <div style="font-size: 3.5rem; font-weight: 900; color: #1a2a3a; letter-spacing: 1px; line-height: 1.2;">
-                        42,746<span style="font-size: 1.5rem; font-weight: normal; color: #4a5568; margin-left: 2px;">人</span>
+                    <div style="font-size: 3.2rem; font-weight: 900; color: #1a2a3a; letter-spacing: 1px; line-height: 1.2;">
+                        42,746<span style="font-size: 1.4rem; font-weight: normal; color: #4a5568; margin-left: 2px;">人</span>
                     </div>
                 </div>
 
+                <!-- 中間垂直分隔線 -->
+                <div style="width: 1px; height: 60px; background: #e2e8f0; flex-shrink: 0;"></div>
+
+                <div style="flex: 1; text-align: center;">
+                    <div style="font-size: 0.95rem; color: #e53e3e; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年實際完成捐贈者（僅佔 0.7%）</div>
+                    <div style="font-size: 3.2rem; font-weight: 900; color: #e53e3e; letter-spacing: 1px; line-height: 1.2;">
+                        318<span style="font-size: 1.4rem; font-weight: normal; color: #e53e3e; margin-left: 2px;">人</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 134格比例陣列區塊放下方 -->
+            <div style="max-width: 520px; margin: 0 auto; text-align: center;">
                 <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin: 25px 0;">
                     <div style="font-size: 0.95rem; color: #2d3748; margin-bottom: 10px; font-weight: bold;">
                         象徵每 <span style="color: #e74c3c;">134 人</span> 登記中，最終僅 <span style="color: #e74c3c;">1 人</span> 完成大愛：
@@ -1294,16 +1315,9 @@
                         紅點代表 134 分之 1 的實際捐贈成功率，其餘為未成案或未符合條件者
                     </div>
                 </div>
-
-                <div style="margin-top: 6px;">
-                    <div style="font-size: 0.95rem; color: #e53e3e; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年實際完成捐贈者（僅佔 0.7%）</div>
-                    <div style="font-size: 3.5rem; font-weight: 900; color: #e53e3e; letter-spacing: 1px; line-height: 1.2;">
-                        318<span style="font-size: 1.5rem; font-weight: normal; color: #e53e3e; margin-left: 2px;">人</span>
-                    </div>
-                </div>
             </div>
 
-            <div style="font-size: 0.9rem; color: #718096; margin-top: 40px; line-height: 1.6; text-align: left; border-top: 1px solid #edf2f7; padding-top: 20px;">
+            <div style="font-size: 0.9rem; color: #718096; margin-top: 25px; line-height: 1.6; text-align: left;">
                 <p style="margin: 0 0 5px 0;">註：器捐意願不等於日後能實際捐贈，仍須符合死亡情境、醫療條件及器官適用性等條件</p>
                 <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
                 <p style="margin: 0;">整理：楊雅棠</p>
@@ -1558,14 +1572,12 @@
                 const totalOriginal = originalCards.length;
                 let currentIndex = 0;
 
-                // 無縫循環關鍵：複製前後幾張卡片塞進 slider 尾端與前端
                 const visibleCount = () => {
                     if (window.innerWidth <= 640) return 1;
                     if (window.innerWidth <= 960) return 2;
                     return 3;
                 };
 
-                // 動態複製頭尾卡片以達成流暢循環
                 const clonesCount = 3;
                 for (let i = 0; i < clonesCount; i++) {
                     const cloneFirst = originalCards[i].cloneNode(true);
@@ -1575,7 +1587,7 @@
                 }
 
                 const allCards = slider.querySelectorAll('.related-card');
-                currentIndex = clonesCount; // 預設從真正的第一張開始
+                currentIndex = clonesCount;
 
                 function setSliderPosition(withTransition = true) {
                     const cardWidth = allCards[clonesCount].offsetWidth;
@@ -1591,7 +1603,6 @@
                     updateDots();
                 }
 
-                // 產生實際對應總頁數的小圓點
                 function createDots() {
                     dotsContainer.innerHTML = '';
                     for (let i = 0; i < totalOriginal; i++) {
@@ -1620,30 +1631,25 @@
                     });
                 }
 
-                // 初始化設定位置 (不帶動畫)
                 setSliderPosition(false);
                 createDots();
 
-                // 下一頁
                 nextBtn.addEventListener('click', () => {
                     currentIndex++;
                     setSliderPosition(true);
 
-                    // 當滑到右側複製品時，無動畫瞬間拉回真正起點，達成無縫循環
                     if (currentIndex >= totalOriginal + clonesCount) {
                         setTimeout(() => {
                             currentIndex = clonesCount;
                             setSliderPosition(false);
-                        }, 400); // 等 0.4 秒滑動動畫結束後瞬間重置
+                        }, 400);
                     }
                 });
 
-                // 上一頁
                 prevBtn.addEventListener('click', () => {
                     currentIndex--;
                     setSliderPosition(true);
 
-                    // 當滑到左側複製品時，無動畫瞬間拉回真正結尾
                     if (currentIndex < clonesCount) {
                         setTimeout(() => {
                             currentIndex = totalOriginal + clonesCount - 1;
