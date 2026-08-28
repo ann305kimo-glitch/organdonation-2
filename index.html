@@ -49,13 +49,18 @@
             scroll-margin-top: 95px;
         }
 
-        /* 僅主視覺與文章大標保留明體 */
-        h1, .hero-overlay h1, .journey-step h2, .ch-section-social h2, .related-reading-section h2 {
+        /* 僅主視覺大標與特定區塊標題保留明體 */
+        h1, .hero-overlay h1, .mobile-h1, .journey-step h2, .ch-section-social h2, .related-reading-section h2 {
             font-family: "Noto Serif TC", "Source Han Serif TC", "Source Han Serif", "Songti TC", "AR PL UMing TW", "PMingLiU", "微軟正黑體", serif !important;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 圖表標題改為黑體，並確保跨載具顯示一致 */
+        /* 主副標改為黑體（微軟正黑體），確保跨載具一致 */
+        .subtitle, .mobile-sub {
+            font-family: "Microsoft JhengHei", "微軟正黑體", "Helvetica Neue", Arial, sans-serif !important;
+        }
+
+        /* 圖表標題改為黑體 */
         .chart-minimal-title {
             font-family: "Microsoft JhengHei", "微軟正黑體", "Helvetica Neue", Arial, sans-serif !important;
         }
@@ -85,7 +90,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.2) 100%);
+            background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.25) 100%);
             z-index: 1;
         }
         .section-hero { 
@@ -372,29 +377,47 @@
 
         @media(max-width: 768px) {
             .desktop-hero-block { display: none !important; }
-            .m-qmark { margin-left: -5px !important; }
             .mobile-hero-block { display: block !important; }
             .hero-overlay {
-                top: -180px !important;
-                padding: 0 24px !important;
+                top: -150px !important;
+                padding: 0 20px !important;
+                width: 100% !important;
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
             }
             .mobile-h1 {
                 font-size: 2.3rem !important;
                 left: 0 !important;
                 letter-spacing: 2px !important;
-                line-height: 1.25 !important;
+                line-height: 1.15 !important;
                 white-space: normal !important;
-                margin-bottom: 18px !important;
+                margin-bottom: 28px !important;
+                text-align: center !important;
+                width: 100% !important;
+                text-shadow: none !important;
+            }
+            .mobile-h1-second {
+                display: inline-block;
+                transform: translateX(6px);
+                margin-top: 4px;
+                color: #111111 !important;
             }
             .mobile-big {
                 font-size: 4.2rem !important;
                 font-weight: 700;
+                color: #e53e3e !important;
             }
             .mobile-sub {
                 font-size: 1.25rem !important;
                 margin-top: 0 !important;
                 letter-spacing: 1px !important;
                 line-height: 1.6 !important;
+                text-align: center !important;
+                width: 100% !important;
+                color: #111111 !important;
+                text-shadow: none !important;
             }
             .story-container {
                 margin: 50px auto !important;
@@ -1051,7 +1074,8 @@
         </div>
         <div class="mobile-hero-block">
             <h1 class="hero-title mobile-h1">
-                <span class="mobile-big">大愛</span><br>為何走不<span class="m-qmark">遠？</span>
+                <span class="mobile-big">大愛</span><br>
+                <span class="mobile-h1-second">為何走不<span class="m-qmark">遠？</span></span>
             </h1>
             <div class="subtitle mobile-sub">
                 每年逾千人在等待中離世<br>台灣器捐卡在哪
