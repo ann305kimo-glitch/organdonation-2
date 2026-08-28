@@ -93,6 +93,14 @@
             background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.25) 100%);
             z-index: 1;
         }
+
+        /* 手機版遮罩調淺：調整為較輕的漸層透明度 */
+        @media(max-width: 768px) {
+            .section-hero::after {
+                background: linear-gradient(180deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.12) 100%) !important;
+            }
+        }
+
         .section-hero { 
             height: 100vh; 
             display: flex; 
@@ -142,7 +150,7 @@
             white-space: nowrap;
         }
         .subtitle { 
-            font-size: 2.5rem; 
+            font-size: 2.4rem; 
             font-weight: 700; 
             color: #ffffff; 
             letter-spacing: 2px;
