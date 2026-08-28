@@ -17,6 +17,11 @@
     <meta property="fb:app_id" content="788399774562640">
     <link rel="icon" type="image/x-icon" href="https://web.commonhealth.com.tw/online-source/commonhealth/favicon.ico" />
 
+    <!-- 引入 Google Fonts: Noto Serif TC (思源宋體) 確保跨載具明體外觀一致 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+
     <!-- 引入 AOS 動畫庫樣式 -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <!-- 引入 Chart.js -->
@@ -49,7 +54,7 @@
             scroll-margin-top: 95px;
         }
 
-        /* 僅主視覺大標與特定區塊標題保留明體 */
+        /* 強制所有載具優先載入 Google Fonts 的 Noto Serif TC 作為明體呈現 */
         h1, .hero-overlay h1, .mobile-h1, .journey-step h2, .ch-section-social h2, .related-reading-section h2 {
             font-family: "Noto Serif TC", "Source Han Serif TC", "Source Han Serif", "Songti TC", "AR PL UMing TW", "PMingLiU", "微軟正黑體", serif !important;
             -webkit-font-smoothing: antialiased;
