@@ -52,9 +52,6 @@
             font-family: "Noto Serif TC", "Source Han Serif", "微軟正黑體", serif;
         }
 
-        .big-quote {
-            font-family: "Noto Serif TC", "Source Han Serif", "微軟正黑體", serif;
-        }
         .story-container, .story-container p {
             font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
         }
@@ -63,11 +60,8 @@
             font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
         }
 
-        .mobile-title { display: none; }
-        .desktop-title { display: inline; }
-
-        .mobile-hero-block { display: none; }
         .desktop-hero-block { display: block; }
+        .mobile-hero-block { display: none; }
 
         .desktop-bg { display: block; }
         .mobile-bg { display: none; }
@@ -122,7 +116,7 @@
             top: 85px; 
             box-sizing: border-box;
         }
-        h1 { 
+        .hero-title { 
             font-size: 5.3rem; 
             margin: 0; 
             letter-spacing: 6px; 
@@ -365,7 +359,6 @@
             .desktop-hero-block { display: none !important; }
             .m-qmark { margin-left: -5px !important; }
             .mobile-hero-block { display: block !important; }
-            /* ⭐️ 調整手機版主視覺標題移至畫面約 1/3 處（top 設為 -40px） ⭐️ */
             .hero-overlay {
                 top: -40px !important;
                 padding: 0 24px !important;
@@ -718,41 +711,80 @@
             footer ul li { padding: 0 5px 0 0; margin: 0 5px 10px 0; }
         }
 
-        /* 公司專屬 Header CSS 樣式 */
-        #ch-header, #ch-header div, #ch-header span, #ch-header h1, #ch-header p, #ch-header a, #ch-header ol, #ch-header ul, #ch-header li {
-            margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; box-sizing: border-box;
-        }
-        #ch-header a { display: flex; align-items: center; text-decoration: none; }
-        #ch-header #ch-container {
-            width: 100%;
-            padding-right: 24px;
-            padding-left: 24px;
-            margin-right: auto;
-            margin-left: auto;
-            height: 80px; 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* ⭐️ 康健公司標準 Header 與絕對置中修正 CSS ⭐️ */
+        #ch-header,
+        #ch-header div,
+        #ch-header span,
+        #ch-header h1,
+        #ch-header p,
+        #ch-header a,
+        #ch-header ol,
+        #ch-header ul,
+        #ch-header li {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
             box-sizing: border-box;
         }
 
-        @media (min-width: 768px) { #ch-header #ch-container { max-width: 720px; } }
-        @media (min-width: 992px) { #ch-header #ch-container { max-width: 960px; } }
-        @media (min-width: 1200px) { #ch-header #ch-container { max-width: 1140px; } }
+        #ch-header a {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            display: flex;
+        }
 
-        #ch-header h1 { display: flex; align-items: center; justify-content: center; height: 100%; margin: 0; }
-        #ch-header h1 img.logo {
-            height: 44px; 
+        #ch-header #ch-container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            #ch-header #ch-container { max-width: 720px; }
+        }
+        @media (min-width: 992px) {
+            #ch-header #ch-container { max-width: 960px; }
+        }
+        @media (min-width: 1200px) {
+            #ch-header #ch-container { max-width: 1140px; }
+        }
+
+        #ch-header h1 {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        #ch-header h1 a {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #ch-header h1 img {
+            height: 48px;
             width: auto;
-            object-fit: contain;
-            filter: none !important;
             display: block;
-            transform: translateY(-13px);
+            margin: auto;
         }
 
         @media (max-width: 768px) {
-            #ch-header #ch-container { height: 60px; padding-left: 24px; padding-right: 24px; }
-            #ch-header h1 img.logo { height: 32px; transform: translateY(-7px); }
+            #ch-header #ch-container { height: 60px; }
+            #ch-header h1 img { height: 32px; margin: auto; }
         }
 
         #ch-header {
@@ -760,54 +792,178 @@
             width: 100%;
             top: 0;
             left: 0;
-            background-color: transparent;
-            box-shadow: none;
+            background-color: #fff;
+            -webkit-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
             z-index: 1000;
-            transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
         }
-        #ch-header.scrolled { background-color: #fff !important; box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2) !important; }
-        #ch-header.scrolled ul li a { color: #222 !important; }
-        #ch-header.scrolled .ch-social a { color: #979696 !important; }
-        #ch-header.scrolled #ch-button-toggle span,
-        #ch-header.scrolled #ch-button-toggle span::after,
-        #ch-header.scrolled #ch-button-toggle span::before { background-color: #000 !important; }
 
-        #ch-header ul { display: flex !important; list-style: none; align-items: center; height: 100%; }
-        #ch-header ul li a { padding: 0 12px; height: 100%; display: flex; align-items: center; color: #222; transition: all .5s; }
+        @media (max-width: 768px) {
+            #ch-header { padding: 0; }
+        }
+
+        #ch-header ul {
+            display: flex !important;
+            list-style: none;
+            align-items: center;
+            height: 100%;
+        }
+
+        #ch-header ul li a {
+            padding: 0 12px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #222;
+            -webkit-transition: all .5s;
+            transition: all .5s;
+        }
+
         #ch-header ul li a:hover { color: #094; }
 
         @media (max-width: 768px) {
-            #ch-header ul {
-                position: absolute; left: 0; top: 0; height: 0px; background-color: #fff;
-                transition: all 0.5s; overflow: hidden; z-index: 120; display: flex;
-                flex-direction: column; justify-content: center; opacity: 0;
+            #ch-header ul li a {
+                font-size: 20px;
+                padding: 15px 20px;
+                height: auto;
             }
-            #ch-header ul.opening { height: 100vh; width: 100%; opacity: 1; visibility: visible; background-color: #fff; }
-            #ch-header ul li { width: 100vw; text-align: center; }
-            #ch-header ul li a { font-size: 20px; padding: 15px 20px; color: #222; height: auto; }
         }
 
-        #ch-header #ch-social-group { display: flex !important; justify-content: center; align-items: center; height: 100%; }
-        @media (max-width: 768px) { #ch-header #ch-social-group { margin-top: 15px; height: auto; } }
+        @media (max-width: 568px) {
+            #ch-header ul li a { font-size: 18px; }
+        }
+
+        #ch-header #ch-social-group {
+            display: flex !important;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            #ch-header #ch-social-group { margin-top: 15px; height: auto; }
+        }
+
         #ch-header .ch-social { font-size: 40px; }
-        #ch-header .ch-social a { padding: 0 12px; line-height: 36px; color: #979696; cursor: pointer; height: auto; }
-        #ch-header #ch-button-toggle { display: none; position: relative; width: 40px; height: 40px; z-index: 10000; cursor: pointer; }
-        @media (max-width: 768px) { #ch-header #ch-button-toggle { display: block; } }
+        #ch-header .ch-social a {
+            padding: 0 12px;
+            line-height: 36px;
+            color: #979696;
+            cursor: pointer;
+            height: auto;
+        }
+        #ch-header .ch-social a:hover { border-bottom: 0; padding: 0 12px; }
+
+        @media (max-width: 568px) {
+            #ch-header .ch-social a { font-size: 40px; color: #fff; }
+        }
+
+        #ch-header .ch-social i { vertical-align: bottom; }
+
+        #ch-header #ch-button-toggle {
+            display: none;
+            position: relative;
+            width: 40px;
+            height: 40px;
+            z-index: 10000;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            #ch-header #ch-button-toggle { display: block; }
+        }
+
         #ch-header #ch-button-toggle span {
-            display: block; position: absolute; width: 30px; height: 2px; top: 50%; left: 50%;
-            transform: translateX(-50%); background-color: #000;
+            display: block;
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            background-color: #000;
         }
-        #ch-header #ch-button-toggle span::after, #ch-header #ch-button-toggle span::before {
-            transition: all .5s; position: absolute; content: ''; display: block; width: 100%; top: 50%; height: 2px; background-color: #000;
+
+        #ch-header #ch-button-toggle span::after,
+        #ch-header #ch-button-toggle span::before {
+            -webkit-transition: all .5s;
+            transition: all .5s;
+            position: absolute;
+            content: '';
+            display: block;
+            width: 100%;
+            top: 50%;
+            height: 2px;
+            background-color: #000;
         }
+
         #ch-header #ch-button-toggle span::before { top: -8px; }
         #ch-header #ch-button-toggle span::after { bottom: -8px; top: auto; }
         #ch-header #ch-button-toggle.active span { background-color: transparent; }
-        #ch-header #ch-button-toggle.active span::before { top: 0; transform: rotate(45deg); }
-        #ch-header #ch-button-toggle.active span::after { top: 0; transform: rotate(-45deg); }
+        #ch-header #ch-button-toggle.active span::after,
+        #ch-header #ch-button-toggle.active span::before { top: 0; }
+        #ch-header #ch-button-toggle.active span::before {
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        @media (max-width: 768px) {
+            #ch-header #ch-button-toggle.active span::before { background-color: #000; }
+        }
+        #ch-header #ch-button-toggle.active span::after {
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+        @media (max-width: 768px) {
+            #ch-header #ch-button-toggle.active span::after { background-color: #000; }
+        }
+
+        @media (max-width: 768px) {
+            #ch-header ul {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 0px;
+                background-color: #fff;
+                -webkit-transition: all 0.5s;
+                transition: all 0.5s;
+                overflow: hidden;
+                z-index: 120;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                opacity: 0;
+            }
+
+            #ch-header ul.opening {
+                height: 100vh;
+                width: 100%;
+                opacity: 1;
+                visibility: visible;
+                background-color: #fff;
+            }
+
+            #ch-header ul li {
+                width: 100vw;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 <body>
+
 <header id="ch-header">
   <div id="ch-container">
       <h1>
@@ -838,582 +994,609 @@
       </ul>
   </div>
 </header>
+
+<section class="section-hero">
+    <img src="images/hero-bg.jpg" class="bg-img desktop-bg" alt="主視覺">
+    <img src="images/hero-bg-mobile.jpg" class="bg-img mobile-bg" alt="主視覺">
+    <div class="hero-overlay" data-aos="fade-up" data-aos-duration="1200">
+        <div class="desktop-hero-block">
+            <h1 class="hero-title">大愛，為何走不遠？</h1>
+            <div class="subtitle">每年逾千人在等待中離世，台灣器捐卡在哪</div>
+        </div>
+        <div class="mobile-hero-block">
+            <h1 class="hero-title mobile-h1">
+                <span class="mobile-big">大愛</span><br>為何走不<span class="m-qmark">遠？</span>
+            </h1>
+            <div class="subtitle mobile-sub">
+                每年逾千人在等待中離世<br>台灣器捐卡在哪
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="story-container">
+    <p data-aos="fade-up">位在永康街的搖滾牛冰淇淋，曾在2025年獲選為國宴冰淇淋，是不少冰淇淋愛好者心中的口袋名單。</p>
+    <p data-aos="fade-up">這家冰淇淋店老闆楊鈞儀是一名腎臟移植者，29歲接受移植至今已10多年，不但迎來新人生，也擁有自己的事業。</p>
+    <p data-aos="fade-up">但並非每個人都像楊鈞儀一樣幸運，還有許多等待器官的病患始終等不到那通改變命運的電話，甚至甘冒風險遠赴他國移植。</p>
+</div>
+
+<!-- 器捐困境錨點 -->
+<div class="story-container" id="donation">
+    <h2 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px;" data-aos="fade-up">等不到的希望：全台1.1萬人苦等器官，器捐為何這麼難完成？</h2>
+    <p data-aos="fade-up">首起醫師因涉嫌仲介病患赴中國接受器官移植而遭廢止醫師證書的陳堯俐案，再度讓「器官移植旅遊」浮上檯面。但當社會聚焦法律、道德與器官來源爭議時，更根本的問題是：病人為何願意花費數百萬元，冒著生命危險遠赴海外移植？這背後也正凸顯出台灣器官「供給不足」的問題。</p>
+    <p data-aos="fade-up">近10年移植等候者增近3成，截至2025年底，全台等待器官移植人數超過1.1萬人。從2024年的數據更可以看到，每年有1000多人因為等不到器官而離開，其中以腎臟最多。</p>
+</div>
+
+<!-- 圖1與圖2 -->
+<div class="chart-minimal-section" data-aos="fade-up">
+    <div class="chart-wrapper-clean">
+        <div class="chart-minimal-title">超過一萬一千人苦苦等待器官，10年來增加三成</div>
+        <div class="chart-canvas-wrapper" style="position: relative; height: 320px; width: 100%;"><canvas id="chart1"></canvas></div>
+        <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
+            <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
+            <p style="margin: 0;">整理：楊雅棠</p>
+        </div>
+    </div>
+
+    <div class="chart-wrapper-clean">
+        <div class="chart-minimal-title">每年有千人因為等不到器官而離世，以腎臟需求最高</div>
+        <div style="font-size: 1.05rem; color: #4a5568; margin-bottom: 20px; text-align: center; font-weight: 500;">2024年等候器官期間死亡個案數分佈（總計 1,157 人）</div>
+        <div id="chart4-wrapper" class="chart-canvas-wrapper" style="position: relative; height: 360px; width: 100%;"><canvas id="chart4"></canvas></div>
+        <div style="font-size: 0.9rem; color: #718096; margin-top: 25px; line-height: 1.6;">
+            <p style="margin: 0 0 5px 0;">資料來源：器官捐贈移植登錄及病人自主推廣中心</p>
+            <p style="margin: 0;">整理：楊雅棠</p>
+        </div>
+    </div>
+</div>
+
+<div class="story-container">
+    <p data-aos="fade-up">事實上，器官供給不足，並不是願意捐贈的人變少。從器官捐增移植登錄及病人自主推廣中心提供的數據來看，台灣每年仍維持約3萬～4萬人註記器捐意願，但實際捐贈者卻在疫情後持續下降，以致到2025年接受移植的人數降到10年新低。</p>
+</div>
+
+<!-- 圖3：大數字乾淨排版 + 134格精準比例陣列 -->
+<div class="chart-minimal-section" data-aos="fade-up">
+    <div class="chart-wrapper-clean" style="text-align: center;">
+        <div class="chart-minimal-title" style="margin-bottom: 30px;">一年超過四萬人簽器捐卡，實際捐贈者僅 0.7%</div>
+        
+        <div class="stats-row" style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 30px;">
+            <div style="flex: 1; text-align: center;">
+                <div style="font-size: 0.95rem; color: #1a2a3a; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年新增器捐意願登記</div>
+                <div style="font-size: 3.2rem; font-weight: 900; color: #1a2a3a; letter-spacing: 1px; line-height: 1.2;">
+                    42,746<span style="font-size: 1.4rem; font-weight: normal; color: #4a5568; margin-left: 2px;">人</span>
+                </div>
+            </div>
+
+            <div style="width: 1px; height: 60px; background: #e2e8f0; flex-shrink: 0;"></div>
+
+            <div style="flex: 1; text-align: center;">
+                <div style="font-size: 0.95rem; color: #e53e3e; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年實際完成捐贈者（僅佔 0.7%）</div>
+                <div style="font-size: 3.2rem; font-weight: 900; color: #e53e3e; letter-spacing: 1px; line-height: 1.2;">
+                    318<span style="font-size: 1.4rem; font-weight: normal; color: #e53e3e; margin-left: 2px;">人</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="max-width: 520px; margin: 0 auto; text-align: center;">
+            <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin: 25px 0;">
+                <div style="font-size: 0.95rem; color: #2d3748; margin-bottom: 10px; font-weight: bold;">
+                    象徵每 <span style="color: #e74c3c;">134 人</span> 登記中，最終僅 <span style="color: #e74c3c;">1 人</span> 完成大愛：
+                </div>
+                <div class="grid-134">
+                    <div class="grid-dot active" title="1 / 134"></div>
+                    <script>
+                        for(let i=0; i<133; i++) {
+                            document.write('<div class="grid-dot"></div>');
+                        }
+                    </script>
+                </div>
+                <div style="font-size: 0.85rem; color: #718096; margin-top: 10px;">
+                    紅點代表 134 分之 1 的實際捐贈成功率，其餘為未成案或未符合條件者
+                </div>
+            </div>
+        </div>
+
+        <div style="font-size: 0.9rem; color: #718096; margin-top: 25px; line-height: 1.6; text-align: left;">
+            <p style="margin: 0 0 5px 0;">註：器捐意願不等於日後能實際捐贈，仍須符合死亡情境、醫療條件及器官適用性等條件</p>
+            <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
+            <p style="margin: 0;">整理：楊雅棠</p>
+        </div>
+    </div>
+</div>
+
+<!-- 圖4：捐贈與移植量近10年數據比較 -->
+<div class="chart-minimal-section" data-aos="fade-up">
+    <div class="chart-wrapper-clean">
+        <div class="chart-minimal-title">捐贈與移植量近10年數據比較</div>
+        <div class="chart-canvas-wrapper" style="position: relative; height: 320px; width: 100%;"><canvas id="chart3"></canvas></div>
+        <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
+            <p style="margin: 0 0 5px 0;">註：一位捐贈人可捐贈不只一項器官，故接受移植人數較捐贈人數為多</p>
+            <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
+            <p style="margin: 0;">整理：楊雅棠</p>
+        </div>
+    </div>
+</div>
+
+<div class="story-container">
+    <p data-aos="fade-up">台灣其實並非缺乏潛在捐贈者，但器捐成案比例卻出現極大落差。從全球排名來看，2024年全球國家百萬人口捐贈數，台灣僅5.77人，排名位居46，不僅落後鄰近的國家，如南韓、泰國，更只有第一名西班牙的8分之1。</p>
+</div>
+
+<!-- 圖5 -->
+<div class="chart-minimal-section" data-aos="fade-up">
+    <div class="chart-wrapper-clean">
+        <div class="chart-minimal-title">台灣器捐率全球第46，與領先國家差距懸殊</div>
+        <div style="font-size: 1.1rem; color: #4a5568; margin-bottom: 20px; font-weight: bold; text-align: center;">2024年全球國家百萬人口器官捐贈數</div>
+        <table class="data-table" style="position: relative;">
+            <thead>
+                <tr><th>排序</th><th>國家/地區</th><th>數值 (每百萬人口)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>西班牙</td><td>47.96</td></tr>
+                <tr><td>41</td><td>南韓</td><td>7.68</td></tr>
+                <tr><td>45</td><td>泰國</td><td>5.79</td></tr>
+                <tr style="background-color: #ffebee; color: #e74c3c; font-weight: bold; height: 70px; border-top: 2px solid #e74c3c; border-bottom: 2px solid #e74c3c;">
+                    <td style="vertical-align: middle;">46</td>
+                    <td style="vertical-align: middle;">台灣</td>
+                    <td style="vertical-align: middle;">5.77</td>
+                </tr>
+                <tr><td>49</td><td>中國</td><td>4.65</td></tr>
+                <tr><td>48</td><td>新加坡</td><td>4.75</td></tr>
+                <tr><td>66</td><td>日本</td><td>1.13</td></tr>
+            </tbody>
+        </table>
+        <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
+            <p style="margin: 0 0 5px 0;">資料來源：全球器官捐贈與移植觀察站（GODT）、器官捐贈移植登錄及病人自主推廣中心整理</p>
+            <p style="margin: 0;">整理：楊雅棠</p>
+        </div>
+    </div>
+</div>
+
+<!-- 結語段落與按鈕 -->
+<div class="story-container" style="margin-top: 40px; margin-bottom: 40px;">
+    <p data-aos="fade-up">究竟，台灣的捐贈制度出了什麼問題？每一次成功的器捐，背後是文化、制度、人力、資源等層層綿密交織的成果，《康健》從真實案例故事、到第一線觀察與分析，揭開國內大愛器捐的困境，期盼每一份重生大禮，送到對的人手上。</p>
+    <div style="margin-top: 30px; text-align: center;" data-aos="fade-up">
+        <a href="https://www.commonhealth.com.tw/article/94258" target="_blank" class="btn-readmore-dark">閱讀更多</a>
+    </div>
+</div>
+
+<!-- 下方三篇文章區塊 -->
+<div class="journey-wrapper">
+    <div class="journey-container">
+        <div id="doctors" style="position: relative; top: -100px; visibility: hidden;"></div>
+        <div class="journey-step" data-aos="fade-up">
+            <div class="journey-img"><img src="images/journey-1.jpg" alt="醫師篇"></div>
+            <h2>器官移植後，故事才開始！<br><span class="journey-sub-title">手術數小時、照護數十年，為何留不住移植醫師？</span></h2>
+            <p>當病人終於等到救命器官，對移植團隊而言，真正的挑戰才剛開始。從半夜奔波取器官、數小時的高風險手術，到術後長達數十年的追蹤照護，移植醫療是一場沒有終點的馬拉松。<br>然而，移植醫學學會今年僅招募到3名新會員，創近10年新低；部分醫院則面臨新血不進、中生代流失、資深醫師苦撐的接班斷層。當救命技術後繼無人，器官移植還能只靠醫師的熱忱與犧牲支撐嗎？</p>
+            <a href="https://www.commonhealth.com.tw/article/94263" target="_blank" class="btn-readmore-light">閱讀更多</a>
+        </div>
+
+        <div id="coordinators" style="position: relative; top: -100px; visibility: hidden;"></div>
+        <div class="journey-step" data-aos="fade-up">
+            <div class="journey-img"><img src="images/journey-2.jpg" alt="協調師篇"></div>
+            <h2>沒有協調師，器捐很難成案！<br><span class="journey-sub-title">24小時待命、全台僅129人，關鍵人力為何愈來愈少？</span></h2>
+            <p>器官捐贈能否順利完成，器捐協調師是不可或缺的關鍵。從陪伴家屬、安排腦死判定、協調醫療團隊，到器官評估、配對與摘取作業，甚至最後的感恩致謝，都由協調師串聯完成。<br>這份工作不只需要高度專業，一次值班更長達7天，一通電話就得立即出勤。然而，全台器捐協調師已從137人減至129人，多家移植中心長期招募仍補不到人。當器捐成案的關鍵人力持續流失，制度該如何補上缺口？</p>
+            <a href="https://www.commonhealth.com.tw/article/94339" target="_blank" class="btn-readmore-light">閱讀更多</a>
+        </div>
+
+        <div id="families" style="position: relative; top: -100px; visibility: hidden;"></div>
+        <div class="journey-step" data-aos="fade-up">
+            <div class="journey-img"><img src="images/journey-3.jpg" alt="家屬篇"></div>
+            <h2>放手不是放棄！<br><span class="journey-sub-title">捐與不捐都是愛，器捐家屬如何面對最難的告別？</span></h2>
+            <p>近7成民眾表達器官捐贈意願，但臨床上真正面臨至親離世時，同意捐贈的家屬約僅2～3成。躺在病床上的是相伴數十年的家人，家屬不只捨不得對方「再痛一次」，更可能擔心簽下同意書，就等於親手選擇放棄。<br>從20歲驟逝的男大生，到97歲溫柔告別的黃奶奶，兩個家庭的故事顯示，生前談論器捐意願，能減輕家屬在最後關頭代替摯愛決定的壓力。器捐不只可能延續他人的生命，也可能幫助留下來的人安放悲傷；但無論捐或不捐，決定的起點都是對家人的愛。</p>
+            <a href="https://www.commonhealth.com.tw/article/94276" target="_blank" class="btn-readmore-light">閱讀更多</a>
+        </div>
+    </div>
+</div>
+
+<!-- 延伸閱讀區塊 -->
+<div class="related-reading-section" data-aos="fade-up">
+    <h2>延伸閱讀</h2>
+    <div class="related-carousel-wrapper">
+        <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
+        <div class="related-slider-container">
+            <div class="related-grid" id="relatedSlider">
+                <a href="https://www.commonhealth.com.tw/article/93996" target="_blank" class="related-card">
+                    <div class="related-card-img"><img src="images/related-1.jpg" alt="當「吃」成為最遙遠的渴望！香港媽媽跨海來台移植200公分小腸，改寫兒子8年點滴人生"></div>
+                    <div class="related-card-content">
+                        <h3>當「吃」成為最遙遠的渴望！香港媽媽跨海來台移植200公分小腸，改寫兒子8年點滴人生</h3>
+                        <span class="related-link-text">了解詳情</span>
+                    </div>
+                </a>
+                <a href="https://www.commonhealth.com.tw/article/92645" target="_blank" class="related-card">
+                    <div class="related-card-img"><img src="images/related-2.jpg" alt="器官捐贈同意書，簽了能反悔嗎？器捐流程、腦死定義，關鍵10問一次搞懂"></div>
+                    <div class="related-card-content">
+                        <h3>器官捐贈同意書，簽了能反悔嗎？器捐流程、腦死定義，關鍵10問一次搞懂</h3>
+                        <span class="related-link-text">了解詳情</span>
+                    </div>
+                </a>
+                <a href="https://www.commonhealth.com.tw/blog/6146" target="_blank" class="related-card">
+                    <div class="related-card-img"><img src="images/related-3.jpg" alt="20年近4萬人等不到器官死亡！李伯璋：面對洗腎財務黑洞，不如推動移植重生"></div>
+                    <div class="related-card-content">
+                        <h3>20年近4萬人等不到器官死亡！李伯璋：面對洗腎財務黑洞，不如推動移植重生</h3>
+                        <span class="related-link-text">了解詳情</span>
+                    </div>
+                </a>
+                <a href="https://www.commonhealth.com.tw/blog/6422" target="_blank" class="related-card">
+                    <div class="related-card-img"><img src="images/related-4.jpg" alt="夫妻沒血緣也能捐腎？醫師：長年相守，身體可能早已熟悉彼此的抗原"></div>
+                    <div class="related-card-content">
+                        <h3>夫妻沒血緣也能捐腎？醫師：長年相守，身體可能早已熟悉彼此的抗原</h3>
+                        <span class="related-link-text">了解詳情</span>
+                    </div>
+                </a>
+                <a href="https://www.commonhealth.com.tw/article/94230" target="_blank" class="related-card">
+                    <div class="related-card-img"><img src="images/related-5.jpg" alt="創全球首例！斷臂35年男子接上女手臂，1年後重拾寫字與擁抱，手臂更「轉性」長出體毛"></div>
+                    <div class="related-card-content">
+                        <h3>創全球首例！斷臂35年男子接上女手臂，1年後重拾寫字與擁抱，手臂更「轉性」長出體毛</h3>
+                        <span class="related-link-text">了解詳情</span>
+                    </div>
+                </a>
+                <a href="https://www.commonhealth.com.tw/article/86473" target="_blank" class="related-card">
+                    <div class="related-card-img"><img src="images/related-6.jpg" alt="肺移植續命！哪些情況可肺移植？肺能活體移植？醫師解答肺移植7問"></div>
+                    <div class="related-card-content">
+                        <h3>肺移植續命！哪些情況可肺移植？肺能活體移植？醫師解答肺移植7問</h3>
+                        <span class="related-link-text">了解詳情</span>
+                    </div>
+                </a>
+                <a href="https://www.commonhealth.com.tw/article/87601" target="_blank" class="related-card">
+                    <div class="related-card-img"><img src="images/related-7.jpg" alt="父母捐肺救11歲愛女 台大醫院成功完成台灣首例活體肺葉移植"></div>
+                    <div class="related-card-content">
+                        <h3>父母捐肺救11歲愛女 台大醫院成功完成台灣首例活體肺葉移植</h3>
+                        <span class="related-link-text">了解詳情</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <button class="carousel-btn next" id="nextBtn">&#10095;</button>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+</div>
+
+<!-- 追蹤我們 Social Media 區塊 -->
+<div class="ch-section-social">
+    <div class="ch-wrap">
+        <div class="ch-wrapper">
+            <h2>追蹤我們，最新資訊不漏接</h2>
+            <div class="ch-social-media">
+                <a class="ch-social-group" href="https://line.me/ti/p/@commonhealth" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-line.svg" alt="LINE"><p>加入 LINE 好友</p></a>
+                <a class="ch-social-group" href="https://www.facebook.com/commonhealth/" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-fb.svg" alt="FB"><p>追蹤 Facebook</p></a>
+                <a class="ch-social-group" href="https://www.instagram.com/commonhealth.official/" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-instagram.svg" alt="IG"><p>追蹤 Instagram</p></a>
+                <a class="ch-social-group" href="https://www.youtube.com/user/CommonHealthTV" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-youtube.svg" alt="YT"><p>訂閱 Youtube</p></a>
+                <a class="ch-social-group" href="https://solink.soundon.fm/commonhealth" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-podcast.svg" alt="Podcast"><p>訂閱 Podcast</p></a>
+                <a class="ch-social-group" href="https://www.commonhealth.com.tw/member/member_newsletter" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-edm.svg" alt="EDM"><p>訂閱電子報</p></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 官方標準 Footer -->
+<footer>
+    <ul>
+        <li><a href="https://www.commonhealth.com.tw" target="_blank">康健官網</a></li>
+        <li><a href="https://www.commonhealth.com.tw/magazine_list" target="_blank">康健雜誌</a></li>
+        <li><a href="https://www.commonhealth.com.tw/book" target="_blank">康健出版</a></li>
+        <li><a href="https://www.youtube.com/user/CommonHealthTV" target="_blank">康健影音</a></li>
+        <li><a href="https://kb.commonhealth.com.tw" target="_blank">康健知識庫</a></li>
+        <li><a href="https://club.commonhealth.com.tw" target="_blank">大人社團</a></li>
+        <li><a href="https://cancer.commonhealth.com.tw" target="_blank">癌症問康健</a></li>
+    </ul>
+    <p>Copyright © 2026 康健雜誌（天下生活出版股份有限公司）All rights reserved.</p>
+    <ul>
+        <li><a href="https://member.cwg.tw/privacy-policy" target="_blank">隱私權政策</a></li>
+        <li><a href="https://member.cwg.tw/register-rule" target="_blank">會員服務條款</a></li>
+    </ul>
+</footer>
+
+<!-- 引入外掛與互動腳本 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  $(window).scroll(function() {
-      if ($(window).scrollTop() > 50) {
-          $('#ch-header').addClass('scrolled');
-      } else {
-          $('#ch-header').removeClass('scrolled');
-      }
-  });
-
-  $('#ch-button-toggle').click(function (e) {
-      e.preventDefault();
-      $(this).toggleClass('active');
-      $('#ch-nav-wrap').toggleClass('opening');
-  });
-
-  $('#ch-nav-wrap').click(function () {
-      $(this).toggleClass('opening');
-      $('#ch-button-toggle').toggleClass('active');
-  });
-
-  $('#ch-nav-wrap a[href^="#"]').on('click', function (e) {
-      const target = $(this.getAttribute('href'));
-      if (target.length) {
+  $(document).ready(function() {
+      // 漢堡選單開關
+      $('#ch-button-toggle').click(function (e) {
           e.preventDefault();
-          $('html, body').stop().animate({
-              scrollTop: target.offset().top - 90
-          }, 800);
-      }
+          $(this).toggleClass('active');
+          $('#ch-nav-wrap').toggleClass('opening');
+      });
+
+      $('#ch-nav-wrap').click(function () {
+          $(this).toggleClass('opening');
+          $('#ch-button-toggle').toggleClass('active');
+      });
+
+      // 錨點平滑滾動
+      $('#ch-nav-wrap a[href^="#"]').on('click', function (e) {
+          const target = $(this.getAttribute('href'));
+          if (target.length) {
+              e.preventDefault();
+              $('html, body').stop().animate({
+                  scrollTop: target.offset().top - 90
+              }, 800);
+          }
+      });
   });
 </script>
 
-    <section class="section-hero">
-        <img src="images/hero-bg.jpg" class="bg-img desktop-bg" alt="主視覺">
-        <img src="images/hero-bg-mobile.jpg" class="bg-img mobile-bg" alt="主視覺">
-        <div class="hero-overlay" data-aos="fade-up" data-aos-duration="1200">
-            <div class="desktop-hero-block">
-                <h1 class="hero-title">大愛，為何走不遠？</h1>
-                <div class="subtitle">每年逾千人在等待中離世，台灣器捐卡在哪</div>
-            </div>
-            <div class="mobile-hero-block">
-                <h1 class="hero-title mobile-h1">
-                    <span class="mobile-big">大愛</span><br>為何走不<span class="m-qmark">遠？</span>
-                </h1>
-                <div class="subtitle mobile-sub">
-                    每年逾千人在等待中離世<br>台灣器捐卡在哪
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+  window.fbAsyncInit = function() {
+      FB.init({
+          appId: '788399774562640',
+          cookie: true,
+          xfbml: false,
+          version: 'v24.0'
+      });
+  };
 
-    <div class="story-container">
-        <p data-aos="fade-up">位在永康街的搖滾牛冰淇淋，曾在2025年獲選為國宴冰淇淋，是不少冰淇淋愛好者心中的口袋名單。</p>
-        <p data-aos="fade-up">這家冰淇淋店老闆楊鈞儀是一名腎臟移植者，29歲接受移植至今已10多年，不但迎來新人生，也擁有自己的事業。</p>
-        <p data-aos="fade-up">但並非每個人都像楊鈞儀一樣幸運，還有許多等待器官的病患始終等不到那通改變命運的電話，甚至甘冒風險遠赴他國移植。</p>
-    </div>
+  (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) { return; }
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/zh_TW/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 
-    <!-- 器捐困境錨點 -->
-    <div class="story-container" id="donation">
-        <h2 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px;" data-aos="fade-up">等不到的希望：全台1.1萬人苦等器官，器捐為何這麼難完成？</h2>
-        <p data-aos="fade-up">首起醫師因涉嫌仲介病患赴中國接受器官移植而遭廢止醫師證書的陳堯俐案，再度讓「器官移植旅遊」浮上檯面。但當社會聚焦法律、道德與器官來源爭議時，更根本的問題是：病人為何願意花費數百萬元，冒著生命危險遠赴海外移植？這背後也正凸顯出台灣器官「供給不足」的問題。</p>
-        <p data-aos="fade-up">近10年移植等候者增近3成，截至2025年底，全台等待器官移植人數超過1.1萬人。從2024年的數據更可以看到，每年有1000多人因為等不到器官而離開，其中以腎臟最多。</p>
-    </div>
+  document.getElementById('facebookShare').onclick = function() {
+      FB.ui({
+          display: 'popup',
+          method: 'share',
+          href: '網址',
+      }, function(response) {});
+  }
+</script>
 
-    <!-- 圖1與圖2 -->
-    <div class="chart-minimal-section" data-aos="fade-up">
-        <div class="chart-wrapper-clean">
-            <div class="chart-minimal-title">超過一萬一千人苦苦等待器官，10年來增加三成</div>
-            <div class="chart-canvas-wrapper" style="position: relative; height: 320px; width: 100%;"><canvas id="chart1"></canvas></div>
-            <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
-                <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
-                <p style="margin: 0;">整理：楊雅棠</p>
-            </div>
-        </div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const slider = document.getElementById('relatedSlider');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('carouselDots');
+        
+        if (slider && prevBtn && nextBtn && dotsContainer) {
+            const originalCards = Array.from(slider.querySelectorAll('.related-card'));
+            const totalOriginal = originalCards.length;
+            let currentIndex = 0;
 
-        <div class="chart-wrapper-clean">
-            <div class="chart-minimal-title">每年有千人因為等不到器官而離世，以腎臟需求最高</div>
-            <div style="font-size: 1.05rem; color: #4a5568; margin-bottom: 20px; text-align: center; font-weight: 500;">2024年等候器官期間死亡個案數分佈（總計 1,157 人）</div>
-            <div id="chart4-wrapper" class="chart-canvas-wrapper" style="position: relative; height: 360px; width: 100%;"><canvas id="chart4"></canvas></div>
-            <div style="font-size: 0.9rem; color: #718096; margin-top: 25px; line-height: 1.6;">
-                <p style="margin: 0 0 5px 0;">資料來源：器官捐贈移植登錄及病人自主推廣中心</p>
-                <p style="margin: 0;">整理：楊雅棠</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="story-container">
-        <p data-aos="fade-up">事實上，器官供給不足，並不是願意捐贈的人變少。從器官捐增移植登錄及病人自主推廣中心提供的數據來看，台灣每年仍維持約3萬～4萬人註記器捐意願，但實際捐贈者卻在疫情後持續下降，以致到2025年接受移植的人數降到10年新低。</p>
-    </div>
-
-    <!-- 圖3：大數字乾淨排版 + 134格精準比例陣列 -->
-    <div class="chart-minimal-section" data-aos="fade-up">
-        <div class="chart-wrapper-clean" style="text-align: center;">
-            <div class="chart-minimal-title" style="margin-bottom: 30px;">一年超過四萬人簽器捐卡，實際捐贈者僅 0.7%</div>
-            
-            <div class="stats-row" style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 30px;">
-                <div style="flex: 1; text-align: center;">
-                    <div style="font-size: 0.95rem; color: #1a2a3a; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年新增器捐意願登記</div>
-                    <div style="font-size: 3.2rem; font-weight: 900; color: #1a2a3a; letter-spacing: 1px; line-height: 1.2;">
-                        42,746<span style="font-size: 1.4rem; font-weight: normal; color: #4a5568; margin-left: 2px;">人</span>
-                    </div>
-                </div>
-
-                <div style="width: 1px; height: 60px; background: #e2e8f0; flex-shrink: 0;"></div>
-
-                <div style="flex: 1; text-align: center;">
-                    <div style="font-size: 0.95rem; color: #e53e3e; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年實際完成捐贈者（僅佔 0.7%）</div>
-                    <div style="font-size: 3.2rem; font-weight: 900; color: #e53e3e; letter-spacing: 1px; line-height: 1.2;">
-                        318<span style="font-size: 1.4rem; font-weight: normal; color: #e53e3e; margin-left: 2px;">人</span>
-                    </div>
-                </div>
-            </div>
-
-            <div style="max-width: 520px; margin: 0 auto; text-align: center;">
-                <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin: 25px 0;">
-                    <div style="font-size: 0.95rem; color: #2d3748; margin-bottom: 10px; font-weight: bold;">
-                        象徵每 <span style="color: #e74c3c;">134 人</span> 登記中，最終僅 <span style="color: #e74c3c;">1 人</span> 完成大愛：
-                    </div>
-                    <div class="grid-134">
-                        <div class="grid-dot active" title="1 / 134"></div>
-                        <script>
-                            for(let i=0; i<133; i++) {
-                                document.write('<div class="grid-dot"></div>');
-                            }
-                        </script>
-                    </div>
-                    <div style="font-size: 0.85rem; color: #718096; margin-top: 10px;">
-                        紅點代表 134 分之 1 的實際捐贈成功率，其餘為未成案或未符合條件者
-                    </div>
-                </div>
-            </div>
-
-            <div style="font-size: 0.9rem; color: #718096; margin-top: 25px; line-height: 1.6; text-align: left;">
-                <p style="margin: 0 0 5px 0;">註：器捐意願不等於日後能實際捐贈，仍須符合死亡情境、醫療條件及器官適用性等條件</p>
-                <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
-                <p style="margin: 0;">整理：楊雅棠</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 圖4：捐贈與移植量近10年數據比較 -->
-    <div class="chart-minimal-section" data-aos="fade-up">
-        <div class="chart-wrapper-clean">
-            <div class="chart-minimal-title">捐贈與移植量近10年數據比較</div>
-            <div class="chart-canvas-wrapper" style="position: relative; height: 320px; width: 100%;"><canvas id="chart3"></canvas></div>
-            <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
-                <p style="margin: 0 0 5px 0;">註：一位捐贈人可捐贈不只一項器官，故接受移植人數較捐贈人數為多</p>
-                <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
-                <p style="margin: 0;">整理：楊雅棠</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="story-container">
-        <p data-aos="fade-up">台灣其實並非缺乏潛在捐贈者，但器捐成案比例卻出現極大落差。從全球排名來看，2024年全球國家百萬人口捐贈數，台灣僅5.77人，排名位居46，不僅落後鄰近的國家，如南韓、泰國，更只有第一名西班牙的8分之1。</p>
-    </div>
-
-    <!-- 圖5 -->
-    <div class="chart-minimal-section" data-aos="fade-up">
-        <div class="chart-wrapper-clean">
-            <div class="chart-minimal-title">台灣器捐率全球第46，與領先國家差距懸殊</div>
-            <div style="font-size: 1.1rem; color: #4a5568; margin-bottom: 20px; font-weight: bold; text-align: center;">2024年全球國家百萬人口器官捐贈數</div>
-            <table class="data-table" style="position: relative;">
-                <thead>
-                    <tr><th>排序</th><th>國家/地區</th><th>數值 (每百萬人口)</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>1</td><td>西班牙</td><td>47.96</td></tr>
-                    <tr><td>41</td><td>南韓</td><td>7.68</td></tr>
-                    <tr><td>45</td><td>泰國</td><td>5.79</td></tr>
-                    <tr style="background-color: #ffebee; color: #e74c3c; font-weight: bold; height: 70px; border-top: 2px solid #e74c3c; border-bottom: 2px solid #e74c3c;">
-                        <td style="vertical-align: middle;">46</td>
-                        <td style="vertical-align: middle;">台灣</td>
-                        <td style="vertical-align: middle;">5.77</td>
-                    </tr>
-                    <tr><td>49</td><td>中國</td><td>4.65</td></tr>
-                    <tr><td>48</td><td>新加坡</td><td>4.75</td></tr>
-                    <tr><td>66</td><td>日本</td><td>1.13</td></tr>
-                </tbody>
-            </table>
-            <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
-                <p style="margin: 0 0 5px 0;">資料來源：全球器官捐贈與移植觀察站（GODT）、器官捐贈移植登錄及病人自主推廣中心整理</p>
-                <p style="margin: 0;">整理：楊雅棠</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- 結語段落與按鈕 -->
-    <div class="story-container" style="margin-top: 40px; margin-bottom: 40px;">
-        <p data-aos="fade-up">究竟，台灣的捐贈制度出了什麼問題？每一次成功的器捐，背後是文化、制度、人力、資源等層層綿密交織的成果，《康健》從真實案例故事、到第一線觀察與分析，揭開國內大愛器捐的困境，期盼每一份重生大禮，送到對的人手上。</p>
-        <div style="margin-top: 30px; text-align: center;" data-aos="fade-up">
-            <a href="https://www.commonhealth.com.tw/article/94258" target="_blank" class="btn-readmore-dark">閱讀更多</a>
-        </div>
-    </div>
-
-    <!-- 下方三篇文章區塊 -->
-    <div class="journey-wrapper">
-        <div class="journey-container">
-            <div id="doctors" style="position: relative; top: -100px; visibility: hidden;"></div>
-            <div class="journey-step" data-aos="fade-up">
-                <div class="journey-img"><img src="images/journey-1.jpg" alt="醫師篇"></div>
-                <h2>器官移植後，故事才開始！<br><span class="journey-sub-title">手術數小時、照護數十年，為何留不住移植醫師？</span></h2>
-                <p>當病人終於等到救命器官，對移植團隊而言，真正的挑戰才剛開始。從半夜奔波取器官、數小時的高風險手術，到術後長達數十年的追蹤照護，移植醫療是一場沒有終點的馬拉松。<br>然而，移植醫學學會今年僅招募到3名新會員，創近10年新低；部分醫院則面臨新血不進、中生代流失、資深醫師苦撐的接班斷層。當救命技術後繼無人，器官移植還能只靠醫師的熱忱與犧牲支撐嗎？</p>
-                <a href="https://www.commonhealth.com.tw/article/94263" target="_blank" class="btn-readmore-light">閱讀更多</a>
-            </div>
-
-            <div id="coordinators" style="position: relative; top: -100px; visibility: hidden;"></div>
-            <div class="journey-step" data-aos="fade-up">
-                <div class="journey-img"><img src="images/journey-2.jpg" alt="協調師篇"></div>
-                <h2>沒有協調師，器捐很難成案！<br><span class="journey-sub-title">24小時待命、全台僅129人，關鍵人力為何愈來愈少？</span></h2>
-                <p>器官捐贈能否順利完成，器捐協調師是不可或缺的關鍵。從陪伴家屬、安排腦死判定、協調醫療團隊，到器官評估、配對與摘取作業，甚至最後的感恩致謝，都由協調師串聯完成。<br>這份工作不只需要高度專業，一次值班更長達7天，一通電話就得立即出勤。然而，全台器捐協調師已從137人減至129人，多家移植中心長期招募仍補不到人。當器捐成案的關鍵人力持續流失，制度該如何補上缺口？</p>
-                <a href="https://www.commonhealth.com.tw/article/94339" target="_blank" class="btn-readmore-light">閱讀更多</a>
-            </div>
-
-            <div id="families" style="position: relative; top: -100px; visibility: hidden;"></div>
-            <div class="journey-step" data-aos="fade-up">
-                <div class="journey-img"><img src="images/journey-3.jpg" alt="家屬篇"></div>
-                <h2>放手不是放棄！<br><span class="journey-sub-title">捐與不捐都是愛，器捐家屬如何面對最難的告別？</span></h2>
-                <p>近7成民眾表達器官捐贈意願，但臨床上真正面臨至親離世時，同意捐贈的家屬約僅2～3成。躺在病床上的是相伴數十年的家人，家屬不只捨不得對方「再痛一次」，更可能擔心簽下同意書，就等於親手選擇放棄。<br>從20歲驟逝的男大生，到97歲溫柔告別的黃奶奶，兩個家庭的故事顯示，生前談論器捐意願，能減輕家屬在最後關頭代替摯愛決定的壓力。器捐不只可能延續他人的生命，也可能幫助留下來的人安放悲傷；但無論捐或不捐，決定的起點都是對家人的愛。</p>
-                <a href="https://www.commonhealth.com.tw/article/94276" target="_blank" class="btn-readmore-light">閱讀更多</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- 延伸閱讀區塊 -->
-    <div class="related-reading-section" data-aos="fade-up">
-        <h2>延伸閱讀</h2>
-        <div class="related-carousel-wrapper">
-            <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
-            <div class="related-slider-container">
-                <div class="related-grid" id="relatedSlider">
-                    <a href="https://www.commonhealth.com.tw/article/93996" target="_blank" class="related-card">
-                        <div class="related-card-img"><img src="images/related-1.jpg" alt="當「吃」成為最遙遠的渴望！香港媽媽跨海來台移植200公分小腸，改寫兒子8年點滴人生"></div>
-                        <div class="related-card-content">
-                            <h3>當「吃」成為最遙遠的渴望！香港媽媽跨海來台移植200公分小腸，改寫兒子8年點滴人生</h3>
-                            <span class="related-link-text">了解詳情</span>
-                        </div>
-                    </a>
-                    <a href="https://www.commonhealth.com.tw/article/92645" target="_blank" class="related-card">
-                        <div class="related-card-img"><img src="images/related-2.jpg" alt="器官捐贈同意書，簽了能反悔嗎？器捐流程、腦死定義，關鍵10問一次搞懂"></div>
-                        <div class="related-card-content">
-                            <h3>器官捐贈同意書，簽了能反悔嗎？器捐流程、腦死定義，關鍵10問一次搞懂</h3>
-                            <span class="related-link-text">了解詳情</span>
-                        </div>
-                    </a>
-                    <a href="https://www.commonhealth.com.tw/blog/6146" target="_blank" class="related-card">
-                        <div class="related-card-img"><img src="images/related-3.jpg" alt="20年近4萬人等不到器官死亡！李伯璋：面對洗腎財務黑洞，不如推動移植重生"></div>
-                        <div class="related-card-content">
-                            <h3>20年近4萬人等不到器官死亡！李伯璋：面對洗腎財務黑洞，不如推動移植重生</h3>
-                            <span class="related-link-text">了解詳情</span>
-                        </div>
-                    </a>
-                    <a href="https://www.commonhealth.com.tw/blog/6422" target="_blank" class="related-card">
-                        <div class="related-card-img"><img src="images/related-4.jpg" alt="夫妻沒血緣也能捐腎？醫師：長年相守，身體可能早已熟悉彼此的抗原"></div>
-                        <div class="related-card-content">
-                            <h3>夫妻沒血緣也能捐腎？醫師：長年相守，身體可能早已熟悉彼此的抗原</h3>
-                            <span class="related-link-text">了解詳情</span>
-                        </div>
-                    </a>
-                    <a href="https://www.commonhealth.com.tw/article/94230" target="_blank" class="related-card">
-                        <div class="related-card-img"><img src="images/related-5.jpg" alt="創全球首例！斷臂35年男子接上女手臂，1年後重拾寫字與擁抱，手臂更「轉性」長出體毛"></div>
-                        <div class="related-card-content">
-                            <h3>創全球首例！斷臂35年男子接上女手臂，1年後重拾寫字與擁抱，手臂更「轉性」長出體毛</h3>
-                            <span class="related-link-text">了解詳情</span>
-                        </div>
-                    </a>
-                    <a href="https://www.commonhealth.com.tw/article/86473" target="_blank" class="related-card">
-                        <div class="related-card-img"><img src="images/related-6.jpg" alt="肺移植續命！哪些情況可肺移植？肺能活體移植？醫師解答肺移植7問"></div>
-                        <div class="related-card-content">
-                            <h3>肺移植續命！哪些情況可肺移植？肺能活體移植？醫師解答肺移植7問</h3>
-                            <span class="related-link-text">了解詳情</span>
-                        </div>
-                    </a>
-                    <a href="https://www.commonhealth.com.tw/article/87601" target="_blank" class="related-card">
-                        <div class="related-card-img"><img src="images/related-7.jpg" alt="父母捐肺救11歲愛女 台大醫院成功完成台灣首例活體肺葉移植"></div>
-                        <div class="related-card-content">
-                            <h3>父母捐肺救11歲愛女 台大醫院成功完成台灣首例活體肺葉移植</h3>
-                            <span class="related-link-text">了解詳情</span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <button class="carousel-btn next" id="nextBtn">&#10095;</button>
-        </div>
-        <div class="carousel-dots" id="carouselDots"></div>
-    </div>
-
-    <!-- 追蹤我們 Social Media 區塊 -->
-    <div class="ch-section-social">
-        <div class="ch-wrap">
-            <div class="ch-wrapper">
-                <h2>追蹤我們，最新資訊不漏接</h2>
-                <div class="ch-social-media">
-                    <a class="ch-social-group" href="https://line.me/ti/p/@commonhealth" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-line.svg" alt="LINE"><p>加入 LINE 好友</p></a>
-                    <a class="ch-social-group" href="https://www.facebook.com/commonhealth/" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-fb.svg" alt="FB"><p>追蹤 Facebook</p></a>
-                    <a class="ch-social-group" href="https://www.instagram.com/commonhealth.official/" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-instagram.svg" alt="IG"><p>追蹤 Instagram</p></a>
-                    <a class="ch-social-group" href="https://www.youtube.com/user/CommonHealthTV" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-youtube.svg" alt="YT"><p>訂閱 Youtube</p></a>
-                    <a class="ch-social-group" href="https://solink.soundon.fm/commonhealth" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-podcast.svg" alt="Podcast"><p>訂閱 Podcast</p></a>
-                    <a class="ch-social-group" href="https://www.commonhealth.com.tw/member/member_newsletter" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-edm.svg" alt="EDM"><p>訂閱電子報</p></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 官方標準 Footer -->
-    <footer>
-        <ul>
-            <li><a href="https://www.commonhealth.com.tw" target="_blank">康健官網</a></li>
-            <li><a href="https://www.commonhealth.com.tw/magazine_list" target="_blank">康健雜誌</a></li>
-            <li><a href="https://www.commonhealth.com.tw/book" target="_blank">康健出版</a></li>
-            <li><a href="https://www.youtube.com/user/CommonHealthTV" target="_blank">康健影音</a></li>
-            <li><a href="https://kb.commonhealth.com.tw" target="_blank">康健知識庫</a></li>
-            <li><a href="https://club.commonhealth.com.tw" target="_blank">大人社團</a></li>
-            <li><a href="https://cancer.commonhealth.com.tw" target="_blank">癌症問康健</a></li>
-        </ul>
-        <p>Copyright © 2026 康健雜誌（天下生活出版股份有限公司）All rights reserved.</p>
-        <ul>
-            <li><a href="https://member.cwg.tw/privacy-policy" target="_blank">隱私權政策</a></li>
-            <li><a href="https://member.cwg.tw/register-rule" target="_blank">會員服務條款</a></li>
-        </ul>
-    </footer>
-
-    <!-- 引入 Chart.js DataLabels 外掛 -->
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const slider = document.getElementById('relatedSlider');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const dotsContainer = document.getElementById('carouselDots');
-            
-            if (slider && prevBtn && nextBtn && dotsContainer) {
-                const originalCards = Array.from(slider.querySelectorAll('.related-card'));
-                const totalOriginal = originalCards.length;
-                let currentIndex = 0;
-
-                const clonesCount = 3;
-                for (let i = 0; i < clonesCount; i++) {
-                    const cloneFirst = originalCards[i].cloneNode(true);
-                    const cloneLast = originalCards[totalOriginal - 1 - i].cloneNode(true);
-                    slider.appendChild(cloneFirst);
-                    slider.insertBefore(cloneLast, slider.firstChild);
-                }
-
-                const allCards = slider.querySelectorAll('.related-card');
-                currentIndex = clonesCount;
-
-                function setSliderPosition(withTransition = true) {
-                    const cardWidth = allCards[clonesCount].offsetWidth;
-                    const gap = 24;
-                    const moveDistance = currentIndex * (cardWidth + gap);
-                    slider.style.transition = withTransition ? 'transform 0.4s ease-in-out' : 'none';
-                    slider.style.transform = `translateX(-${moveDistance}px)`;
-                    updateDots();
-                }
-
-                function createDots() {
-                    dotsContainer.innerHTML = '';
-                    for (let i = 0; i < totalOriginal; i++) {
-                        const dot = document.createElement('button');
-                        dot.classList.add('carousel-dot');
-                        if (i === (currentIndex - clonesCount + totalOriginal) % totalOriginal) dot.classList.add('active');
-                        dot.addEventListener('click', () => { currentIndex = i + clonesCount; setSliderPosition(true); });
-                        dotsContainer.appendChild(dot);
-                    }
-                }
-
-                function updateDots() {
-                    const dots = dotsContainer.querySelectorAll('.carousel-dot');
-                    const realIndex = (currentIndex - clonesCount + totalOriginal) % totalOriginal;
-                    dots.forEach((dot, index) => {
-                        dot.classList.toggle('active', index === realIndex);
-                    });
-                }
-
-                setSliderPosition(false);
-                createDots();
-
-                nextBtn.addEventListener('click', () => {
-                    currentIndex++;
-                    setSliderPosition(true);
-                    if (currentIndex >= totalOriginal + clonesCount) {
-                        setTimeout(() => { currentIndex = clonesCount; setSliderPosition(false); }, 400);
-                    }
-                });
-
-                prevBtn.addEventListener('click', () => {
-                    currentIndex--;
-                    setSliderPosition(true);
-                    if (currentIndex < clonesCount) {
-                        setTimeout(() => { currentIndex = totalOriginal + clonesCount - 1; setSliderPosition(false); }, 400);
-                    }
-                });
-
-                window.addEventListener('resize', () => setSliderPosition(false));
+            const clonesCount = 3;
+            for (let i = 0; i < clonesCount; i++) {
+                const cloneFirst = originalCards[i].cloneNode(true);
+                const cloneLast = originalCards[totalOriginal - 1 - i].cloneNode(true);
+                slider.appendChild(cloneFirst);
+                slider.insertBefore(cloneLast, slider.firstChild);
             }
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            AOS.init({ once: true, offset: 100 });
 
-            const observeChart = (selector, createChartFn) => {
-                const element = document.querySelector(selector);
-                if (!element) return;
-                let created = false;
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !created) {
-                            created = true;
-                            createChartFn();
-                        }
+            const allCards = slider.querySelectorAll('.related-card');
+            currentIndex = clonesCount;
+
+            function setSliderPosition(withTransition = true) {
+                const cardWidth = allCards[clonesCount].offsetWidth;
+                const gap = 24;
+                const moveDistance = currentIndex * (cardWidth + gap);
+                slider.style.transition = withTransition ? 'transform 0.4s ease-in-out' : 'none';
+                slider.style.transform = `translateX(-${moveDistance}px)`;
+                updateDots();
+            }
+
+            function createDots() {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalOriginal; i++) {
+                    const dot = document.createElement('button');
+                    dot.classList.add('carousel-dot');
+                    if (i === (currentIndex - clonesCount + totalOriginal) % totalOriginal) dot.classList.add('active');
+                    dot.addEventListener('click', () => { currentIndex = i + clonesCount; setSliderPosition(true); });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            function updateDots() {
+                const dots = dotsContainer.querySelectorAll('.carousel-dot');
+                const realIndex = (currentIndex - clonesCount + totalOriginal) % totalOriginal;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === realIndex);
+                });
+            }
+
+            setSliderPosition(false);
+            createDots();
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex++;
+                setSliderPosition(true);
+                if (currentIndex >= totalOriginal + clonesCount) {
+                    setTimeout(() => { currentIndex = clonesCount; setSliderPosition(false); }, 400);
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex--;
+                setSliderPosition(true);
+                if (currentIndex < clonesCount) {
+                    setTimeout(() => { currentIndex = totalOriginal + clonesCount - 1; setSliderPosition(false); }, 400);
+                }
+            });
+
+            window.addEventListener('resize', () => setSliderPosition(false));
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        AOS.init({ once: true, offset: 100 });
+
+        const observeChart = (selector, createChartFn) => {
+            const element = document.querySelector(selector);
+            if (!element) return;
+            let created = false;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !created) {
+                        created = true;
+                        createChartFn();
+                    }
+                });
+            }, { threshold: 0.3 });
+            observer.observe(element);
+        };
+
+        observeChart('#chart1', () => {
+            const chart1Annotations = {
+                id: 'chart1Annotations',
+                afterDraw(chart) {
+                    const { ctx } = chart;
+                    const points = [
+                        { index: 0, year: '2016年', text: '8,941人', offsetX: 25 },
+                        { index: 9, year: '2025年', text: '11,546人', offsetX: -25 }
+                    ];
+
+                    ctx.save();
+                    points.forEach(p => {
+                        const meta = chart.getDatasetMeta(0);
+                        if (!meta.data[p.index]) return;
+                        const { x: px, y: py } = meta.data[p.index];
+
+                        const boxWidth = 92;
+                        const boxHeight = 52;
+                        let boxX = px + p.offsetX - boxWidth / 2;
+                        if (boxX < 0) boxX = 0;
+                        if (boxX + boxWidth > chart.width) boxX = chart.width - boxWidth;
+                        let boxY = py - boxHeight - 16;
+                        
+                        ctx.fillStyle = '#1a2a3a';
+                        ctx.strokeStyle = '#1a2a3a';
+                        ctx.lineWidth = 2;
+                        ctx.beginPath();
+                        if (ctx.roundRect) ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 6);
+                        else ctx.rect(boxX, boxY, boxWidth, boxHeight);
+                        ctx.fill();
+                        ctx.stroke();
+
+                        ctx.beginPath();
+                        ctx.moveTo(px, py - 4);
+                        ctx.lineTo(px - 6, boxY + boxHeight);
+                        ctx.lineTo(px + 6, boxY + boxHeight);
+                        ctx.closePath();
+                        ctx.fillStyle = '#1a2a3a';
+                        ctx.fill();
+
+                        ctx.fillStyle = '#ffffff';
+                        ctx.font = '12px "Microsoft JhengHei", sans-serif';
+                        ctx.textAlign = 'center';
+                        ctx.fillText(p.year, boxX + boxWidth / 2, boxY + 18);
+                        ctx.font = 'bold 15px "Microsoft JhengHei", sans-serif';
+                        ctx.fillText(p.text, boxX + boxWidth / 2, boxY + 40);
                     });
-                }, { threshold: 0.3 });
-                observer.observe(element);
+                    ctx.restore();
+                }
             };
 
-            observeChart('#chart1', () => {
-                const chart1Annotations = {
-                    id: 'chart1Annotations',
-                    afterDraw(chart) {
-                        const { ctx } = chart;
-                        const points = [
-                            { index: 0, year: '2016年', text: '8,941人', offsetX: 25 },
-                            { index: 9, year: '2025年', text: '11,546人', offsetX: -25 }
-                        ];
+            const ctx1 = document.getElementById('chart1').getContext('2d');
+            const gradient1 = ctx1.createLinearGradient(0, 0, 0, 300);
+            gradient1.addColorStop(0, 'rgba(235, 87, 87, 0.5)');
+            gradient1.addColorStop(1, 'rgba(235, 87, 87, 0.0)');
 
-                        ctx.save();
-                        points.forEach(p => {
-                            const meta = chart.getDatasetMeta(0);
-                            if (!meta.data[p.index]) return;
-                            const { x: px, y: py } = meta.data[p.index];
-
-                            const boxWidth = 92;
-                            const boxHeight = 52;
-                            let boxX = px + p.offsetX - boxWidth / 2;
-                            if (boxX < 0) boxX = 0;
-                            if (boxX + boxWidth > chart.width) boxX = chart.width - boxWidth;
-                            let boxY = py - boxHeight - 16;
-                            
-                            ctx.fillStyle = '#1a2a3a';
-                            ctx.strokeStyle = '#1a2a3a';
-                            ctx.lineWidth = 2;
-                            ctx.beginPath();
-                            if (ctx.roundRect) ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 6);
-                            else ctx.rect(boxX, boxY, boxWidth, boxHeight);
-                            ctx.fill();
-                            ctx.stroke();
-
-                            ctx.beginPath();
-                            ctx.moveTo(px, py - 4);
-                            ctx.lineTo(px - 6, boxY + boxHeight);
-                            ctx.lineTo(px + 6, boxY + boxHeight);
-                            ctx.closePath();
-                            ctx.fillStyle = '#1a2a3a';
-                            ctx.fill();
-
-                            ctx.fillStyle = '#ffffff';
-                            ctx.font = '12px "Microsoft JhengHei", sans-serif';
-                            ctx.textAlign = 'center';
-                            ctx.fillText(p.year, boxX + boxWidth / 2, boxY + 18);
-                            ctx.font = 'bold 15px "Microsoft JhengHei", sans-serif';
-                            ctx.fillText(p.text, boxX + boxWidth / 2, boxY + 40);
-                        });
-                        ctx.restore();
-                    }
-                };
-
-                const ctx1 = document.getElementById('chart1').getContext('2d');
-                const gradient1 = ctx1.createLinearGradient(0, 0, 0, 300);
-                gradient1.addColorStop(0, 'rgba(235, 87, 87, 0.5)');
-                gradient1.addColorStop(1, 'rgba(235, 87, 87, 0.0)');
-
-                new Chart(ctx1, {
-                    type: 'line',
-                    plugins: [chart1Annotations],
-                    data: {
-                        labels: ['2016年', '2017年', '2018年', '2019年', '2020年', '2021年', '2022年', '2023年', '2024年', '2025年'],
-                        datasets: [{
-                            label: '等待移植人數',
-                            data: [8941, 9300, 9700, 10100, 10500, 11000, 11400, 11550, 11641, 11546],
-                            borderColor: '#eb5757',
-                            backgroundColor: gradient1,
-                            borderWidth: 3,
-                            fill: true,
-                            tension: 0.2,
-                            pointBackgroundColor: '#ffffff',
-                            pointBorderColor: '#1a2a3a',
-                            pointBorderWidth: 2,
-                            pointRadius: (ctx) => (ctx.dataIndex === 0 || ctx.dataIndex === 9) ? 6 : 4,
-                            pointHoverRadius: 7
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        layout: { padding: { left: 15, right: 25, top: 85, bottom: 15 } },
-                        plugins: { 
-                            legend: { display: false },
-                            tooltip: {
-                                enabled: true,
-                                filter: (item) => item.dataIndex !== 0 && item.dataIndex !== 9,
-                                callbacks: { label: (ctx) => ' 等待人數: ' + ctx.parsed.y.toLocaleString() + '人' }
-                            }
-                        },
-                        scales: {
-                            x: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#edf2f7' } },
-                            y: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#edf2f7' }, min: 8000, max: 13000 }
+            new Chart(ctx1, {
+                type: 'line',
+                plugins: [chart1Annotations],
+                data: {
+                    labels: ['2016年', '2017年', '2018年', '2019年', '2020年', '2021年', '2022年', '2023年', '2024年', '2025年'],
+                    datasets: [{
+                        label: '等待移植人數',
+                        data: [8941, 9300, 9700, 10100, 10500, 11000, 11400, 11550, 11641, 11546],
+                        borderColor: '#eb5757',
+                        backgroundColor: gradient1,
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.2,
+                        pointBackgroundColor: '#ffffff',
+                        pointBorderColor: '#1a2a3a',
+                        pointBorderWidth: 2,
+                        pointRadius: (ctx) => (ctx.dataIndex === 0 || ctx.dataIndex === 9) ? 6 : 4,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { left: 15, right: 25, top: 85, bottom: 15 } },
+                    plugins: { 
+                        legend: { display: false },
+                        tooltip: {
+                            enabled: true,
+                            filter: (item) => item.dataIndex !== 0 && item.dataIndex !== 9,
+                            callbacks: { label: (ctx) => ' 等待人數: ' + ctx.parsed.y.toLocaleString() + '人' }
                         }
-                    }
-                });
-            });
-
-            observeChart('#chart3', () => {
-                new Chart(document.getElementById('chart3').getContext('2d'), {
-                    type: 'bar',
-                    data: {
-                        labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
-                        datasets: [
-                            { label: '捐贈人數', data: [290, 339, 327, 375, 402, 294, 309, 416, 366, 318], backgroundColor: '#3498db', borderRadius: 4 },
-                            { label: '接受移植人數', data: [1006, 1062, 984, 1179, 1218, 954, 942, 1154, 1034, 882], backgroundColor: '#2ecc71', borderRadius: 4 }
-                        ]
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { position: 'top', labels: { boxWidth: 12, color: '#718096' } } },
-                        scales: {
-                            x: { ticks: { color: '#a0aec0' }, grid: { display: false } },
-                            y: { ticks: { color: '#a0aec0' }, grid: { color: '#f7fafc' } }
-                        }
+                    scales: {
+                        x: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#edf2f7' } },
+                        y: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#edf2f7' }, min: 8000, max: 13000 }
                     }
-                });
-            });
-
-            observeChart('#chart4', () => {
-                new Chart(document.getElementById('chart4').getContext('2d'), {
-                    type: 'bar',
-                    plugins: [ChartDataLabels],
-                    data: {
-                        labels: ['腎臟', '肝臟', '心臟', '肺臟', '胰臟', '小腸'],
-                        datasets: [{
-                            label: '死亡個案數',
-                            data: [724, 304, 89, 28, 9, 3],
-                            backgroundColor: ['#eb5757', 'rgba(43, 76, 111, 1)', 'rgba(43, 76, 111, 0.75)', 'rgba(43, 76, 111, 0.55)', 'rgba(43, 76, 111, 0.35)', 'rgba(43, 76, 111, 0.2)'],
-                            borderRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        layout: { padding: { top: 25 } },
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: { callbacks: { label: (ctx) => ` 死亡人數: ${ctx.parsed.y || 0}人` } },
-                            datalabels: {
-                                anchor: 'end',
-                                align: 'top',
-                                color: (ctx) => ctx.dataIndex === 0 ? '#eb5757' : '#4a5568',
-                                font: (ctx) => ({
-                                    weight: 'bold',
-                                    size: ctx.dataIndex === 0 ? 18 : 13,
-                                    family: '"Microsoft JhengHei", sans-serif'
-                                }),
-                                formatter: (val) => val + '人'
-                            }
-                        },
-                        scales: {
-                            x: { ticks: { color: '#2d3748', font: { size: 13 } }, grid: { display: false } },
-                            y: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#f7fafc' }, beginAtZero: true, max: 800 }
-                        }
-                    }
-                });
+                }
             });
         });
-    </script>
+
+        observeChart('#chart3', () => {
+            new Chart(document.getElementById('chart3').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                    datasets: [
+                        { label: '捐贈人數', data: [290, 339, 327, 375, 402, 294, 309, 416, 366, 318], backgroundColor: '#3498db', borderRadius: 4 },
+                        { label: '接受移植人數', data: [1006, 1062, 984, 1179, 1218, 954, 942, 1154, 1034, 882], backgroundColor: '#2ecc71', borderRadius: 4 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'top', labels: { boxWidth: 12, color: '#718096' } } },
+                    scales: {
+                        x: { ticks: { color: '#a0aec0' }, grid: { display: false } },
+                        y: { ticks: { color: '#a0aec0' }, grid: { color: '#f7fafc' } }
+                    }
+                }
+            });
+        });
+
+        observeChart('#chart4', () => {
+            new Chart(document.getElementById('chart4').getContext('2d'), {
+                type: 'bar',
+                plugins: [ChartDataLabels],
+                data: {
+                    labels: ['腎臟', '肝臟', '心臟', '肺臟', '胰臟', '小腸'],
+                    datasets: [{
+                        label: '死亡個案數',
+                        data: [724, 304, 89, 28, 9, 3],
+                        backgroundColor: ['#eb5757', 'rgba(43, 76, 111, 1)', 'rgba(43, 76, 111, 0.75)', 'rgba(43, 76, 111, 0.55)', 'rgba(43, 76, 111, 0.35)', 'rgba(43, 76, 111, 0.2)'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: { top: 25 } },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: (ctx) => ` 死亡人數: ${ctx.parsed.y || 0}人` } },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'top',
+                            color: (ctx) => ctx.dataIndex === 0 ? '#eb5757' : '#4a5568',
+                            font: (ctx) => ({
+                                weight: 'bold',
+                                size: ctx.dataIndex === 0 ? 18 : 13,
+                                family: '"Microsoft JhengHei", sans-serif'
+                            }),
+                            formatter: (val) => val + '人'
+                        }
+                    },
+                    scales: {
+                        x: { ticks: { color: '#2d3748', font: { size: 13 } }, grid: { display: false } },
+                        y: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#f7fafc' }, beginAtZero: true, max: 800 }
+                    }
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
