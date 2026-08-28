@@ -1168,19 +1168,6 @@
     </div>
 </div>
 
-<!-- 圖4：捐贈與移植量近10年數據比較 -->
-<div class="chart-minimal-section" data-aos="fade-up">
-    <div class="chart-wrapper-clean">
-        <div class="chart-minimal-title">捐贈與移植量近10年數據比較</div>
-        <div class="chart-canvas-wrapper" style="position: relative; height: 320px; width: 100%;"><canvas id="chart3"></canvas></div>
-        <div style="font-size: 0.9rem; color: #718096; margin-top: 15px; line-height: 1.6;">
-            <p style="margin: 0 0 5px 0;">註：一位捐贈人可捐贈不只一項器官，故接受移植人數較捐贈人數為多</p>
-            <p style="margin: 0 0 5px 0;">資料來源：預立醫療決定、安寧緩和醫療及器官捐贈意願資料處理小組</p>
-            <p style="margin: 0;">整理：楊雅棠</p>
-        </div>
-    </div>
-</div>
-
 <div class="story-container">
     <p data-aos="fade-up">台灣其實並非缺乏潛在捐贈者，但器捐成案比例卻出現極大落差。從全球排名來看，2024年全球國家百萬人口捐贈數，台灣僅5.77人，排名位居46，不僅落後鄰近的國家，如南韓、泰國，更只有第一名西班牙的8分之1。</p>
 </div>
@@ -1603,28 +1590,6 @@
                     scales: {
                         x: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#edf2f7' } },
                         y: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#edf2f7' }, min: 8000, max: 13000 }
-                    }
-                }
-            });
-        });
-
-        observeChart('#chart3', () => {
-            new Chart(document.getElementById('chart3').getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'],
-                    datasets: [
-                        { label: '捐贈人數', data: [290, 339, 327, 375, 402, 294, 309, 416, 366, 318], backgroundColor: '#3498db', borderRadius: 4 },
-                        { label: '接受移植人數', data: [1006, 1062, 984, 1179, 1218, 954, 942, 1154, 1034, 882], backgroundColor: '#2ecc71', borderRadius: 4 }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { position: 'top', labels: { boxWidth: 12, color: '#718096' } } },
-                    scales: {
-                        x: { ticks: { color: '#a0aec0' }, grid: { display: false } },
-                        y: { ticks: { color: '#a0aec0' }, grid: { color: '#f7fafc' } }
                     }
                 }
             });
