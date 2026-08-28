@@ -711,7 +711,7 @@
             footer ul li { padding: 0 5px 0 0; margin: 0 5px 10px 0; }
         }
 
-        /* ⭐️ 康健公司標準 Header 與絕對置中修正 CSS ⭐️ */
+        /* ⭐️ 康健公司標準 Header 與 初始透明、滾動變白底 CSS ⭐️ */
         #ch-header,
         #ch-header div,
         #ch-header span,
@@ -787,15 +787,24 @@
             #ch-header h1 img { height: 32px; margin: auto; }
         }
 
+        /* 預設一開始是透明、無陰影 */
         #ch-header {
             position: fixed;
             width: 100%;
             top: 0;
             left: 0;
-            background-color: #fff;
+            background-color: transparent;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            z-index: 1000;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        /* 往下滑動後（加上 .scrolled 類別）變回白底與陰影 */
+        #ch-header.scrolled {
+            background-color: #fff !important;
             -webkit-box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
             box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
         }
 
         @media (max-width: 768px) {
@@ -1291,6 +1300,15 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   $(document).ready(function() {
+      // 偵測畫面滾動，超過 50px 自動為 header 加上 .scrolled（變白底）
+      $(window).scroll(function() {
+          if ($(window).scrollTop() > 50) {
+              $('#ch-header').addClass('scrolled');
+          } else {
+              $('#ch-header').removeClass('scrolled');
+          }
+      });
+
       // 漢堡選單開關
       $('#ch-button-toggle').click(function (e) {
           e.preventDefault();
