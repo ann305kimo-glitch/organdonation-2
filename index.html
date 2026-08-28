@@ -41,15 +41,23 @@
             color: var(--text-color); 
             overflow-x: hidden;
             line-height: 2;
-            scroll-padding-top: 90px; 
+            scroll-padding-top: 90px;
+            -webkit-text-size-adjust: 100%;
         }
 
         #donation {
             scroll-margin-top: 95px;
         }
 
-        h1, h2, .hero-overlay h1, .chart-minimal-title, .journey-step h2, .ch-section-social h2, .related-reading-section h2 {
-            font-family: "Noto Serif TC", "Source Han Serif", "微軟正黑體", serif;
+        /* 僅主視覺與文章大標保留明體 */
+        h1, .hero-overlay h1, .journey-step h2, .ch-section-social h2, .related-reading-section h2 {
+            font-family: "Noto Serif TC", "Source Han Serif TC", "Source Han Serif", "Songti TC", "AR PL UMing TW", "PMingLiU", "微軟正黑體", serif !important;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 圖表標題改為黑體，並確保跨載具顯示一致 */
+        .chart-minimal-title {
+            font-family: "Microsoft JhengHei", "微軟正黑體", "Helvetica Neue", Arial, sans-serif !important;
         }
 
         .story-container, .story-container p {
@@ -194,6 +202,13 @@
             color: #718096;
             font-weight: 600;
             background: #f7fafc;
+        }
+
+        .stats-divider {
+            width: 1px;
+            height: 60px;
+            background: #e2e8f0;
+            flex-shrink: 0;
         }
 
         .grid-134 {
@@ -360,7 +375,7 @@
             .m-qmark { margin-left: -5px !important; }
             .mobile-hero-block { display: block !important; }
             .hero-overlay {
-                top: -40px !important;
+                top: -180px !important;
                 padding: 0 24px !important;
             }
             .mobile-h1 {
@@ -369,6 +384,7 @@
                 letter-spacing: 2px !important;
                 line-height: 1.25 !important;
                 white-space: normal !important;
+                margin-bottom: 18px !important;
             }
             .mobile-big {
                 font-size: 4.2rem !important;
@@ -376,27 +392,48 @@
             }
             .mobile-sub {
                 font-size: 1.25rem !important;
-                margin-top: 15px !important;
+                margin-top: 0 !important;
                 letter-spacing: 1px !important;
                 line-height: 1.6 !important;
+            }
+            .story-container {
+                margin: 50px auto !important;
+            }
+            .chart-minimal-section {
+                margin: 50px auto !important;
             }
             .data-table th, .data-table td {
                 padding: 12px 6px;
                 font-size: 1rem;
             }
+            
+            /* 手機版設定保持縮小間距 */
             .stats-row {
                 flex-direction: column !important;
-                gap: 25px !important;
+                gap: 15px !important;
             }
+            .stats-divider {
+                width: 80px !important;
+                height: 1px !important;
+                margin: 5px auto !important;
+            }
+
             .chart-wrapper-clean {
                 padding: 20px 15px !important;
-                margin-bottom: 60px !important;
+                margin-bottom: 40px !important;
             }
             .chart-canvas-wrapper {
                 height: 240px !important;
             }
             #chart4-wrapper {
                 height: 260px !important;
+            }
+        }
+
+        @media(min-width: 769px) {
+            /* 電腦版數字區塊縮小間距 */
+            .stats-row {
+                gap: 20px !important;
             }
         }
 
@@ -1067,7 +1104,7 @@
     <div class="chart-wrapper-clean" style="text-align: center;">
         <div class="chart-minimal-title" style="margin-bottom: 30px;">一年超過四萬人簽器捐卡，實際捐贈者僅 0.7%</div>
         
-        <div class="stats-row" style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 30px;">
+        <div class="stats-row" style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
             <div style="flex: 1; text-align: center;">
                 <div style="font-size: 0.95rem; color: #1a2a3a; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年新增器捐意願登記</div>
                 <div style="font-size: 3.2rem; font-weight: 900; color: #1a2a3a; letter-spacing: 1px; line-height: 1.2;">
@@ -1075,10 +1112,10 @@
                 </div>
             </div>
 
-            <div style="width: 1px; height: 60px; background: #e2e8f0; flex-shrink: 0;"></div>
+            <div class="stats-divider"></div>
 
             <div style="flex: 1; text-align: center;">
-                <div style="font-size: 0.95rem; color: #e53e3e; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年實際完成捐贈者（僅佔 0.7%）</div>
+                <div style="font-size: 0.95rem; color: #e53e3e; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年實際完成捐贈者</div>
                 <div style="font-size: 3.2rem; font-weight: 900; color: #e53e3e; letter-spacing: 1px; line-height: 1.2;">
                     318<span style="font-size: 1.4rem; font-weight: normal; color: #e53e3e; margin-left: 2px;">人</span>
                 </div>
@@ -1190,7 +1227,7 @@
         <div class="journey-step" data-aos="fade-up">
             <div class="journey-img"><img src="images/journey-3.jpg" alt="家屬篇"></div>
             <h2>放手不是放棄！<br><span class="journey-sub-title">捐與不捐都是愛，器捐家屬如何面對最難的告別？</span></h2>
-            <p>近7成民眾表達器官捐贈意願，但臨床上真正面臨至親離世時，同意捐贈的家屬約僅2～3成。躺在病床上的是相伴數十年的家人，家屬不只捨不得對方「再痛一次」，更可能擔心簽下同意書，就等於親手選擇放棄。<br>從20歲驟逝的男大生，到97歲溫柔告別的黃奶奶，兩個家庭的故事顯示，生前談論器捐意願，能減輕家屬在最後關頭代替摯愛決定的壓力。器捐不只可能延續他人的生命，也可能幫助留下來的人安放悲傷；但無論捐或不捐，決定的起點都是對家人的愛。</p>
+            <p>近7成民眾表達器官捐贈意願，但臨床上真正面臨至親離世時，同意捐贈的家屬約僅2～3成。躺在病床上的是相伴數十年的家人，家屬不只捨不得對方「再痛一次」，更可能擔心簽下同意書，就等於親手選擇放棄。<br>從20歲驟逝的男大生，到97歲溫柔告別的黃奶奶，兩個家庭的故事顯示，生前談論器捐的意願，能減輕家屬在最後關頭代替摯愛決定的壓力。器捐不只可能延續他人的生命，也可能幫助留下來的人安放悲傷；但無論捐或不捐，決定的起點都是對家人的愛。</p>
             <a href="https://www.commonhealth.com.tw/article/94276" target="_blank" class="btn-readmore-light">閱讀更多</a>
         </div>
     </div>
