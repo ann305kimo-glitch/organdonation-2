@@ -229,23 +229,6 @@
             flex-shrink: 0;
         }
 
-        .grid-134 {
-            display: grid;
-            grid-template-columns: repeat(20, 1fr);
-            gap: 4px;
-            max-width: 440px;
-            margin: 12px auto;
-        }
-        .grid-dot {
-            width: 100%;
-            aspect-ratio: 1;
-            background: #cbd5e0;
-            border-radius: 2px;
-        }
-        .grid-dot.active {
-            background: #e74c3c;
-        }
-
         /* 下方三篇文章滿版區域 */
         .journey-wrapper {
             background: linear-gradient(180deg, var(--medical-dark) 0%, var(--coordinator-teal) 50%, var(--family-warm) 100%);
@@ -443,7 +426,6 @@
                 font-size: 1rem;
             }
             
-            /* 手機版設定保持縮小間距 */
             .stats-row {
                 flex-direction: column !important;
                 gap: 15px !important;
@@ -467,7 +449,6 @@
         }
 
         @media(min-width: 769px) {
-            /* 電腦版數字區塊縮小間距 */
             .stats-row {
                 gap: 20px !important;
             }
@@ -1136,13 +1117,19 @@
     <p data-aos="fade-up">事實上，器官供給不足，並不是願意捐贈的人變少。從器官捐增移植登錄及病人自主推廣中心提供的數據來看，台灣每年仍維持約3萬～4萬人註記器捐意願，但實際捐贈者卻在疫情後持續下降，以致到2025年接受移植的人數降到10年新低。</p>
 </div>
 
-<!-- 圖3：大數字乾淨排版 + 134格精準比例陣列 -->
+<!-- 圖3：大數字區塊（加入登記卡與愛心小 icon 裝飾） -->
 <div class="chart-minimal-section" data-aos="fade-up">
     <div class="chart-wrapper-clean" style="text-align: center;">
         <div class="chart-minimal-title" style="margin-bottom: 30px;">一年超過四萬人簽器捐卡，實際捐贈者僅 0.7%</div>
         
         <div class="stats-row" style="display: flex; justify-content: center; align-items: center; margin-bottom: 30px;">
+            <!-- 左側登記人數（加上卡片/文件小 icon） -->
             <div style="flex: 1; text-align: center;">
+                <div style="margin-bottom: 6px; color: #1a2a3a; display: inline-flex; align-items: center; justify-content: center;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                    </svg>
+                </div>
                 <div style="font-size: 0.95rem; color: #1a2a3a; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年新增器捐意願登記</div>
                 <div style="font-size: 3.2rem; font-weight: 900; color: #1a2a3a; letter-spacing: 1px; line-height: 1.2;">
                     42,746<span style="font-size: 1.4rem; font-weight: normal; color: #4a5568; margin-left: 2px;">人</span>
@@ -1151,7 +1138,13 @@
 
             <div class="stats-divider"></div>
 
+            <!-- 右側實際捐贈人數（加上愛心小 icon） -->
             <div style="flex: 1; text-align: center;">
+                <div style="margin-bottom: 6px; color: #e53e3e; display: inline-flex; align-items: center; justify-content: center;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                </div>
                 <div style="font-size: 0.95rem; color: #e53e3e; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年實際完成捐贈者</div>
                 <div style="font-size: 3.2rem; font-weight: 900; color: #e53e3e; letter-spacing: 1px; line-height: 1.2;">
                     318<span style="font-size: 1.4rem; font-weight: normal; color: #e53e3e; margin-left: 2px;">人</span>
@@ -1160,20 +1153,9 @@
         </div>
 
         <div style="max-width: 520px; margin: 0 auto; text-align: center;">
-            <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin: 25px 0;">
-                <div style="font-size: 0.95rem; color: #2d3748; margin-bottom: 10px; font-weight: bold;">
-                    象徵每 <span style="color: #e74c3c;">134 人</span> 登記中，最終僅 <span style="color: #e74c3c;">1 人</span> 完成大愛：
-                </div>
-                <div class="grid-134">
-                    <div class="grid-dot active" title="1 / 134"></div>
-                    <script>
-                        for(let i=0; i<133; i++) {
-                            document.write('<div class="grid-dot"></div>');
-                        }
-                    </script>
-                </div>
-                <div style="font-size: 0.85rem; color: #718096; margin-top: 10px;">
-                    紅點代表 134 分之 1 的實際捐贈成功率，其餘為未成案或未符合條件者
+            <div style="background: #f8fafc; padding: 24px; border-radius: 12px; border: 1px solid #e2e8f0; margin: 25px 0;">
+                <div style="font-size: 1.1rem; color: #2d3748; line-height: 1.6; font-weight: bold;">
+                    象徵每 <span style="color: #e74c3c;">1,000 人</span> 登記中，最終僅約 <span style="color: #e74c3c;">7 人</span> 完成大愛
                 </div>
             </div>
         </div>
