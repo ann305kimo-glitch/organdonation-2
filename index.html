@@ -44,7 +44,6 @@
             scroll-padding-top: 90px; 
         }
 
-        /* 專門針對各個錨點區塊設定上方安全緩衝 */
         #donation {
             scroll-margin-top: 95px;
         }
@@ -64,17 +63,12 @@
             font-family: "Microsoft JhengHei", "微軟正黑體", sans-serif;
         }
 
-        .tight-1, .tight-2 {
-            letter-spacing: -2px !important;
-        }
-
         .mobile-title { display: none; }
         .desktop-title { display: inline; }
 
         .mobile-hero-block { display: none; }
         .desktop-hero-block { display: block; }
 
-        /* 1. 全版沉浸式首屏 */
         .desktop-bg { display: block; }
         .mobile-bg { display: none; }
         @media(max-width: 768px) {
@@ -118,7 +112,7 @@
         }
         .hero-overlay { 
             z-index: 2; 
-            padding: 0 20px; 
+            padding: 0 24px; 
             max-width: 1000px;
             display: flex;
             flex-direction: column;
@@ -126,6 +120,7 @@
             gap: 2px;
             position: relative;
             top: 85px; 
+            box-sizing: border-box;
         }
         h1 { 
             font-size: 5.3rem; 
@@ -148,7 +143,7 @@
             margin-top: -10px;
         }
 
-        /* 2. 閱讀內文區塊 */
+        /* 長文區塊標準設定 */
         .story-container { 
             max-width: 720px; 
             margin: 120px auto; 
@@ -156,53 +151,19 @@
             font-size: 1.35rem;
             color: #1a1a1a;
             background: transparent;
+            box-sizing: border-box;
         }
         .story-container p {
             margin-bottom: 40px;
             text-align: justify;
         }
-        .big-quote { 
-            position: relative;
-            font-size: 1.7rem; 
-            font-weight: bold;
-            color: var(--primary-color); 
-            margin: 100px auto; 
-            padding: 30px 50px; 
-            line-height: 1.9;
-            text-align: center;
-            border-left: none;
-            max-width: 640px;
-            background: rgba(0, 91, 143, 0.03);
-            border-radius: 12px;
-        }
-        .big-quote::before {
-            content: "“";
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 6rem;
-            color: var(--primary-color);
-            opacity: 0.15;
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
-        .big-quote::after {
-            content: "”";
-            position: absolute;
-            bottom: -50px;
-            right: 20px;
-            font-size: 6rem;
-            color: var(--primary-color);
-            opacity: 0.15;
-            font-family: Georgia, serif;
-            line-height: 1;
-        }
 
-        /* 3. 質感美學圖表區塊 */
+        /* 圖表區塊 */
         .chart-minimal-section {
             max-width: 760px;
             margin: 100px auto;
             padding: 0 24px;
+            box-sizing: border-box;
         }
         .chart-minimal-title {
             font-size: 1.45rem;
@@ -210,8 +171,6 @@
             margin-bottom: 30px;
             font-weight: 700;
             text-align: center;
-            border-left: none;
-            padding-left: 0;
             line-height: 1.4;
         }
         .chart-wrapper-clean {
@@ -243,7 +202,6 @@
             background: #f7fafc;
         }
 
-        /* 134格精準對應陣列專用樣式 */
         .grid-134 {
             display: grid;
             grid-template-columns: repeat(20, 1fr);
@@ -261,11 +219,11 @@
             background: #e74c3c;
         }
 
-        /* ====== 下方三篇文章區域（強制全螢幕滿版背景技法） ====== */
+        /* 下方三篇文章滿版區域 */
         .journey-wrapper {
             background: linear-gradient(180deg, var(--medical-dark) 0%, var(--coordinator-teal) 50%, var(--family-warm) 100%);
             color: #fff;
-            padding: 100px 20px;
+            padding: 100px 0;
             margin-top: 80px;
             width: 100vw;
             position: relative;
@@ -281,9 +239,9 @@
             max-width: 90%;
             margin: 0 auto;
             position: relative;
+            box-sizing: border-box;
         }
 
-        /* 讓垂直線精準延伸並切齊最後一個「閱讀更多」按鈕底部 */
         .journey-container::before {
             content: '';
             position: absolute;
@@ -304,13 +262,8 @@
             min-height: 380px;
         }
         
-        /* 最後一個 step 不留額外 margin-bottom，讓線條底部精準貼齊按鈕底邊 */
         .journey-step:last-of-type {
             margin-bottom: 0;
-        }
-
-        .journey-step:hover {
-            opacity: 1;
         }
 
         .journey-img {
@@ -321,9 +274,6 @@
             height: 380px;
             border-radius: 50%;
             overflow: hidden;
-            border: none !important;
-            outline: none !important;
-            box-shadow: none !important;
         }
         .journey-img img {
             width: 100%;
@@ -376,7 +326,26 @@
         }
 
         @media(max-width: 960px) {
-            .journey-container { width: 100% !important; padding: 0 20px !important; box-sizing: border-box !important; }
+            .story-container, 
+            .chart-minimal-section, 
+            .related-reading-section,
+            .ch-section-social {
+                padding-left: 24px !important;
+                padding-right: 24px !important;
+                box-sizing: border-box !important;
+            }
+            /* ⭐️ 特別將下方三篇文章的手機版左右邊界內距從 24px 調大為 36px，讓兩側空間更寬敞舒服 ⭐️ */
+            .journey-wrapper {
+                padding-left: 36px !important;
+                padding-right: 36px !important;
+                box-sizing: border-box !important;
+            }
+            .journey-container { 
+                width: 100% !important; 
+                max-width: 100% !important;
+                padding: 0 !important; 
+                box-sizing: border-box !important; 
+            }
             .journey-container::before { display: none !important; }
             .journey-step { padding-left: 0 !important; margin-bottom: 60px !important; min-height: auto !important; text-align: center; }
             .journey-step:last-of-type { margin-bottom: 0 !important; }
@@ -386,8 +355,8 @@
             .journey-step h2 .journey-sub-title { 
                 font-size: 1.4rem !important; 
                 font-weight: 700 !important;
-                display: block !important;
-                margin-top: 6px !important;
+                display: inline-block !important;
+                margin-top: 2px !important;
                 letter-spacing: normal !important;
             }
             .journey-step p { text-align: justify !important; }
@@ -399,7 +368,7 @@
             .mobile-hero-block { display: block !important; }
             .hero-overlay {
                 top: 130px !important;
-                padding: 0 15px !important;
+                padding: 0 24px !important;
             }
             .mobile-h1 {
                 font-size: 2.3rem !important;
@@ -425,6 +394,17 @@
             .stats-row {
                 flex-direction: column !important;
                 gap: 25px !important;
+            }
+            /* 圖表外框間距調小、畫布高度調整 */
+            .chart-wrapper-clean {
+                padding: 20px 15px !important;
+                margin-bottom: 60px !important;
+            }
+            .chart-canvas-wrapper {
+                height: 240px !important;
+            }
+            #chart4-wrapper {
+                height: 260px !important;
             }
         }
 
@@ -453,21 +433,21 @@
             line-height: 1.4;
         }
 
-        /* ====== 延伸閱讀區塊（無陰影、拉開標題字距、下方加上裝飾橫線） ====== */
+        /* 延伸閱讀區塊 */
         .related-reading-section {
             max-width: 1160px;
             margin: 100px auto;
-            padding: 0 20px;
+            padding: 0 24px;
             position: relative;
+            box-sizing: border-box;
         }
         .related-reading-section h2 {
             font-size: 2rem;
             color: #1a2a3a;
             text-align: center;
             margin-bottom: 20px;
-            letter-spacing: 4px; /* 拉開字距 */
+            letter-spacing: 4px;
         }
-        /* 加上與上方第一個錨點一致的下方橫線裝飾 */
         .related-reading-section h2::after {
             content: '';
             display: block;
@@ -502,7 +482,6 @@
             background: #fff;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: none;
             border: 1px solid #eaeaea;
             transition: transform 0.3s ease, border-color 0.3s ease;
             display: flex;
@@ -539,7 +518,7 @@
         .related-card-content h3 {
             font-size: 1.12rem;
             color: #1a1a1a;
-            margin: 0 0 20px 0; /* 加大標題與下方按鈕的距離 */
+            margin: 0 0 20px 0;
             line-height: 1.45;
             font-weight: 700;
             display: -webkit-box;
@@ -548,7 +527,6 @@
             overflow: hidden;
         }
 
-        /* 了解詳情按鈕：文字與線框距離縮小 (2px 10px) */
         .related-link-text {
             display: inline-block;
             margin: 0 auto;
@@ -568,7 +546,6 @@
             color: #fff;
         }
 
-        /* 左右切換按鈕樣式 */
         .carousel-btn {
             position: absolute;
             top: 42%;
@@ -593,14 +570,9 @@
             color: #fff;
             border-color: var(--primary-color);
         }
-        .carousel-btn.prev {
-            left: -22px;
-        }
-        .carousel-btn.next {
-            right: -22px;
-        }
+        .carousel-btn.prev { left: -22px; }
+        .carousel-btn.next { right: -22px; }
 
-        /* 輪播分頁小圓點樣式 */
         .carousel-dots {
             display: flex;
             justify-content: center;
@@ -625,41 +597,36 @@
         }
 
         @media(max-width: 960px) {
-            .related-card {
-                flex: 0 0 calc(50% - 12px);
-            }
+            .related-card { flex: 0 0 calc(50% - 12px); }
             .carousel-btn.prev { left: -10px; }
             .carousel-btn.next { right: -10px; }
         }
         @media(max-width: 640px) {
-            .related-card {
-                flex: 0 0 100%;
-            }
+            .related-card { flex: 0 0 100%; }
             .carousel-btn.prev { left: -8px; }
             .carousel-btn.next { right: -8px; }
         }
 
-        /* ====== 官方 Social Media 樣式 ====== */
+        /* 官方 Social Media 樣式 */
         .ch-section-social {
             width: 100%;
             margin: auto;
             padding: 60px 0;
             background: #ffffff;
+            box-sizing: border-box;
         }
-
         .ch-section-social .ch-wrap {
             position: relative;
             width: 100%;
             pointer-events: none;
         }
-
         .ch-section-social .ch-wrapper {
             width: 960px;
             max-width: calc(100% - 32px);
             margin: 0 auto;
             pointer-events: auto;
+            box-sizing: border-box;
         }
-
         .ch-section-social h2 {
             margin: 0 0 20px;
             color: #222;
@@ -668,14 +635,12 @@
             line-height: 1.5;
             text-align: center;
         }
-
         .ch-social-media {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px 40px;
         }
-
         .ch-social-group {
             display: flex;
             flex-direction: column;
@@ -683,12 +648,8 @@
             text-decoration: none;
             color: #222;
             font-size: 1rem;
-            font-weight: 400;
-            line-height: 1.5;
-            letter-spacing: 0.04em;
             text-align: center;
         }
-
         .ch-social-group img {
             display: block;
             width: 50px;
@@ -696,71 +657,44 @@
             margin-bottom: 10px;
             transition: transform 0.2s ease, filter 0.2s ease;
         }
-
         .ch-social-group:hover img {
             transform: translateY(-3px);
             filter: brightness(1.06);
         }
-
-        .ch-social-group p {
-            display: block;
-            margin: 0;
-        }
+        .ch-social-group p { display: block; margin: 0; }
 
         @media (max-width: 576px) {
             .ch-section-social .ch-wrapper {
-                width: calc(100% - 30px);
-                max-width: none;
+                width: 100% !important;
+                max-width: none !important;
             }
-
-            .ch-section-social h2 {
-                font-size: 1.75rem;
-            }
-
+            .ch-section-social h2 { font-size: 1.75rem; }
             .ch-social-media {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 24px 8px;
                 justify-items: center;
             }
-
-            .ch-social-group {
-                letter-spacing: 0;
-            }
-
-            .ch-social-group img {
-                width: 56px;
-                height: 56px;
-                margin-bottom: 8px;
-            }
+            .ch-social-group img { width: 56px; height: 56px; margin-bottom: 8px; }
         }
 
-        /* ====== 官方 Footer 樣式 ====== */
+        /* 官方 Footer 樣式 */
         footer {
             width: 100%;
-            padding: 30px 0;
+            padding: 30px 24px;
             color: #373737;
             background: #fff;
             border-top: 1px solid #eaeaea;
+            box-sizing: border-box;
         }
-
-        footer a {
-            transition: .3s;
-            text-decoration: none;
-        }
-
+        footer a { transition: .3s; text-decoration: none; }
         footer ul {
             list-style-type: none;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
             justify-content: center;
             padding: 0;
             margin: 0;
         }
-
         footer ul li {
             font-size: 15px;
             line-height: 15px;
@@ -768,22 +702,8 @@
             padding: 0 10px 0 0;
             margin: 0 10px 10px 0;
         }
-
-        footer ul li:last-child {
-            border: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        footer ul li a {
-            color: #373737;
-            line-height: 15px;
-        }
-
-        footer ul:last-child {
-            margin: 0;
-        }
-
+        footer ul li:last-child { border: none; padding: 0; margin: 0; }
+        footer ul li a { color: #373737; line-height: 15px; }
         footer p {
             color: #373737;
             font-size: 14px;
@@ -795,103 +715,45 @@
         }
 
         @media (max-width: 768px) {
-            footer ul {
-                -ms-flex-wrap: wrap;
-                flex-wrap: wrap;
-            }
-
-            footer ul li {
-                padding: 0 5px 0 0;
-                margin: 0 5px 10px 0;
-            }
+            footer ul { flex-wrap: wrap; }
+            footer ul li { padding: 0 5px 0 0; margin: 0 5px 10px 0; }
         }
 
-        /* ====== 公司專屬 Header CSS 樣式 ====== */
-        #ch-header,
-        #ch-header div,
-        #ch-header span,
-        #ch-header h1,
-        #ch-header p,
-        #ch-header a,
-        #ch-header ol,
-        #ch-header ul,
-        #ch-header li {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-            box-sizing: border-box;
+        /* 公司專屬 Header CSS 樣式 */
+        #ch-header, #ch-header div, #ch-header span, #ch-header h1, #ch-header p, #ch-header a, #ch-header ol, #ch-header ul, #ch-header li {
+            margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; box-sizing: border-box;
         }
-
-        #ch-header a {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-            display: flex;
-            align-items: center;
-        }
-
+        #ch-header a { display: flex; align-items: center; text-decoration: none; }
         #ch-header #ch-container {
             width: 100%;
-            padding-right: 15px;
-            padding-left: 15px;
+            padding-right: 24px;
+            padding-left: 24px;
             margin-right: auto;
             margin-left: auto;
             height: 80px; 
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-sizing: border-box;
         }
 
-        @media (min-width: 768px) {
-            #ch-header #ch-container {
-                max-width: 720px;
-            }
-        }
+        @media (min-width: 768px) { #ch-header #ch-container { max-width: 720px; } }
+        @media (min-width: 992px) { #ch-header #ch-container { max-width: 960px; } }
+        @media (min-width: 1200px) { #ch-header #ch-container { max-width: 1140px; } }
 
-        @media (min-width: 992px) {
-            #ch-header #ch-container {
-                max-width: 960px;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            #ch-header #ch-container {
-                max-width: 1140px;
-            }
-        }
-
-        /* 完美修正：微調往上提升 (transform: translateY(-13px)) 讓視覺完美置中 */
-        #ch-header h1 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            margin: 0;
-        }
-
+        #ch-header h1 { display: flex; align-items: center; justify-content: center; height: 100%; margin: 0; }
         #ch-header h1 img.logo {
             height: 44px; 
             width: auto;
             object-fit: contain;
             filter: none !important;
             display: block;
-            transform: translateY(-15px); /* 向上微調更多，對齊導覽列中心 */
+            transform: translateY(-13px);
         }
 
         @media (max-width: 768px) {
-            #ch-header #ch-container {
-                height: 60px;
-            }
-            #ch-header h1 img.logo {
-                height: 32px;
-                transform: translateY(-7px);
-            }
+            #ch-header #ch-container { height: 60px; padding-left: 24px; padding-right: 24px; }
+            #ch-header h1 img.logo { height: 32px; transform: translateY(-7px); }
         }
 
         #ch-header {
@@ -904,220 +766,46 @@
             z-index: 1000;
             transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
         }
-
-        #ch-header.scrolled {
-            background-color: #fff !important;
-            box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2) !important;
-        }
-        #ch-header.scrolled h1 img {
-            filter: none !important;
-        }
-        #ch-header.scrolled ul li a {
-            color: #222 !important;
-        }
-        #ch-header.scrolled .ch-social a {
-            color: #979696 !important;
-        }
+        #ch-header.scrolled { background-color: #fff !important; box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2) !important; }
+        #ch-header.scrolled ul li a { color: #222 !important; }
+        #ch-header.scrolled .ch-social a { color: #979696 !important; }
         #ch-header.scrolled #ch-button-toggle span,
         #ch-header.scrolled #ch-button-toggle span::after,
-        #ch-header.scrolled #ch-button-toggle span::before {
-            background-color: #000 !important;
-        }
+        #ch-header.scrolled #ch-button-toggle span::before { background-color: #000 !important; }
 
-        #ch-header ul {
-            display: flex !important;
-            list-style: none;
-            align-items: center;
-            height: 100%;
-        }
-
-        #ch-header ul li a {
-            padding: 0 12px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #222;
-            -webkit-transition: all .5s;
-            transition: all .5s;
-        }
-
-        #ch-header ul li a:hover {
-            color: #094;
-        }
+        #ch-header ul { display: flex !important; list-style: none; align-items: center; height: 100%; }
+        #ch-header ul li a { padding: 0 12px; height: 100%; display: flex; align-items: center; color: #222; transition: all .5s; }
+        #ch-header ul li a:hover { color: #094; }
 
         @media (max-width: 768px) {
             #ch-header ul {
-                position: absolute;
-                left: 0;
-                top: 0;
-                height: 0px;
-                background-color: #fff;
-                -webkit-transition: all 0.5s;
-                transition: all 0.5s;
-                overflow: hidden;
-                z-index: 120;
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                flex-direction: column;
-                -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                opacity: 0;
+                position: absolute; left: 0; top: 0; height: 0px; background-color: #fff;
+                transition: all 0.5s; overflow: hidden; z-index: 120; display: flex;
+                flex-direction: column; justify-content: center; opacity: 0;
             }
-
-            #ch-header ul.opening {
-                height: 100vh;
-                width: 100%;
-                opacity: 1;
-                visibility: visible;
-                background-color: #fff;
-            }
-
-            #ch-header ul li {
-                width: 100vw;
-                text-align: center;
-            }
-
-            #ch-header ul li a {
-                font-size: 20px;
-                padding: 15px 20px;
-                color: #222;
-                height: auto;
-            }
+            #ch-header ul.opening { height: 100vh; width: 100%; opacity: 1; visibility: visible; background-color: #fff; }
+            #ch-header ul li { width: 100vw; text-align: center; }
+            #ch-header ul li a { font-size: 20px; padding: 15px 20px; color: #222; height: auto; }
         }
 
-        @media (max-width: 568px) {
-            #ch-header ul li a {
-                font-size: 18px;
-            }
-        }
-
-        #ch-header #ch-social-group {
-            display: flex !important;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        @media (max-width: 768px) {
-            #ch-header #ch-social-group {
-                margin-top: 15px;
-                height: auto;
-            }
-        }
-
-        #ch-header .ch-social {
-            font-size: 40px;
-        }
-
-        #ch-header .ch-social a {
-            padding: 0 12px;
-            line-height: 36px;
-            color: #979696;
-            cursor: pointer;
-            height: auto;
-        }
-
-        #ch-header .ch-social a:hover {
-            border-bottom: 0;
-            padding: 0 12px;
-        }
-
-        @media (max-width: 568px) {
-            #ch-header .ch-social a {
-                font-size: 40px;
-                color: #979696;
-            }
-        }
-
-        #ch-header .ch-social i {
-            vertical-align: bottom;
-        }
-
-        #ch-header #ch-button-toggle {
-            display: none;
-            position: relative;
-            width: 40px;
-            height: 40px;
-            z-index: 10000;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            #ch-header #ch-button-toggle {
-                display: block;
-            }
-        }
-
+        #ch-header #ch-social-group { display: flex !important; justify-content: center; align-items: center; height: 100%; }
+        @media (max-width: 768px) { #ch-header #ch-social-group { margin-top: 15px; height: auto; } }
+        #ch-header .ch-social { font-size: 40px; }
+        #ch-header .ch-social a { padding: 0 12px; line-height: 36px; color: #979696; cursor: pointer; height: auto; }
+        #ch-header #ch-button-toggle { display: none; position: relative; width: 40px; height: 40px; z-index: 10000; cursor: pointer; }
+        @media (max-width: 768px) { #ch-header #ch-button-toggle { display: block; } }
         #ch-header #ch-button-toggle span {
-            display: block;
-            position: absolute;
-            width: 30px;
-            height: 2px;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
-            background-color: #000;
+            display: block; position: absolute; width: 30px; height: 2px; top: 50%; left: 50%;
+            transform: translateX(-50%); background-color: #000;
         }
-
-        #ch-header #ch-button-toggle span::after,
-        #ch-header #ch-button-toggle span::before {
-            -webkit-transition: all .5s;
-            transition: all .5s;
-            position: absolute;
-            content: '';
-            display: block;
-            width: 100%;
-            top: 50%;
-            height: 2px;
-            background-color: #000;
+        #ch-header #ch-button-toggle span::after, #ch-header #ch-button-toggle span::before {
+            transition: all .5s; position: absolute; content: ''; display: block; width: 100%; top: 50%; height: 2px; background-color: #000;
         }
-
-        #ch-header #ch-button-toggle span::before {
-            top: -8px;
-        }
-
-        #ch-header #ch-button-toggle span::after {
-            bottom: -8px;
-            top: auto;
-        }
-
-        #ch-header #ch-button-toggle.active span {
-            background-color: transparent;
-        }
-
-        #ch-header #ch-button-toggle.active span::after,
-        #ch-header #ch-button-toggle.active span::before {
-            top: 0;
-        }
-
-        #ch-header #ch-button-toggle.active span::before {
-            -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-        }
-
-        @media (max-width: 768px) {
-            #ch-header #ch-button-toggle.active span::before {
-                background-color: #000;
-            }
-        }
-
-        #ch-header #ch-button-toggle.active span::after {
-            -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-        }
-
-        @media (max-width: 768px) {
-            #ch-header #ch-button-toggle.active span::after {
-                background-color: #000;
-            }
-        }
+        #ch-header #ch-button-toggle span::before { top: -8px; }
+        #ch-header #ch-button-toggle span::after { bottom: -8px; top: auto; }
+        #ch-header #ch-button-toggle.active span { background-color: transparent; }
+        #ch-header #ch-button-toggle.active span::before { top: 0; transform: rotate(45deg); }
+        #ch-header #ch-button-toggle.active span::after { top: 0; transform: rotate(-45deg); }
     </style>
 </head>
 <body>
@@ -1136,19 +824,14 @@
               <div class="ch-social">
 			      <a id="facebookShare" class="gtm-event">
                       <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                          <path
-                              d="M22.67 2.667h-3.49c-3.922 0-6.454 2.574-6.454 6.562v3.028H9.215a.546.546 0 0 0-.548.541v4.385c0 .302.245.54.548.54h3.511v11.07c0 .302.246.54.548.54h4.58a.546.546 0 0 0 .548-.54v-11.07h4.103a.546.546 0 0 0 .548-.54v-4.385a.54.54 0 0 0-.548-.54h-4.103V9.69c0-1.233.295-1.86 1.918-1.86h2.35a.548.548 0 0 0 .549-.548V3.207a.542.542 0 0 0-.548-.54Z"
-                              fill="#1877F2"></path>
+                          <path d="M22.67 2.667h-3.49c-3.922 0-6.454 2.574-6.454 6.562v3.028H9.215a.546.546 0 0 0-.548.541v4.385c0 .302.245.54.548.54h3.511v11.07c0 .302.246.54.548.54h4.58a.546.546 0 0 0 .548-.54v-11.07h4.103a.546.546 0 0 0 .548-.54v-4.385a.54.54 0 0 0-.548-.54h-4.103V9.69c0-1.233.295-1.86 1.918-1.86h2.35a.548.548 0 0 0 .549-.548V3.207a.542.542 0 0 0-.548-.54Z" fill="#1877F2"></path>
                       </svg>
                   </a>
               </div>
               <div class="ch-social">
-                  <a class="gtm-event" href="https://social-plugins.line.me/lineit/share?url=網址&amp;text=網站說明"
-                      target="_blank">
+                  <a class="gtm-event" href="https://social-plugins.line.me/lineit/share?url=網址&amp;text=網站說明" target="_blank">
                       <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M25.342 12.248a.272.272 0 0 1-.267.274H22.44v1.03h2.636c.152 0 .267.123.267.274v.98a.272.272 0 0 1-.267.274H22.44v1.03h2.636c.152 0 .267.122.267.274v.98a.272.272 0 0 1-.267.273H21.2a.262.262 0 0 1-.188-.079h-.007a.324.324 0 0 1-.072-.195V11.27c0-.072.029-.137.072-.188h.007a.243.243 0 0 1 .188-.086h3.875c.152 0 .267.122.267.274v.98Zm-5.36 5.115a.272.272 0 0 1-.267.274h-.972s-.05 0-.072-.007H18.642s-.007 0-.014-.007h-.022l-.014-.022s-.05-.043-.065-.072l-2.767-3.775v3.617a.272.272 0 0 1-.266.273h-.973a.268.268 0 0 1-.267-.273v-6.095c0-.152.123-.274.267-.274h1.045l.014.014h.022v.015h.021v.014h.022v.015l.022.014s.007.014.014.022c0 0 .014.021.022.028l2.766 3.776v-3.624c0-.152.123-.274.267-.274h.972c.152 0 .267.122.267.274v6.095l.007-.008Zm-6.686 0a.272.272 0 0 1-.266.274h-.973a.267.267 0 0 1-.266-.274V11.27c0-.152.122-.274.266-.274h.973c.151 0 .266.122.266.274v6.094Zm-2.341 0a.272.272 0 0 1-.267.274H6.812a.262.262 0 0 1-.187-.079h-.007a.323.323 0 0 1-.072-.195V11.27c0-.152.122-.274.266-.274h.973c.151 0 .267.122.267.274v4.84h2.636c.152 0 .267.123.267.275v.98Zm18.724-3.342c0-6.26-6.21-11.354-13.84-11.354C8.21 2.667 2 7.76 2 14.02c0 5.612 4.92 10.309 11.577 11.202.454.101 1.067.303 1.218.692.137.353.094.908.043 1.268 0 0-.166.987-.194 1.196-.058.353-.281 1.383 1.195.756 1.477-.626 7.969-4.74 10.872-8.119 2.003-2.226 2.968-4.481 2.968-6.98v-.015Z"
-                              fill="#06C755"></path>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M25.342 12.248a.272.272 0 0 1-.267.274H22.44v1.03h2.636c.152 0 .267.123.267.274v.98a.272.272 0 0 1-.267.274H22.44v1.03h2.636c.152 0 .267.122.267.274v.98a.272.272 0 0 1-.267.273H21.2a.262.262 0 0 1-.188-.079h-.007a.324.324 0 0 1-.072-.195V11.27c0-.072.029-.137.072-.188h.007a.243.243 0 0 1 .188-.086h3.875c.152 0 .267.122.267.274v.98Zm-5.36 5.115a.272.272 0 0 1-.267.274h-.972s-.05 0-.072-.007H18.642s-.007 0-.014-.007h-.022l-.014-.022s-.05-.043-.065-.072l-2.767-3.775v3.617a.272.272 0 0 1-.266.273h-.973a.268.268 0 0 1-.267-.273v-6.095c0-.152.123-.274.267-.274h1.045l.014.014h.022v.015h.021v.014h.022v.015l.022.014s.007.014.014.022c0 0 .014.021.022.028l2.766 3.776v-3.624c0-.152.123-.274.267-.274h.972c.152 0 .267.122.267.274v6.095l.007-.008Zm-6.686 0a.272.272 0 0 1-.266.274h-.973a.267.267 0 0 1-.266-.274V11.27c0-.152.122-.274.266-.274h.973c.151 0 .266.122.266.274v6.094Zm-2.341 0a.272.272 0 0 1-.267.274H6.812a.262.262 0 0 1-.187-.079h-.007a.323.323 0 0 1-.072-.195V11.27c0-.152.122-.274.266-.274h.973c.151 0 .267.122.267.274v4.84h2.636c.152 0 .267.123.267.275v.98Zm18.724-3.342c0-6.26-6.21-11.354-13.84-11.354C8.21 2.667 2 7.76 2 14.02c0 5.612 4.92 10.309 11.577 11.202.454.101 1.067.303 1.218.692.137.353.094.908.043 1.268 0 0-.166.987-.194 1.196-.058.353-.281 1.383 1.195.756 1.477-.626 7.969-4.74 10.872-8.119 2.003-2.226 2.968-4.481 2.968-6.98v-.015Z" fill="#06C755"></path>
                       </svg>
                   </a>
               </div>
@@ -1186,32 +869,6 @@
           }, 800);
       }
   });
-</script>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId: '788399774562640',
-      cookie: true,
-      xfbml: false,
-      version: 'v24.0'
-    });
-  };
-
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/zh_TW/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  document.getElementById('facebookShare').onclick = function() {
-    FB.ui({
-      display: 'popup',
-      method: 'share',
-      href: '網址',
-    }, function(response) {});
-  }
 </script>
 
     <section class="section-hero">
@@ -1260,7 +917,7 @@
         <div class="chart-wrapper-clean">
             <div class="chart-minimal-title">每年有千人因為等不到器官而離世，以腎臟需求最高</div>
             <div style="font-size: 1.05rem; color: #4a5568; margin-bottom: 20px; text-align: center; font-weight: 500;">2024年等候器官期間死亡個案數分佈（總計 1,157 人）</div>
-            <div class="chart-canvas-wrapper" style="position: relative; height: 360px; width: 100%;"><canvas id="chart4"></canvas></div>
+            <div id="chart4-wrapper" class="chart-canvas-wrapper" style="position: relative; height: 360px; width: 100%;"><canvas id="chart4"></canvas></div>
             <div style="font-size: 0.9rem; color: #718096; margin-top: 25px; line-height: 1.6;">
                 <p style="margin: 0 0 5px 0;">資料來源：器官捐贈移植登錄及病人自主推廣中心</p>
                 <p style="margin: 0;">整理：楊雅棠</p>
@@ -1277,7 +934,6 @@
         <div class="chart-wrapper-clean" style="text-align: center;">
             <div class="chart-minimal-title" style="margin-bottom: 30px;">一年超過四萬人簽器捐卡，實際捐贈者僅 0.7%</div>
             
-            <!-- 左右並排的兩組數據區塊 -->
             <div class="stats-row" style="display: flex; justify-content: center; align-items: center; gap: 40px; margin-bottom: 30px;">
                 <div style="flex: 1; text-align: center;">
                     <div style="font-size: 0.95rem; color: #1a2a3a; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 2px;">2025年新增器捐意願登記</div>
@@ -1286,7 +942,6 @@
                     </div>
                 </div>
 
-                <!-- 中間垂直分隔線 -->
                 <div style="width: 1px; height: 60px; background: #e2e8f0; flex-shrink: 0;"></div>
 
                 <div style="flex: 1; text-align: center;">
@@ -1297,7 +952,6 @@
                 </div>
             </div>
 
-            <!-- 134格比例陣列區塊放下方 -->
             <div style="max-width: 520px; margin: 0 auto; text-align: center;">
                 <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; margin: 25px 0;">
                     <div style="font-size: 0.95rem; color: #2d3748; margin-bottom: 10px; font-weight: bold;">
@@ -1370,20 +1024,19 @@
                 <p style="margin: 0;">整理：楊雅棠</p>
             </div>
         </div>
+    </div>
 
-        <div class="story-container" style="margin-bottom: 20px;">
-            <p data-aos="fade-up" style="margin-bottom: 0;">究竟，台灣的捐贈制度出了什麼問題？每一次成功的器捐，背後是文化、制度、人力、資源等層層綿密交織的成果，《康健》從真實案例故事、到第一線觀察與分析，揭開國內大愛器捐的困境，期盼每一份重生大禮，送到對的人手上。</p>
-        </div>
-
-        <div style="margin-top: 25px; margin-bottom: 140px; text-align: center;">
+    <!-- 結語段落與按鈕 -->
+    <div class="story-container" style="margin-top: 40px; margin-bottom: 40px;">
+        <p data-aos="fade-up">究竟，台灣的捐贈制度出了什麼問題？每一次成功的器捐，背後是文化、制度、人力、資源等層層綿密交織的成果，《康健》從真實案例故事、到第一線觀察與分析，揭開國內大愛器捐的困境，期盼每一份重生大禮，送到對的人手上。</p>
+        <div style="margin-top: 30px; text-align: center;" data-aos="fade-up">
             <a href="https://www.commonhealth.com.tw/article/94258" target="_blank" class="btn-readmore-dark">閱讀更多</a>
         </div>
     </div>
 
-    <!-- 下方三篇文章區塊（絕對滿版全幅背景） -->
+    <!-- 下方三篇文章區塊 -->
     <div class="journey-wrapper">
         <div class="journey-container">
-            <!-- 醫師篇：隱形定位點 -->
             <div id="doctors" style="position: relative; top: -100px; visibility: hidden;"></div>
             <div class="journey-step" data-aos="fade-up">
                 <div class="journey-img"><img src="images/journey-1.jpg" alt="醫師篇"></div>
@@ -1392,7 +1045,6 @@
                 <a href="https://www.commonhealth.com.tw/article/94263" target="_blank" class="btn-readmore-light">閱讀更多</a>
             </div>
 
-            <!-- 協調師篇：隱形定位點 -->
             <div id="coordinators" style="position: relative; top: -100px; visibility: hidden;"></div>
             <div class="journey-step" data-aos="fade-up">
                 <div class="journey-img"><img src="images/journey-2.jpg" alt="協調師篇"></div>
@@ -1401,7 +1053,6 @@
                 <a href="https://www.commonhealth.com.tw/article/94339" target="_blank" class="btn-readmore-light">閱讀更多</a>
             </div>
 
-            <!-- 家屬告別篇：隱形定位點 -->
             <div id="families" style="position: relative; top: -100px; visibility: hidden;"></div>
             <div class="journey-step" data-aos="fade-up">
                 <div class="journey-img"><img src="images/journey-3.jpg" alt="家屬篇"></div>
@@ -1412,84 +1063,57 @@
         </div>
     </div>
 
-    <!-- 延伸閱讀區塊（含左右滑動無限循環切換） -->
+    <!-- 延伸閱讀區塊 -->
     <div class="related-reading-section" data-aos="fade-up">
         <h2>延伸閱讀</h2>
         <div class="related-carousel-wrapper">
             <button class="carousel-btn prev" id="prevBtn">&#10094;</button>
             <div class="related-slider-container">
                 <div class="related-grid" id="relatedSlider">
-                    <!-- 文章 1 -->
                     <a href="https://www.commonhealth.com.tw/article/93996" target="_blank" class="related-card">
-                        <div class="related-card-img">
-                            <img src="images/related-1.jpg" alt="當「吃」成為最遙遠的渴望！香港媽媽跨海來台移植200公分小腸，改寫兒子8年點滴人生">
-                        </div>
+                        <div class="related-card-img"><img src="images/related-1.jpg" alt="當「吃」成為最遙遠的渴望！香港媽媽跨海來台移植200公分小腸，改寫兒子8年點滴人生"></div>
                         <div class="related-card-content">
                             <h3>當「吃」成為最遙遠的渴望！香港媽媽跨海來台移植200公分小腸，改寫兒子8年點滴人生</h3>
                             <span class="related-link-text">了解詳情</span>
                         </div>
                     </a>
-
-                    <!-- 文章 2 -->
                     <a href="https://www.commonhealth.com.tw/article/92645" target="_blank" class="related-card">
-                        <div class="related-card-img">
-                            <img src="images/related-2.jpg" alt="器官捐贈同意書，簽了能反悔嗎？器捐流程、腦死定義，關鍵10問一次搞懂">
-                        </div>
+                        <div class="related-card-img"><img src="images/related-2.jpg" alt="器官捐贈同意書，簽了能反悔嗎？器捐流程、腦死定義，關鍵10問一次搞懂"></div>
                         <div class="related-card-content">
                             <h3>器官捐贈同意書，簽了能反悔嗎？器捐流程、腦死定義，關鍵10問一次搞懂</h3>
                             <span class="related-link-text">了解詳情</span>
                         </div>
                     </a>
-
-                    <!-- 文章 3 -->
                     <a href="https://www.commonhealth.com.tw/blog/6146" target="_blank" class="related-card">
-                        <div class="related-card-img">
-                            <img src="images/related-3.jpg" alt="20年近4萬人等不到器官死亡！李伯璋：面對洗腎財務黑洞，不如推動移植重生">
-                        </div>
+                        <div class="related-card-img"><img src="images/related-3.jpg" alt="20年近4萬人等不到器官死亡！李伯璋：面對洗腎財務黑洞，不如推動移植重生"></div>
                         <div class="related-card-content">
                             <h3>20年近4萬人等不到器官死亡！李伯璋：面對洗腎財務黑洞，不如推動移植重生</h3>
                             <span class="related-link-text">了解詳情</span>
                         </div>
                     </a>
-
-                    <!-- 文章 4 -->
                     <a href="https://www.commonhealth.com.tw/blog/6422" target="_blank" class="related-card">
-                        <div class="related-card-img">
-                            <img src="images/related-4.jpg" alt="夫妻沒血緣也能捐腎？醫師：長年相守，身體可能早已熟悉彼此的抗原">
-                        </div>
+                        <div class="related-card-img"><img src="images/related-4.jpg" alt="夫妻沒血緣也能捐腎？醫師：長年相守，身體可能早已熟悉彼此的抗原"></div>
                         <div class="related-card-content">
                             <h3>夫妻沒血緣也能捐腎？醫師：長年相守，身體可能早已熟悉彼此的抗原</h3>
                             <span class="related-link-text">了解詳情</span>
                         </div>
                     </a>
-
-                    <!-- 文章 5 -->
                     <a href="https://www.commonhealth.com.tw/article/94230" target="_blank" class="related-card">
-                        <div class="related-card-img">
-                            <img src="images/related-5.jpg" alt="創全球首例！斷臂35年男子接上女手臂，1年後重拾寫字與擁抱，手臂更「轉性」長出體毛">
-                        </div>
+                        <div class="related-card-img"><img src="images/related-5.jpg" alt="創全球首例！斷臂35年男子接上女手臂，1年後重拾寫字與擁抱，手臂更「轉性」長出體毛"></div>
                         <div class="related-card-content">
                             <h3>創全球首例！斷臂35年男子接上女手臂，1年後重拾寫字與擁抱，手臂更「轉性」長出體毛</h3>
                             <span class="related-link-text">了解詳情</span>
                         </div>
                     </a>
-
-                    <!-- 文章 6 -->
                     <a href="https://www.commonhealth.com.tw/article/86473" target="_blank" class="related-card">
-                        <div class="related-card-img">
-                            <img src="images/related-6.jpg" alt="肺移植續命！哪些情況可肺移植？肺能活體移植？醫師解答肺移植7問">
-                        </div>
+                        <div class="related-card-img"><img src="images/related-6.jpg" alt="肺移植續命！哪些情況可肺移植？肺能活體移植？醫師解答肺移植7問"></div>
                         <div class="related-card-content">
                             <h3>肺移植續命！哪些情況可肺移植？肺能活體移植？醫師解答肺移植7問</h3>
                             <span class="related-link-text">了解詳情</span>
                         </div>
                     </a>
-
-                    <!-- 文章 7 -->
                     <a href="https://www.commonhealth.com.tw/article/87601" target="_blank" class="related-card">
-                        <div class="related-card-img">
-                            <img src="images/related-7.jpg" alt="父母捐肺救11歲愛女 台大醫院成功完成台灣首例活體肺葉移植">
-                        </div>
+                        <div class="related-card-img"><img src="images/related-7.jpg" alt="父母捐肺救11歲愛女 台大醫院成功完成台灣首例活體肺葉移植"></div>
                         <div class="related-card-content">
                             <h3>父母捐肺救11歲愛女 台大醫院成功完成台灣首例活體肺葉移植</h3>
                             <span class="related-link-text">了解詳情</span>
@@ -1499,7 +1123,6 @@
             </div>
             <button class="carousel-btn next" id="nextBtn">&#10095;</button>
         </div>
-        <!-- 輪播動態小圓點導覽列 -->
         <div class="carousel-dots" id="carouselDots"></div>
     </div>
 
@@ -1509,30 +1132,12 @@
             <div class="ch-wrapper">
                 <h2>追蹤我們，最新資訊不漏接</h2>
                 <div class="ch-social-media">
-                    <a class="ch-social-group" href="https://line.me/ti/p/@commonhealth" target="_blank">
-                        <img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-line.svg" alt="加入 LINE 好友">
-                        <p>加入 LINE 好友</p>
-                    </a>
-                    <a class="ch-social-group" href="https://www.facebook.com/commonhealth/" target="_blank">
-                        <img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-fb.svg" alt="追蹤 Facebook">
-                        <p>追蹤 Facebook</p>
-                    </a>
-                    <a class="ch-social-group" href="https://www.instagram.com/commonhealth.official/" target="_blank">
-                        <img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-instagram.svg" alt="追蹤 Instagram">
-                        <p>追蹤 Instagram</p>
-                    </a>
-                    <a class="ch-social-group" href="https://www.youtube.com/user/CommonHealthTV" target="_blank">
-                        <img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-youtube.svg" alt="訂閱 Youtube">
-                        <p>訂閱 Youtube</p>
-                    </a>
-                    <a class="ch-social-group" href="https://solink.soundon.fm/commonhealth" target="_blank">
-                        <img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-podcast.svg" alt="訂閱 Podcast">
-                        <p>訂閱 Podcast</p>
-                    </a>
-                    <a class="ch-social-group" href="https://www.commonhealth.com.tw/member/member_newsletter" target="_blank">
-                        <img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-edm.svg" alt="訂閱電子報">
-                        <p>訂閱電子報</p>
-                    </a>
+                    <a class="ch-social-group" href="https://line.me/ti/p/@commonhealth" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-line.svg" alt="LINE"><p>加入 LINE 好友</p></a>
+                    <a class="ch-social-group" href="https://www.facebook.com/commonhealth/" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-fb.svg" alt="FB"><p>追蹤 Facebook</p></a>
+                    <a class="ch-social-group" href="https://www.instagram.com/commonhealth.official/" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-instagram.svg" alt="IG"><p>追蹤 Instagram</p></a>
+                    <a class="ch-social-group" href="https://www.youtube.com/user/CommonHealthTV" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-youtube.svg" alt="YT"><p>訂閱 Youtube</p></a>
+                    <a class="ch-social-group" href="https://solink.soundon.fm/commonhealth" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-podcast.svg" alt="Podcast"><p>訂閱 Podcast</p></a>
+                    <a class="ch-social-group" href="https://www.commonhealth.com.tw/member/member_newsletter" target="_blank"><img src="https://www.commonhealth.com.tw/vendor/feature-frontend/images/index/icon-edm.svg" alt="EDM"><p>訂閱電子報</p></a>
                 </div>
             </div>
         </div>
@@ -1560,7 +1165,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // 延伸閱讀輪播互動與「無縫循環」捲動邏輯
         document.addEventListener("DOMContentLoaded", () => {
             const slider = document.getElementById('relatedSlider');
             const prevBtn = document.getElementById('prevBtn');
@@ -1571,12 +1175,6 @@
                 const originalCards = Array.from(slider.querySelectorAll('.related-card'));
                 const totalOriginal = originalCards.length;
                 let currentIndex = 0;
-
-                const visibleCount = () => {
-                    if (window.innerWidth <= 640) return 1;
-                    if (window.innerWidth <= 960) return 2;
-                    return 3;
-                };
 
                 const clonesCount = 3;
                 for (let i = 0; i < clonesCount; i++) {
@@ -1593,12 +1191,7 @@
                     const cardWidth = allCards[clonesCount].offsetWidth;
                     const gap = 24;
                     const moveDistance = currentIndex * (cardWidth + gap);
-                    
-                    if (!withTransition) {
-                        slider.style.transition = 'none';
-                    } else {
-                        slider.style.transition = 'transform 0.4s ease-in-out';
-                    }
+                    slider.style.transition = withTransition ? 'transform 0.4s ease-in-out' : 'none';
                     slider.style.transform = `translateX(-${moveDistance}px)`;
                     updateDots();
                 }
@@ -1608,13 +1201,8 @@
                     for (let i = 0; i < totalOriginal; i++) {
                         const dot = document.createElement('button');
                         dot.classList.add('carousel-dot');
-                        if (i === (currentIndex - clonesCount + totalOriginal) % totalOriginal) {
-                            dot.classList.add('active');
-                        }
-                        dot.addEventListener('click', () => {
-                            currentIndex = i + clonesCount;
-                            setSliderPosition(true);
-                        });
+                        if (i === (currentIndex - clonesCount + totalOriginal) % totalOriginal) dot.classList.add('active');
+                        dot.addEventListener('click', () => { currentIndex = i + clonesCount; setSliderPosition(true); });
                         dotsContainer.appendChild(dot);
                     }
                 }
@@ -1623,11 +1211,7 @@
                     const dots = dotsContainer.querySelectorAll('.carousel-dot');
                     const realIndex = (currentIndex - clonesCount + totalOriginal) % totalOriginal;
                     dots.forEach((dot, index) => {
-                        if (index === realIndex) {
-                            dot.classList.add('active');
-                        } else {
-                            dot.classList.remove('active');
-                        }
+                        dot.classList.toggle('active', index === realIndex);
                     });
                 }
 
@@ -1637,30 +1221,20 @@
                 nextBtn.addEventListener('click', () => {
                     currentIndex++;
                     setSliderPosition(true);
-
                     if (currentIndex >= totalOriginal + clonesCount) {
-                        setTimeout(() => {
-                            currentIndex = clonesCount;
-                            setSliderPosition(false);
-                        }, 400);
+                        setTimeout(() => { currentIndex = clonesCount; setSliderPosition(false); }, 400);
                     }
                 });
 
                 prevBtn.addEventListener('click', () => {
                     currentIndex--;
                     setSliderPosition(true);
-
                     if (currentIndex < clonesCount) {
-                        setTimeout(() => {
-                            currentIndex = totalOriginal + clonesCount - 1;
-                            setSliderPosition(false);
-                        }, 400);
+                        setTimeout(() => { currentIndex = totalOriginal + clonesCount - 1; setSliderPosition(false); }, 400);
                     }
                 });
 
-                window.addEventListener('resize', () => {
-                    setSliderPosition(false);
-                });
+                window.addEventListener('resize', () => setSliderPosition(false));
             }
         });
     </script>
@@ -1687,7 +1261,7 @@
                 const chart1Annotations = {
                     id: 'chart1Annotations',
                     afterDraw(chart) {
-                        const { ctx, chartArea: { top, bottom, left, right } } = chart;
+                        const { ctx } = chart;
                         const points = [
                             { index: 0, year: '2016年', text: '8,941人', offsetX: 25 },
                             { index: 9, year: '2025年', text: '11,546人', offsetX: -25 }
@@ -1709,13 +1283,9 @@
                             ctx.fillStyle = '#1a2a3a';
                             ctx.strokeStyle = '#1a2a3a';
                             ctx.lineWidth = 2;
-                            
                             ctx.beginPath();
-                            if (ctx.roundRect) {
-                                ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 6);
-                            } else {
-                                ctx.rect(boxX, boxY, boxWidth, boxHeight);
-                            }
+                            if (ctx.roundRect) ctx.roundRect(boxX, boxY, boxWidth, boxHeight, 6);
+                            else ctx.rect(boxX, boxY, boxWidth, boxHeight);
                             ctx.fill();
                             ctx.stroke();
 
@@ -1731,7 +1301,6 @@
                             ctx.font = '12px "Microsoft JhengHei", sans-serif';
                             ctx.textAlign = 'center';
                             ctx.fillText(p.year, boxX + boxWidth / 2, boxY + 18);
-
                             ctx.font = 'bold 15px "Microsoft JhengHei", sans-serif';
                             ctx.fillText(p.text, boxX + boxWidth / 2, boxY + 40);
                         });
@@ -1760,10 +1329,7 @@
                             pointBackgroundColor: '#ffffff',
                             pointBorderColor: '#1a2a3a',
                             pointBorderWidth: 2,
-                            pointRadius: function(context) {
-                                const index = context.dataIndex;
-                                return (index === 0 || index === 9) ? 6 : 4;
-                            },
+                            pointRadius: (ctx) => (ctx.dataIndex === 0 || ctx.dataIndex === 9) ? 6 : 4,
                             pointHoverRadius: 7
                         }]
                     },
@@ -1775,14 +1341,8 @@
                             legend: { display: false },
                             tooltip: {
                                 enabled: true,
-                                filter: function(tooltipItem) {
-                                    return tooltipItem.dataIndex !== 0 && tooltipItem.dataIndex !== 9;
-                                },
-                                callbacks: {
-                                    label: function(context) {
-                                        return ' 等待人數: ' + context.parsed.y.toLocaleString() + '人';
-                                    }
-                                }
+                                filter: (item) => item.dataIndex !== 0 && item.dataIndex !== 9,
+                                callbacks: { label: (ctx) => ' 等待人數: ' + ctx.parsed.y.toLocaleString() + '人' }
                             }
                         },
                         scales: {
@@ -1816,8 +1376,7 @@
             });
 
             observeChart('#chart4', () => {
-                const ctx4 = document.getElementById('chart4').getContext('2d');
-                new Chart(ctx4, {
+                new Chart(document.getElementById('chart4').getContext('2d'), {
                     type: 'bar',
                     plugins: [ChartDataLabels],
                     data: {
@@ -1825,70 +1384,32 @@
                         datasets: [{
                             label: '死亡個案數',
                             data: [724, 304, 89, 28, 9, 3],
-                            backgroundColor: [
-                                '#eb5757',                
-                                'rgba(43, 76, 111, 1)',   
-                                'rgba(43, 76, 111, 0.75)', 
-                                'rgba(43, 76, 111, 0.55)', 
-                                'rgba(43, 76, 111, 0.35)', 
-                                'rgba(43, 76, 111, 0.2)'   
-                            ],
+                            backgroundColor: ['#eb5757', 'rgba(43, 76, 111, 1)', 'rgba(43, 76, 111, 0.75)', 'rgba(43, 76, 111, 0.55)', 'rgba(43, 76, 111, 0.35)', 'rgba(43, 76, 111, 0.2)'],
                             borderRadius: 6
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        layout: {
-                            padding: { top: 25 }
-                        },
+                        layout: { padding: { top: 25 } },
                         plugins: {
                             legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const value = context.parsed.y || 0;
-                                        return ` 死亡人數: ${value}人`;
-                                    }
-                                }
-                            },
+                            tooltip: { callbacks: { label: (ctx) => ` 死亡人數: ${ctx.parsed.y || 0}人` } },
                             datalabels: {
                                 anchor: 'end',
                                 align: 'top',
-                                color: function(context) {
-                                    return context.dataIndex === 0 ? '#eb5757' : '#4a5568';
-                                },
-                                font: function(context) {
-                                    if (context.dataIndex === 0) {
-                                        return {
-                                            weight: 'bold',
-                                            size: 18,
-                                            family: '"Microsoft JhengHei", sans-serif'
-                                        };
-                                    } else {
-                                        return {
-                                            weight: 'bold',
-                                            size: 13,
-                                            family: '"Microsoft JhengHei", sans-serif'
-                                        };
-                                    }
-                                },
-                                formatter: function(value) {
-                                    return value + '人';
-                                }
+                                color: (ctx) => ctx.dataIndex === 0 ? '#eb5757' : '#4a5568',
+                                font: (ctx) => ({
+                                    weight: 'bold',
+                                    size: ctx.dataIndex === 0 ? 18 : 13,
+                                    family: '"Microsoft JhengHei", sans-serif'
+                                }),
+                                formatter: (val) => val + '人'
                             }
                         },
                         scales: {
-                            x: { 
-                                ticks: { color: '#2d3748', font: { size: 13, family: '"Microsoft JhengHei", sans-serif' } }, 
-                                grid: { display: false } 
-                            },
-                            y: { 
-                                ticks: { color: '#718096', font: { size: 12 } }, 
-                                grid: { color: '#f7fafc' },
-                                beginAtZero: true,
-                                max: 800
-                            }
+                            x: { ticks: { color: '#2d3748', font: { size: 13 } }, grid: { display: false } },
+                            y: { ticks: { color: '#718096', font: { size: 12 } }, grid: { color: '#f7fafc' }, beginAtZero: true, max: 800 }
                         }
                     }
                 });
