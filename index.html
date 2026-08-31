@@ -85,7 +85,7 @@
         .mobile-bg { display: none; }
         @media(max-width: 768px) {
             .desktop-bg { display: none !important; }
-            .mobile-bg { display: block !important; object-fit: cover !important; width: 100% !important; height: 100% !important; }
+            .mobile-bg { display: block !important; object-fit: cover !important; width: 100% !important; height: 100% !important; opacity: 1 !important; filter: none !important; }
         }
 
         .section-hero::after {
@@ -99,10 +99,10 @@
             z-index: 1;
         }
 
-        /* 手機版遮罩調淺：調整為較輕的漸層透明度 */
+        /* 手機版移除主視覺遮罩 */
         @media(max-width: 768px) {
             .section-hero::after {
-                background: linear-gradient(180deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.12) 100%) !important;
+                background: none !important;
             }
         }
 
